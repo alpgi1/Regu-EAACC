@@ -1,12 +1,11 @@
-# REGU backend configuration
-server:
-  port: 8080
-  servlet:
-    context-path: /
+# REGU backend — common configuration (applies to all profiles)
+# Profile-specific overrides live in application-dev.yml and application-prod.yml
 
 spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:dev}
   datasource:
-    url: jdbc:postgresql://localhost:5432/regu_db
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/regu_db}
     username: ${DB_USERNAME:regu_user}
     password: ${DB_PASSWORD:regu_dev_password}
     driver-class-name: org.postgresql.Driver
@@ -21,7 +20,6 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: true
     open-in-view: false
   flyway:
     enabled: true
@@ -29,6 +27,11 @@ spring:
     baseline-on-migrate: true
     baseline-version: 0
     validate-on-migrate: true
+
+server:
+  port: ${SERVER_PORT:8080}
+  servlet:
+    context-path: /
 
 regu:
   service:
