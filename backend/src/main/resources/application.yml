@@ -1,1 +1,10 @@
-# REGU backend configuration — populated in later phases
+# REGU backend configuration
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+regu:
+  service:
+    name: regu-backend
+    version: 0.1.0
