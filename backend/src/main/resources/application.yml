@@ -4,6 +4,26 @@ server:
   servlet:
     context-path: /
 
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/regu_db
+    username: ${DB_USERNAME:regu_user}
+    password: ${DB_PASSWORD:regu_dev_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 2
+      connection-timeout: 30000
+      pool-name: ReguHikariPool
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    open-in-view: false
+
 regu:
   service:
     name: regu-backend
