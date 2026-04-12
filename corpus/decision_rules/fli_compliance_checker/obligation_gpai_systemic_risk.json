@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_gpai_systemic_risk",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > GPAI with Systemic Risk",
+  "content": "## Obligation: GPAI with systemic risk obligations\n\nA provider of a General Purpose AI model classified as having systemic risk is subject to the obligations set out in Article 55 of the EU AI Act. These obligations apply in addition to the baseline GPAI provider obligations under Article 53; they are not a substitute for them. The systemic risk classification arises where the model has high-impact capabilities, presumed where the cumulative training compute exceeds 10^25 floating-point operations under Article 51 point 2, or where the European Commission has so designated the model on the basis of the Annex XIII criteria.\n\nThe additional duties under Article 55 are: performing model evaluation in accordance with standardised protocols and tools reflecting the state of the art, including conducting and documenting adversarial testing of the model with a view to identifying and mitigating systemic risks; assessing and mitigating possible systemic risks at the Union level, including their sources, that may stem from the development, the placing on the market, or the use of the GPAI model with systemic risk; keeping track of, documenting, and reporting without undue delay to the AI Office and, as appropriate, to national competent authorities relevant information about serious incidents and possible corrective measures to address them; and ensuring an adequate level of cybersecurity protection for the GPAI model with systemic risk and the physical infrastructure of the model.\n\nProviders may rely on codes of practice within the meaning of Article 56 to demonstrate compliance with these duties until a harmonised standard is published. Until then, the AI Office plays a central coordinating role in facilitating the drawing up of codes of practice and supervising their implementation.\n\nSource: Article 55, Article 51, Annex XIII",
+  "topic": "gpai_systemic_risk_obligations",
+  "related_articles": [51, 55, 56],
+  "related_annex_points": ["XIII"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

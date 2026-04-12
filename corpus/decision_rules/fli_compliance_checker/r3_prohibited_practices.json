@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_r3",
+  "chunk_type": "question",
+  "section": "rules",
+  "section_path": "Rules for Particular Types of System > R3: Prohibited practices under Article 5",
+  "content": "## Decision question: Does your AI system perform any of the practices prohibited under Article 5 of the EU AI Act?\n\nArticle 5 sets out a closed list of AI practices that are prohibited in the Union. A system that performs any of these practices is not merely high-risk: it is unlawful to place on the market, put into service, or use, and the provider and deployer face the highest tier of fines under the Act. This question tests whether any of the prohibited practices applies.\n\nThe prohibited practices are:\n\n- Use of subliminal techniques beyond a person's consciousness, or purposefully manipulative or deceptive techniques, with the objective or effect of materially distorting the behaviour of a person or group in a way that causes (or is reasonably likely to cause) significant harm.\n- Exploitation of vulnerabilities of a person or group due to age, disability, or a specific social or economic situation, with the objective or effect of materially distorting behaviour in a way that causes (or is reasonably likely to cause) significant harm.\n- Biometric categorisation systems that categorise individuals based on their biometric data to deduce or infer race, political opinions, trade union membership, religious or philosophical beliefs, sex life, or sexual orientation. Note that the Article 5 prohibition on biometric categorisation is narrower than the Article 50 transparency obligation on biometric categorisation, which covers a broader set of uses.\n- Social scoring by public authorities or on their behalf, where the score leads to detrimental or unfavourable treatment in contexts unrelated to the data's original collection, or treatment that is unjustified or disproportionate.\n- Predictive policing based solely on profiling a person or assessing personality traits and characteristics, used to assess or predict the risk of a person committing a criminal offence.\n- Untargeted scraping of facial images from the internet or CCTV footage to create or expand facial recognition databases.\n- Emotion recognition in the workplace or in educational institutions, except where the system is intended to be put in place or made available for medical or safety reasons.\n- Real-time remote biometric identification in publicly accessible spaces for law enforcement purposes, subject to the narrow exceptions set out in Article 5.\n\nIf the system performs any of these practices, it is prohibited under Article 5 and may not be placed on the market, put into service, or used in the Union. If none of these practices applies, the assessment proceeds to the transparency obligations question (R4) for providers and deployers, and ends for other entity types.\n\nSource: Article 5",
+  "topic": "prohibited_practices",
+  "related_articles": [5],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

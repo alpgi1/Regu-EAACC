@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_gpai",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > GPAI",
+  "content": "## Obligation: GPAI provider obligations\n\nA provider of a General Purpose AI model is subject to the obligations set out in Article 53 of the EU AI Act. These obligations apply to all GPAI providers regardless of whether the model is classified as a GPAI model with systemic risk; providers of GPAI models with systemic risk face additional duties under Article 55 on top of the Article 53 baseline.\n\nThe core duties under Article 53 are: drawing up and keeping up to date technical documentation of the model, including its training and testing process and the results of its evaluation, and providing this documentation to the AI Office and national competent authorities upon request; drawing up and making available information and documentation to providers of AI systems that intend to integrate the GPAI model into their AI systems, so that those downstream providers can understand the model's capabilities and limitations and comply with their own obligations under the Regulation; putting in place a policy to comply with Union law on copyright and related rights, in particular to identify and respect (including through state-of-the-art technologies) reservations of rights expressed under Article 4(3) of Directive (EU) 2019/790; and drawing up and making publicly available a sufficiently detailed summary of the content used for training the GPAI model, in accordance with a template provided by the AI Office.\n\nIn addition to these direct duties, Recital 85 explains that obligations on high-risk AI systems may apply directly or indirectly to GPAI providers where their model is integrated into a downstream high-risk AI system. The practical effect is that GPAI providers have a strong incentive to coordinate with downstream system providers on documentation, evaluation, and risk management, even where they are not themselves placing a high-risk system on the market.\n\nSource: Article 53, Recital 85",
+  "topic": "gpai_provider_obligations",
+  "related_articles": [53],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

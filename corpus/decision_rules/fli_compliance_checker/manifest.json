@@ -1,0 +1,251 @@
+{
+  "source": "Future of Life Institute EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final",
+  "total_chunks": 40,
+  "chunks": [
+    {
+      "filename": "e1_entity_type.json",
+      "rule_id": "fli_q_e1",
+      "chunk_type": "question",
+      "section": "entity"
+    },
+    {
+      "filename": "e2_modifications.json",
+      "rule_id": "fli_q_e2",
+      "chunk_type": "question",
+      "section": "entity"
+    },
+    {
+      "filename": "e3_product_integration.json",
+      "rule_id": "fli_q_e3",
+      "chunk_type": "question",
+      "section": "entity"
+    },
+    {
+      "filename": "hr1_annex1_section_b.json",
+      "rule_id": "fli_q_hr1",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "hr2_annex1_section_a.json",
+      "rule_id": "fli_q_hr2",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "hr3_third_party_assessment.json",
+      "rule_id": "fli_q_hr3",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "hr4_annex3_categories.json",
+      "rule_id": "fli_q_hr4",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "hr5_significant_risk.json",
+      "rule_id": "fli_q_hr5",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "hr6_safety_component.json",
+      "rule_id": "fli_q_hr6",
+      "chunk_type": "question",
+      "section": "high_risk_status"
+    },
+    {
+      "filename": "s1_scope_criteria.json",
+      "rule_id": "fli_q_s1",
+      "chunk_type": "question",
+      "section": "scope"
+    },
+    {
+      "filename": "r1_gpai_systemic_risk.json",
+      "rule_id": "fli_q_r1",
+      "chunk_type": "question",
+      "section": "rules"
+    },
+    {
+      "filename": "r2_exclusions.json",
+      "rule_id": "fli_q_r2",
+      "chunk_type": "question",
+      "section": "rules"
+    },
+    {
+      "filename": "r3_prohibited_practices.json",
+      "rule_id": "fli_q_r3",
+      "chunk_type": "question",
+      "section": "rules"
+    },
+    {
+      "filename": "r4_transparency.json",
+      "rule_id": "fli_q_r4",
+      "chunk_type": "question",
+      "section": "rules"
+    },
+    {
+      "filename": "r5_fria.json",
+      "rule_id": "fli_q_r5",
+      "chunk_type": "question",
+      "section": "rules"
+    },
+    {
+      "filename": "outcome_become_provider.json",
+      "rule_id": "fli_outcome_become_provider",
+      "chunk_type": "outcome",
+      "section": "status_changes"
+    },
+    {
+      "filename": "outcome_handover.json",
+      "rule_id": "fli_outcome_handover",
+      "chunk_type": "outcome",
+      "section": "status_changes"
+    },
+    {
+      "filename": "outcome_out_of_scope.json",
+      "rule_id": "fli_outcome_out_of_scope",
+      "chunk_type": "outcome",
+      "section": "status_changes"
+    },
+    {
+      "filename": "outcome_prohibited.json",
+      "rule_id": "fli_outcome_prohibited",
+      "chunk_type": "outcome",
+      "section": "status_changes"
+    },
+    {
+      "filename": "outcome_high_risk.json",
+      "rule_id": "fli_outcome_high_risk",
+      "chunk_type": "outcome",
+      "section": "status_changes"
+    },
+    {
+      "filename": "obligation_ai_literacy.json",
+      "rule_id": "fli_obligation_ai_literacy",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_provider_high_risk.json",
+      "rule_id": "fli_obligation_provider_high_risk",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_deployer_high_risk.json",
+      "rule_id": "fli_obligation_deployer_high_risk",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_distributor_high_risk.json",
+      "rule_id": "fli_obligation_distributor_high_risk",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_importer_high_risk.json",
+      "rule_id": "fli_obligation_importer_high_risk",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_product_manufacturer.json",
+      "rule_id": "fli_obligation_product_manufacturer",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_authorised_representative.json",
+      "rule_id": "fli_obligation_authorised_representative",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_gpai.json",
+      "rule_id": "fli_obligation_gpai",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_gpai_systemic_risk.json",
+      "rule_id": "fli_obligation_gpai_systemic_risk",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_notify_nca.json",
+      "rule_id": "fli_obligation_notify_nca",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_transparency_natural_persons.json",
+      "rule_id": "fli_obligation_transparency_natural_persons",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_transparency_synthetic_content.json",
+      "rule_id": "fli_obligation_transparency_synthetic_content",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_transparency_emotion_biometric.json",
+      "rule_id": "fli_obligation_transparency_emotion_biometric",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_transparency_content_resemblance.json",
+      "rule_id": "fli_obligation_transparency_content_resemblance",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "obligation_fria.json",
+      "rule_id": "fli_obligation_fria",
+      "chunk_type": "obligation",
+      "section": "obligations"
+    },
+    {
+      "filename": "exception_high_risk_exception.json",
+      "rule_id": "fli_exception_high_risk_exception",
+      "chunk_type": "exception",
+      "section": "exclusions"
+    },
+    {
+      "filename": "exception_excluded.json",
+      "rule_id": "fli_exception_excluded",
+      "chunk_type": "exception",
+      "section": "exclusions"
+    },
+    {
+      "filename": "exception_open_source.json",
+      "rule_id": "fli_exception_open_source",
+      "chunk_type": "exception",
+      "section": "exclusions"
+    },
+    {
+      "filename": "exception_personal_use.json",
+      "rule_id": "fli_exception_personal_use",
+      "chunk_type": "exception",
+      "section": "exclusions"
+    },
+    {
+      "filename": "exception_research_development.json",
+      "rule_id": "fli_exception_research_development",
+      "chunk_type": "exception",
+      "section": "exclusions"
+    }
+  ]
+}

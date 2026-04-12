@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_exception_personal_use",
+  "chunk_type": "exception",
+  "section": "exclusions",
+  "section_path": "Understanding your obligations > Exceptions and exclusions > Personal Use",
+  "content": "## Exception: Personal non-professional use\n\nUnder Article 2 point 10 of the EU AI Act, the obligations of deployers do not apply to a natural person who deploys an AI system in the course of a purely personal non-professional activity. This exclusion is targeted and narrow: it applies specifically to the deployer obligations and to natural persons (not legal persons or organisations), and it is conditional on the activity being both purely personal and non-professional.\n\nThe rationale is that the AI Act is designed to regulate the placing on the market and the use of AI systems in commercial, public-sector, and other organised contexts, rather than to reach into private life. An individual using a consumer-facing AI assistant to draft a personal email, generate an image for a family birthday card, or summarise a recipe is not the intended target of deployer obligations under Articles 26 or 27, and Article 2 point 10 makes that explicit.\n\nThe exclusion has limits. It does not apply to provider obligations: if a natural person develops an AI system and places it on the market under their own name, they remain a provider regardless of whether their motivation is personal. It does not extend to professional use: a sole trader, freelancer, or other self-employed person using an AI system in the course of their professional activity is not within the exclusion, even though they are a natural person. It also does not override the Article 5 prohibitions: an individual using an AI system to perform a prohibited practice remains subject to the prohibition.\n\nThe exclusion is also limited to the deployer obligations specifically. Other obligations under the Regulation — such as the prohibition of certain practices under Article 5, or transparency obligations on the providers of the systems being used — remain unaffected.\n\nSource: Article 2 point 10",
+  "topic": "personal_use_exclusion",
+  "related_articles": [2],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

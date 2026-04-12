@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_outcome_high_risk",
+  "chunk_type": "outcome",
+  "section": "status_changes",
+  "section_path": "Understanding your obligations > Status changes > High risk",
+  "content": "## Outcome: High risk\n\nAn AI system is classified as high-risk under Article 6 of the EU AI Act when it falls within one of two routes. The first route, under Article 6 point 1, captures AI systems that are themselves products covered by Union harmonisation legislation listed in Annex I, or that are safety components of such products, where the product is required to undergo a third-party conformity assessment under that legislation. The second route, under Article 6 point 2, captures stand-alone AI systems falling within one of the use case categories listed in Annex III — biometrics, critical infrastructure, education, employment, essential services, law enforcement, migration, and administration of justice — unless the Article 6 point 3 carve-outs apply.\n\nHigh-risk classification does not, by itself, prescribe a specific set of obligations. The obligations that flow from high-risk status depend on the entity type. A provider of a high-risk AI system is subject to Article 16 and the cascade of duties in Articles 9-15 (risk management, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness). A deployer is subject to Article 26. A distributor is subject to Article 24. An importer is subject to Article 23. An authorised representative is subject to Article 22. A product manufacturer that places a high-risk AI system on the market under its own name or trademark is treated as a provider under Article 25 and assumes the full provider obligation set.\n\nHigh-risk systems are also subject to registration in the EU database under Article 49, post-market monitoring under Article 72, and incident reporting under Article 73. The classification is consequential and triggers the bulk of the substantive compliance work the Regulation imposes.\n\nSource: Article 6",
+  "topic": "high_risk_classification",
+  "related_articles": [6, 16, 22, 23, 24, 25, 26, 49, 72, 73],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

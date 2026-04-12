@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_notify_nca",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > Notify NCA",
+  "content": "## Obligation: Notify the National Competent Authority\n\nThis obligation applies to providers of AI systems that fall within an Annex III high-risk category but that the provider has determined do not pose a significant risk of harm to the health, safety, or fundamental rights of natural persons, on the basis of one of the four carve-outs in Article 6 point 3 (narrow procedural task, improving a previously completed human activity, detecting decision-making patterns without replacing human assessment, or performing a preparatory task). Where the provider relies on this carve-out, the system is not classified as high-risk and the high-risk obligation set does not apply, but a separate set of registration and documentation duties is triggered as a check on potential misclassification.\n\nThe duties are: registering the AI system in the EU database before that system is placed on the market or put into service, in accordance with Article 49 point 2; documenting the assessment that led to the conclusion that the system does not pose a significant risk of harm; and providing this documentation to the National Competent Authorities upon request, in accordance with Article 6 point 4.\n\nThese duties exist because the carve-out in Article 6 point 3 is self-applied by the provider rather than verified by an external body. Article 80 empowers market surveillance authorities to investigate and, where they conclude that the system has been misclassified, to require the provider to bring the system into compliance with the high-risk obligations in Chapter III Section 2. Where misclassification is established, the provider becomes subject to the full high-risk regime and may also be subject to administrative fines under Article 99. Providers should therefore document their classification reasoning carefully and be prepared to defend it.\n\nSource: Article 6 point 4, Article 49 point 2, Article 80, Article 99",
+  "topic": "notify_nca_no_significant_risk",
+  "related_articles": [6, 49, 80, 99],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

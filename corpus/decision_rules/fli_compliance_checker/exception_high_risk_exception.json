@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_exception_high_risk_exception",
+  "chunk_type": "exception",
+  "section": "exclusions",
+  "section_path": "Understanding your obligations > Exceptions and exclusions > High risk Exception",
+  "content": "## Exception: High-risk system caught by an Article 2 exclusion\n\nThis exception arises in the unusual case where an AI system would otherwise be classified as high-risk under Article 6 — for example, because it falls within an Annex I Section A category and is required to undergo a third-party conformity assessment, or because it is a safety component of such a product — but the system is also covered by an exclusion in Article 2 of the EU AI Act. The Article 2 exclusion takes precedence: the bulk of the Regulation does not apply, even though the high-risk classification would otherwise have triggered the full provider or deployer obligation set.\n\nWhere this exception applies, only Article 112 of the AI Act applies to the system. Article 112 is principally concerned with the obligations of the European Commission to evaluate and review the Regulation on a regular basis, including the lists of prohibited practices, high-risk use cases, and transparency requirements. It does not impose substantive design, documentation, or operational duties on providers or deployers.\n\nThe practical compliance posture for an organisation in this position is therefore primarily a monitoring one: keep an eye on the periodic Commission reviews and any consequential amendments to the Regulation, and be prepared to revisit the exclusion analysis if the underlying scope or exclusion provisions change. The organisation does not need to perform a conformity assessment, register the system, draw up technical documentation under Annex IV, or assume the other Chapter III Section 2 obligations that would otherwise apply to a high-risk system.\n\nThis exception is narrow and depends on a specific combination of facts. Organisations relying on it should document the basis for the Article 2 exclusion carefully, since the consequence of getting the analysis wrong is exposure to the full high-risk obligation set.\n\nSource: Article 2, Article 112",
+  "topic": "high_risk_article_2_exception",
+  "related_articles": [2, 112],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

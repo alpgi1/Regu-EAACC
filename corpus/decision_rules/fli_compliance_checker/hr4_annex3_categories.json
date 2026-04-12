@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr4",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR4: Annex III high-risk use cases",
+  "content": "## Decision question: Does your AI system fall within any of the high-risk use case categories listed in Annex III?\n\nAnnex III lists stand-alone AI use cases that the EU AI Act treats as high-risk independently of product harmonisation legislation. Unlike the Annex I route, Annex III classification is based on the function and context of the AI system rather than on the product it is embedded in. Under Article 6 point 2, an AI system falling within an Annex III category is presumptively high-risk, subject to the significant risk test in Article 6 point 3.\n\nThe Annex III categories are:\n\n- Biometrics\n- Critical infrastructure\n- Education and vocational training\n- Employment, workers management, and access to self-employment\n- Access to and enjoyment of essential private services and essential public services and benefits\n- Law enforcement\n- Migration, asylum, and border control management\n- Administration of justice and democratic processes\n\nDetailed definitions and scoping for each category are set out in Annex III itself; organisations should consult the Annex directly when the fit between their system and a category is not obvious.\n\nIf the AI system falls within any Annex III category, the assessment proceeds to the significant risk of harm test (HR5), which applies the Article 6 point 3 carve-outs that can rebut the presumption of high-risk classification.\n\nIf the AI system does not fall within any Annex III category, it is not high-risk under either the Annex I or Annex III route, and the assessment proceeds to the scope question (S1) without any high-risk classification attached.\n\nSource: Article 6 point 2, Annex III",
+  "topic": "high_risk_annex_iii",
+  "related_articles": [6],
+  "related_annex_points": ["III.1", "III.2", "III.3", "III.4", "III.5", "III.6", "III.7", "III.8"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

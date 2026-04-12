@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_e2",
+  "chunk_type": "question",
+  "section": "entity",
+  "section_path": "Entity > E2: Modifications to the system",
+  "content": "## Decision question: Does your organisation (or a downstream deployer, distributor, or importer) make any of the following modifications to the AI system?\n\nUnder Article 25 of the EU AI Act, certain modifications to an AI system reassign provider responsibilities. The party making the modification can become the legal provider of the modified system, even if they were originally only a deployer, distributor, or importer. This question identifies whether such a modification has occurred.\n\nThe relevant modifications are:\n\n- Putting a different name or trademark on the AI system.\n- Modifying the intended purpose of an AI system that is already in operation.\n- Performing a substantial modification to the system, as defined in Article 3 point 23.\n\nIf any one of these modifications applies, the entity making the modification is treated as a provider of the resulting system for the purposes of the Regulation, and assumes the corresponding provider obligations. Where the organisation completing the assessment is itself the original provider and a downstream actor performs one of these modifications, a handover occurs: the original provider ceases to be the provider of that particular modified system but retains an obligation to supply the new provider with the information, materials, and access needed for compliance.\n\nIn flow terms, if the organisation is already a provider, the handover consequence is noted and the assessment proceeds to the high-risk classification questions (HR1). For all other entity types, the assessment likewise proceeds to HR1, with the understanding that selecting any of the modifications above may later cause the entity to become a provider under Article 25. If none of the modifications apply, the assessment simply proceeds to HR1 without any change in entity status.\n\nSource: Article 25 points 1-2, Article 3 point 23",
+  "topic": "system_modification_provider_reassignment",
+  "related_articles": [25, 3],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

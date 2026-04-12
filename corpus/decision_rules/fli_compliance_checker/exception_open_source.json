@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_exception_open_source",
+  "chunk_type": "exception",
+  "section": "exclusions",
+  "section_path": "Understanding your obligations > Exceptions and exclusions > Open Source",
+  "content": "## Exception: Open-source AI components\n\nUnder Article 2 point 12 of the EU AI Act, AI systems released under free and open-source licences are excluded from the Regulation, subject to important conditions. The exclusion is provisional rather than absolute: it applies only until the open-source AI system is placed on the market or put into service by a provider as part of an AI system that is high-risk, prohibited, a General Purpose AI model, or subject to the transparency obligations under Article 50.\n\nIn practice, this means that an organisation publishing model weights, training code, or AI components under a free and open-source licence — without itself integrating those components into a high-risk, prohibited, GPAI, or transparency-obligated downstream system — does not face obligations under the AI Act in respect of the open-source release. No provider duties under Article 16, no GPAI duties under Article 53, and no transparency duties under Article 50 attach to the open-source publication itself.\n\nThe exclusion ceases to apply at the point where the open-source component is incorporated into a downstream system that crosses one of the trigger thresholds. At that point, the provider of the downstream system assumes the relevant obligations, but the original open-source publisher does not retroactively become a provider of the downstream system. The exclusion is also not a shield against the Article 5 prohibitions: an open-source AI system that performs a prohibited practice remains prohibited, regardless of its licensing model.\n\nOrganisations relying on the open-source exclusion should be careful about the precise terms of the licence used. The exclusion applies to free and open-source licences specifically; releases under restrictive or commercial licences do not benefit from it, even if the source code is technically available.\n\nSource: Article 2 point 12",
+  "topic": "open_source_exclusion",
+  "related_articles": [2],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

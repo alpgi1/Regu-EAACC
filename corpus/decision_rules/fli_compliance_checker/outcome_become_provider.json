@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_outcome_become_provider",
+  "chunk_type": "outcome",
+  "section": "status_changes",
+  "section_path": "Understanding your obligations > Status changes > Become a Provider",
+  "content": "## Outcome: Become a Provider\n\nUnder Article 25 of the EU AI Act, an organisation that is not originally a provider of an AI system can become one by virtue of certain actions taken in relation to the system. Once provider status is triggered, the organisation is treated as a provider for the purposes of the Regulation and assumes all corresponding provider obligations from that point forward. The original provider is, in parallel, relieved of provider responsibility for the modified system (see the Handover outcome).\n\nThe actions that trigger provider reassignment are: putting a different name or trademark on an AI system already placed on the market or put into service; modifying the intended purpose of an AI system already in operation in a way that brings it within a different obligation regime; and performing a substantial modification to the system as defined in Article 3 point 23. Provider status can also arise where a product manufacturer integrates a high-risk AI system into their product under their own name or trademark.\n\nThe practical consequence is significant. A deployer, distributor, importer, or product manufacturer who initially faced a comparatively narrow obligation set under Articles 22-26 instead becomes subject to the full provider duties under Article 16, including the cascade of obligations across Articles 9-15 (risk management, data governance, technical documentation, record-keeping, transparency, human oversight, accuracy and robustness) where the system is high-risk. The reassignment is not retroactive: it attaches from the moment the triggering action is taken and applies to the modified system going forward.\n\nSource: Article 25, Article 3 point 23",
+  "topic": "provider_reassignment",
+  "related_articles": [25, 3, 16],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

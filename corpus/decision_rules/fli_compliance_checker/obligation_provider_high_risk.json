@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_provider_high_risk",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > Provider",
+  "content": "## Obligation: Provider obligations for high-risk AI systems\n\nA provider of a high-risk AI system is subject to the most extensive obligation set in the EU AI Act. Article 16 sets out the headline duties and acts as a gateway to a cascade of more specific obligations across Chapter III Section 2 of the Regulation.\n\nThe substantive obligations are: establishing and maintaining a risk management system throughout the system's lifecycle (Article 9); implementing data and data governance practices that ensure training, validation, and testing datasets meet quality criteria (Article 10); drawing up and keeping up to date technical documentation demonstrating compliance, in the form set out in Annex IV (Article 11); ensuring automatic logging of events while the system is operating, to enable traceability (Article 12); designing the system for transparency so that deployers can interpret and use the output appropriately, and providing instructions for use (Article 13); designing the system to enable effective human oversight (Article 14); and ensuring that the system achieves appropriate levels of accuracy, robustness, and cybersecurity (Article 15).\n\nIn addition to these design and documentation duties, the provider must put in place a quality management system (Article 17), register the system in the EU database before placing it on the market or putting it into service (Article 49), establish and maintain a post-market monitoring system proportionate to the system's risks (Article 72), and report serious incidents to the relevant market surveillance authority (Article 73). Providers must also affix the CE marking and draw up an EU declaration of conformity once the conformity assessment under Article 43 is complete.\n\nNon-compliance with provider obligations for high-risk systems can attract administrative fines under Article 99 of up to 15 million euros or 3 percent of total worldwide annual turnover, whichever is higher.\n\nSource: Article 16, Articles 9-15, Article 17, Article 43, Article 49, Article 72, Article 73, Article 99, Annex IV",
+  "topic": "high_risk_provider_obligations",
+  "related_articles": [9, 10, 11, 12, 13, 14, 15, 16, 17, 43, 49, 72, 73, 99],
+  "related_annex_points": ["IV"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

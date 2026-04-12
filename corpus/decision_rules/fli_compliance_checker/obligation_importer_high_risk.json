@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_importer_high_risk",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > Importer",
+  "content": "## Obligation: Importer obligations for high-risk AI systems\n\nAn importer of a high-risk AI system is subject to the obligations set out in Article 23 of the EU AI Act. The importer is the actor located or established in the Union that places on the market a high-risk AI system bearing the name or trademark of a person established outside the Union, and the importer obligation set is designed to ensure that an EU-resident actor can be held accountable for the conformity of systems entering the Union from third countries.\n\nThe core duties under Article 23 are: ensuring, before placing a high-risk AI system on the market, that the provider established outside the Union has carried out the relevant conformity assessment procedure, has drawn up the technical documentation in accordance with Annex IV, that the system bears the required CE marking and is accompanied by the EU declaration of conformity and instructions for use, and that the provider has appointed an authorised representative in accordance with Article 22; indicating on the system, on its packaging, or in accompanying documentation the importer's name, registered trade name or trade mark, and address; ensuring that, while the system is under the importer's responsibility, storage and transport conditions do not jeopardise its compliance; keeping a copy of the EU declaration of conformity and the certificate issued by the notified body, where applicable, for ten years after the system has been placed on the market; providing national competent authorities, upon a reasoned request, with all the information and documentation necessary to demonstrate the conformity of the system; and cooperating with those authorities on any corrective action.\n\nWhere the importer considers, or has reason to consider, that a high-risk AI system is not in conformity with the Regulation, it must not place the system on the market until it has been brought into conformity, and it must inform the provider, the authorised representative, and the relevant market surveillance authorities.\n\nSource: Article 23, Article 22, Annex IV",
+  "topic": "high_risk_importer_obligations",
+  "related_articles": [22, 23],
+  "related_annex_points": ["IV"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

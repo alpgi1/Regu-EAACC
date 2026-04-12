@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr3",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR3: Third-party conformity assessment requirement",
+  "content": "## Decision question: Is your product (or the product for which your AI system is a safety component) required to undergo a third-party conformity assessment under existing EU law?\n\nEach of the Annex I Section A product categories is governed by a specific Union harmonisation law. Some of those laws require certain products within the category to undergo a third-party conformity assessment (an assessment by an external notified body, rather than self-assessment by the manufacturer). Under Article 6 point 1, an AI system that is a safety component of, or is itself, such a product is classified as high-risk only where this third-party assessment requirement applies.\n\nTo answer this question, the relevant sectoral law for the product category must be consulted directly to determine whether a third-party conformity assessment is required for the specific product. Some of these sectoral laws permit an opt-out from third-party assessment where the conditions in Article 43(3) of the AI Act are satisfied; where the opt-out is lawfully exercised, the product is treated as not requiring third-party assessment for the purposes of this question. Organisations that are uncertain whether their product is subject to a third-party conformity assessment under the relevant sectoral law may need legal advice on the point.\n\nIf a third-party conformity assessment is required, the AI system is classified as high-risk. An organisation that is already a provider proceeds to the scope assessment (S1) carrying the high-risk classification. An organisation that is not yet a provider becomes a provider under Article 25, assumes provider obligations from this point forward, and then proceeds to the scope assessment.\n\nIf no third-party conformity assessment is required, the assessment proceeds to the Annex III test (HR4) to determine whether the system is high-risk on a different basis.\n\nSource: Article 6 point 1, Article 43 point 3",
+  "topic": "third_party_conformity_assessment",
+  "related_articles": [6, 43, 25],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

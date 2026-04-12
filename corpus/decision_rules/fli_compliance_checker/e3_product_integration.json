@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_e3",
+  "chunk_type": "question",
+  "section": "entity",
+  "section_path": "Entity > E3: Product integration of an AI system",
+  "content": "## Decision question: Does your product integrate an AI system, and does the integration meet either of the trademark conditions below?\n\nThis question applies to product manufacturers and determines whether the manufacturer is brought within the scope of the EU AI Act through integration of an AI system into their product. It applies only where the product is placed on the market or put into service within the EU, regardless of whether the manufacturer itself is established within the EU.\n\nThe two qualifying conditions are:\n\n- The AI system was, or will be, placed on the market together with the product under the manufacturer's name or trademark.\n- The AI system was, or will be, put into service under the manufacturer's name or trademark after the product has already been placed on the market.\n\nIf either condition is met, the assessment proceeds to question HR6, which examines whether the product falls within one of the Annex I Section A categories where the AI system functions as a safety component. Meeting one of these conditions also means that, if the integrated AI system is later determined to be high-risk, the product manufacturer will be considered a provider of that AI system under Article 25 and will assume provider obligations accordingly.\n\nIf neither condition applies, the AI system is not brought into scope through this product-integration route and the manufacturer is, on this basis, outside the scope of the Act.\n\nSource: Article 25 point 3, Annex I",
+  "topic": "product_manufacturer_integration",
+  "related_articles": [25],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

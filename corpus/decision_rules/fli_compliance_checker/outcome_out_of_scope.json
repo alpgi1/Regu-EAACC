@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_outcome_out_of_scope",
+  "chunk_type": "outcome",
+  "section": "status_changes",
+  "section_path": "Understanding your obligations > Status changes > Out of scope",
+  "content": "## Outcome: Out of scope\n\nAn AI system is treated as out of scope of the EU AI Act when none of the territorial or material scope criteria in Article 2 applies to the organisation's situation. This is the most common terminating outcome for organisations that have no nexus to the Union market: their AI system is not placed on the market or put into service in the EU, the organisation is not established or located in the EU, and the system's outputs are not used in the EU.\n\nWhen this outcome is reached, no obligations under the AI Act attach to the organisation in respect of the system. There is no need to comply with provider, deployer, distributor, importer, product manufacturer, or authorised representative duties under the Regulation; no high-risk classification, transparency obligation, or GPAI provider duty applies; and no Fundamental Rights Impact Assessment is required. The organisation should, however, monitor for changes in its circumstances: if the system is later placed on the EU market, the organisation establishes a presence in the Union, or the system's outputs begin to be used in the EU, the scope analysis must be repeated and obligations may then attach.\n\nIt is important to note that being out of scope is not the same as being excluded. Excluded systems (such as military systems or open-source components) are within the conceptual reach of the Act but carved out by specific exclusion provisions. Out-of-scope systems never reach the Act in the first place because the territorial and material connecting factors in Article 2 are absent.\n\nSource: Article 2",
+  "topic": "out_of_scope",
+  "related_articles": [2],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

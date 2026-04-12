@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_distributor_high_risk",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > Distributor",
+  "content": "## Obligation: Distributor obligations for high-risk AI systems\n\nA distributor of a high-risk AI system is subject to the obligations set out in Article 24 of the EU AI Act. The distributor sits in the supply chain between the provider (or importer) and the deployer, and the obligation set is designed to ensure that the distributor performs basic verification checks before making the system available on the Union market and takes corrective action where it discovers non-compliance.\n\nThe core duties under Article 24 are: verifying, before making the high-risk AI system available on the market, that it bears the required CE marking, that it is accompanied by the EU declaration of conformity and instructions for use, and that the provider and, where applicable, the importer have complied with their respective obligations on labelling and documentation; ensuring that, while the system is under the distributor's responsibility, storage and transport conditions do not jeopardise the system's compliance with the requirements of the Regulation; taking corrective action — including withdrawing or recalling the system or causing the provider or importer to do so — where the distributor has reason to consider that a high-risk AI system it has made available is not in conformity with the Regulation; informing the provider or importer and the relevant national competent authorities about non-conformities and any corrective actions taken; and cooperating with national competent authorities upon a reasoned request, including by providing all information and documentation necessary to demonstrate the conformity of the system.\n\nThe distributor's duties are essentially gatekeeping and post-market: they do not extend to redesigning, retraining, or substantively modifying the system. A distributor that does perform such modifications crosses into provider status under Article 25.\n\nSource: Article 24",
+  "topic": "high_risk_distributor_obligations",
+  "related_articles": [24, 25],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

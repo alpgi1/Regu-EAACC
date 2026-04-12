@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr2",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR2: Annex I Section A categories",
+  "content": "## Decision question: Does your AI system fall within any of the high-risk product categories listed in Annex I, Section A?\n\nSection A of Annex I lists Union harmonisation legislation for product categories where the AI Act's high-risk regime interacts directly with existing third-party conformity assessment requirements. Falling within a Section A category does not by itself trigger high-risk classification; it triggers a further test (HR3) on whether the product is required to undergo a third-party conformity assessment under the relevant sectoral law.\n\nThe Section A categories are:\n\n- Machinery\n- Toys\n- Recreational craft and personal watercraft\n- Lifts and safety components of lifts\n- Equipment and protective systems intended for use in potentially explosive atmospheres\n- Radio equipment\n- Pressure equipment\n- Cableway installations\n- Personal protective equipment\n- Appliances burning gaseous fuels\n- Medical devices\n- In vitro diagnostic medical devices\n\nIf the AI system falls within any of these categories, the assessment proceeds to the third-party conformity assessment question (HR3), which determines whether the product is on the regulated path that triggers high-risk status under Article 6 point 1.\n\nIf the AI system does not fall within any Section A category, the assessment proceeds to the Annex III test (HR4), which covers stand-alone high-risk use cases not tied to product harmonisation legislation.\n\nSource: Article 6 point 1, Annex I Section A",
+  "topic": "high_risk_annex_i_section_a",
+  "related_articles": [6],
+  "related_annex_points": ["I.A"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

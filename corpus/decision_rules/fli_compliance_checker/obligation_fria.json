@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_fria",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > Fundamental Rights Impact Assessment",
+  "content": "## Obligation: Fundamental Rights Impact Assessment\n\nUnder Article 27 of the EU AI Act, certain deployers of high-risk AI systems must perform a Fundamental Rights Impact Assessment (FRIA) prior to deploying the system. The obligation applies to deployers that are bodies governed by public law, or private entities providing public services, and to deployers using high-risk AI systems for credit scoring or risk assessment in life and health insurance pricing. There is an important exception: the FRIA obligation does not apply to high-risk AI systems intended to be used in critical infrastructure (Annex III point 2).\n\nThe FRIA must include: a description of the deployer's processes in which the high-risk AI system will be used in line with its intended purpose; a description of the period of time within which, and the frequency with which, each high-risk AI system is intended to be used; the categories of natural persons and groups likely to be affected by its use in the specific context; the specific risks of harm likely to have an impact on the categories of persons or groups identified, taking into account the information given by the provider in the instructions for use; a description of the implementation of human oversight measures, according to the instructions for use; and the measures to be taken in case of the materialisation of those risks, including the arrangements for internal governance and complaint mechanisms.\n\nOnce the assessment has been performed, the deployer must notify the market surveillance authority of the results, submitting the filled-out template referred to in Article 27 point 5. Where any of the elements listed above changes or is no longer up to date, the deployer must take the necessary steps to update the information.\n\nThe FRIA is intended to complement, not replace, the data protection impact assessment under Article 35 GDPR; where both apply, they should be conducted in conjunction.\n\nSource: Article 27",
+  "topic": "fria",
+  "related_articles": [27],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

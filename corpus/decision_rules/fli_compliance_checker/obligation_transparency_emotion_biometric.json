@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_transparency_emotion_biometric",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > Transparency: Emotion & Biometric",
+  "content": "## Obligation: Transparency for emotion recognition and biometric categorisation\n\nUnder Article 50 point 3 of the EU AI Act, deployers of an emotion recognition system or a biometric categorisation system must inform the natural persons exposed to the system of its operation. The disclosure must be provided in a clear and distinguishable manner, and personal data must be processed in accordance with Regulation (EU) 2016/679 (the GDPR), Regulation (EU) 2018/1725, and Directive (EU) 2016/680 as applicable.\n\nThe transparency obligation under Article 50 point 3 is broader in scope than the Article 5 prohibition on biometric categorisation. The Article 5 prohibition narrowly targets biometric categorisation systems that deduce or infer protected characteristics such as race, political opinion, religion, or sexual orientation; the Article 50 point 3 transparency duty applies to all biometric categorisation systems regardless of the categories used, provided they are not otherwise prohibited. Similarly, the Article 50 point 3 duty applies to emotion recognition systems generally, while the Article 5 prohibition on emotion recognition is limited to workplaces and educational institutions outside narrow medical or safety justifications.\n\nThe obligation does not apply to AI systems permitted by law to detect, prevent, or investigate criminal offences, subject to appropriate safeguards for the rights and freedoms of third parties, and in accordance with Union law.\n\nThis duty falls on the deployer rather than the provider, because it is the deployer who controls the contexts in which natural persons are actually exposed to the system. Where the system is also classified as high-risk, the deployer obligations under Article 26 apply in parallel with the Article 50 point 3 transparency duty, and a public-body deployer may also be subject to a Fundamental Rights Impact Assessment under Article 27.\n\nSource: Article 50 point 3",
+  "topic": "transparency_emotion_biometric",
+  "related_articles": [50],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

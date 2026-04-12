@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_transparency_synthetic_content",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on system type > Transparency: Synthetic Content",
+  "content": "## Obligation: Transparency for synthetic content generation\n\nUnder Article 50 point 2 of the EU AI Act, providers of AI systems, including General Purpose AI systems, that generate synthetic audio, image, video, or text content must ensure that the outputs of the AI system are marked in a machine-readable format and detectable as artificially generated or manipulated. This is a provider-side technical labelling duty: the markers must be embedded in the output itself, in a form that downstream tools can read and surface to users, regulators, or platforms.\n\nThe technical solutions used to comply with this obligation must be effective, interoperable, robust, and reliable as far as is technically feasible, taking into account the specificities and limitations of various types of content, the costs of implementation, and the generally acknowledged state of the art, as may be reflected in relevant technical standards. Watermarking, metadata embedding, cryptographic provenance signals, and similar techniques are all candidate approaches; the Regulation does not prescribe a single technology.\n\nThe obligation does not apply where the AI system performs an assistive function for standard editing, or does not substantially alter the input data provided by the deployer or its semantics, or where the system is authorised by law to detect, prevent, investigate, or prosecute criminal offences. The exemption for assistive editing is intended to avoid imposing labelling burdens on routine tools such as spellcheckers, autocomplete, or grammar correction.\n\nThis obligation is distinct from the deployer-side disclosure duty in Article 50 point 4 for deep fakes and public-interest text. The Article 50 point 2 duty is on the provider and concerns the technical marking of outputs at generation time; the Article 50 point 4 duty is on the deployer and concerns disclosure to recipients at publication time.\n\nSource: Article 50 point 2",
+  "topic": "transparency_synthetic_content",
+  "related_articles": [50],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

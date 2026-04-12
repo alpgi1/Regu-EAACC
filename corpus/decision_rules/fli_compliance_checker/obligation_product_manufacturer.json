@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_product_manufacturer",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > Product Manufacturer",
+  "content": "## Obligation: Product manufacturer obligations\n\nA product manufacturer that places on the market or puts into service an AI system together with their product, and under their own name or trademark, faces obligations under the EU AI Act in two distinct layers.\n\nThe first layer applies regardless of whether the integrated AI system is high-risk. It is described in Recitals 47 and 166, which set out the policy rationale for treating product manufacturers as accountable for AI components integrated into their products. In substance, the manufacturer is expected to ensure that the integration does not undermine the safety or compliance of the overall product under the relevant Union sectoral legislation, and that the AI component is documented and monitored as part of the broader product compliance regime.\n\nThe second layer applies where the integrated AI system is high-risk. In that case, Article 25 of the AI Act treats the product manufacturer as a provider of the AI system itself. The manufacturer assumes the full provider obligation set: risk management under Article 9, data governance under Article 10, technical documentation under Article 11, record-keeping under Article 12, transparency and instructions for use under Article 13, human oversight under Article 14, accuracy and robustness under Article 15, the headline obligations of Article 16, the quality management system under Article 17, registration under Article 49, post-market monitoring under Article 72, and incident reporting under Article 73. The provider obligations apply on top of, and in coordination with, the manufacturer's existing obligations under sectoral product law.\n\nProduct manufacturers should therefore treat the integration of any AI system into their product as a decision with potentially significant compliance consequences, particularly where the integrated system functions as a safety component of a product within an Annex I Section A category.\n\nSource: Article 25, Recital 47, Recital 166",
+  "topic": "product_manufacturer_obligations",
+  "related_articles": [25, 9, 10, 11, 12, 13, 14, 15, 16, 17, 49, 72, 73],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

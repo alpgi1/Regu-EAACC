@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_authorised_representative",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > Authorised Representative",
+  "content": "## Obligation: Authorised representative obligations\n\nAn authorised representative is a natural or legal person located or established in the Union who has received and accepted a written mandate from a provider of an AI system or a General Purpose AI model to perform, on the provider's behalf, the obligations and procedures established by the EU AI Act. The role exists primarily to ensure that providers established outside the Union have a designated EU-resident counterpart that supervisory authorities can engage with directly.\n\nThe obligations of an authorised representative depend on whether the mandate concerns a high-risk AI system or a GPAI model. For high-risk AI systems, Article 22 sets out the duties: verifying that the EU declaration of conformity and the technical documentation have been drawn up and that the provider has carried out an appropriate conformity assessment procedure; keeping a copy of the EU declaration of conformity, the technical documentation, and (where applicable) the certificate issued by the notified body, available for the national competent authorities for a period of ten years after the system has been placed on the market or put into service; providing competent authorities, upon a reasoned request, with all the information and documentation necessary to demonstrate the conformity of the system; cooperating with competent authorities on any action they take in relation to the system; and, where the authorised representative considers or has reason to consider that the provider is acting contrary to its obligations under the Regulation, terminating the mandate and informing the relevant authorities.\n\nFor GPAI models, Article 54 imposes a parallel set of duties adapted to the GPAI context, including keeping the technical documentation referred to in Article 53 available for the AI Office and national competent authorities, and cooperating with the AI Office on the discharge of GPAI provider obligations.\n\nSource: Article 22, Article 54",
+  "topic": "authorised_representative_obligations",
+  "related_articles": [22, 53, 54],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

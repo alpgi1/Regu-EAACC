@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr5",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR5: Significant risk of harm assessment",
+  "content": "## Decision question: Does your AI system pose a significant risk of harm to the health, safety, or fundamental rights of any person?\n\nThis question applies the Article 6 point 3 carve-out to AI systems that fall within an Annex III category. Although Annex III systems are presumptively high-risk, Article 6 point 3 allows the presumption to be rebutted where the system does not pose a significant risk of harm. The test is structured as a closed list of conditions: if any one of the conditions is met, the system is treated as not posing a significant risk.\n\nThe AI system does NOT pose a significant risk if one or more of the following conditions are met:\n\n- The AI system is intended to perform a narrow procedural task.\n- The AI system is intended to improve the result of a previously completed human activity.\n- The AI system is intended to detect decision-making patterns or deviations from prior decision-making patterns and is not meant to replace or influence the previously completed human assessment, without proper human review.\n- The AI system is intended to perform a preparatory task to an assessment relevant for the purpose of one of the use cases listed in Annex III.\n\nThere is one absolute override: an AI system that performs profiling of natural persons is always considered high-risk, regardless of whether any of the four conditions above would otherwise apply.\n\nIf none of the four conditions is met (or the system performs profiling of natural persons), the system poses a significant risk and is classified as high-risk. An organisation that is already a provider proceeds to the scope assessment (S1) carrying the high-risk classification. An organisation that is not yet a provider becomes a provider for this system under Article 25, assumes provider obligations from this point forward, and then proceeds to the scope assessment.\n\nIf one or more of the four conditions is met and the system does not perform profiling, the system is not classified as high-risk. However, where the organisation is the provider, a registration and documentation obligation applies: the provider must register the system in the EU database before it is placed on the market or put into service (Article 49 point 2), document the assessment that led to the not-high-risk conclusion, and provide that documentation to the National Competent Authority on request (Article 6 point 4). If a market surveillance authority subsequently finds the system to have been misclassified under Article 80, the full high-risk obligations in Chapter III Section 2 apply and fines under Article 99 may follow. The assessment then proceeds to the scope question (S1).\n\nSource: Article 6 point 3, Article 6 point 4, Article 49 point 2",
+  "topic": "significant_risk_carveout",
+  "related_articles": [6, 25, 49, 80, 99],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

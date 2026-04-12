@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_r4",
+  "chunk_type": "question",
+  "section": "rules",
+  "section_path": "Rules for Particular Types of System > R4: Transparency obligations under Article 50",
+  "content": "## Decision question: Does your AI system perform any of the functions that trigger transparency obligations under Article 50 of the EU AI Act?\n\nArticle 50 imposes transparency obligations on certain AI systems regardless of whether they are high-risk. The obligations attach to providers and deployers in different ways depending on the function. This question identifies which, if any, of the Article 50 categories applies. The question is reached only by providers and deployers; other entity types do not face Article 50 obligations directly through this route.\n\nThe categories are:\n\n- Generating or manipulating image, audio, or video content constituting a deep fake. This is a deployer obligation under Article 50 point 4: the deployer must disclose that the content has been artificially generated or manipulated.\n- Generating or manipulating text which is published with the purpose of informing the public on matters of public interest. This is also a deployer obligation under Article 50 point 4, with disclosure requirements adapted to the publication context.\n- Performing emotion recognition or biometric categorisation. This is a deployer obligation under Article 50 point 3: the deployer must inform natural persons exposed to the system of its operation.\n- Interacting directly with natural persons (for example, a chatbot). This is a provider obligation under Article 50 point 1: the system must be designed and developed so that the natural persons concerned are informed they are interacting with an AI system, unless this is obvious from the circumstances.\n- Generating synthetic audio, image, video, or text content. This is a provider obligation under Article 50 point 2: the provider must ensure outputs are marked in a machine-readable format and detectable as artificially generated or manipulated.\n\nIf the system interacts directly with natural persons, the transparency-natural-persons obligation applies and the assessment ends for that category. If the system generates synthetic content, the transparency-synthetic-content obligation applies and the assessment ends for that category. For the emotion-recognition, biometric categorisation, deep fake, and public-interest text categories, the obligation applies, and routing then depends on whether the system is also high-risk: if it is high-risk, the assessment proceeds to the Fundamental Rights Impact Assessment question (R5); otherwise the assessment ends with the transparency obligation attached.\n\nIf none of the Article 50 categories applies, no transparency obligation attaches under this question, and the assessment proceeds to R5 only if the organisation is a deployer of a high-risk system.\n\nSource: Article 50",
+  "topic": "transparency_obligations",
+  "related_articles": [50],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

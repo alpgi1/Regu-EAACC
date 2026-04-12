@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_s1",
+  "chunk_type": "question",
+  "section": "scope",
+  "section_path": "Scope > S1: Territorial and material scope criteria",
+  "content": "## Decision question: Does your situation meet any of the criteria that bring you within the territorial and material scope of the EU AI Act?\n\nArticle 2 of the EU AI Act sets out the situations in which the Regulation applies. The Act is not limited to organisations established in the EU: it reaches non-EU actors whose AI systems or outputs touch the Union market. This question is the gateway to the rest of the Regulation — if none of the criteria below applies, the AI system is likely outside the scope of the Act and no further obligations attach.\n\nThe scope criteria are:\n\n- Placing on the market or putting into service AI systems (as defined in Article 3 point 1) in the EU. An organisation in this position is treated as a provider for the purposes of this assessment.\n- Placing on the market General Purpose AI models (as defined in Article 3 point 63) in the EU. An organisation in this position is treated as a provider, and the system is routed to the GPAI rules assessment (R1) to determine whether it is a GPAI model with systemic risk.\n- Being established or located within the EU and using an AI system. An organisation in this position is treated as a deployer.\n- Being established or located within the EU and placing on the market an AI system that bears the name or trademark of a person established outside the EU. An organisation in this position is treated as an importer.\n- Having the output of the AI system used in the EU, even where neither the organisation nor the system itself is otherwise present in the Union. An organisation in this position may be treated as a provider, deployer, or distributor depending on its role in the supply chain.\n\nIf any of these criteria applies, the assessment proceeds to the rules for particular types of system (R1 for GPAI providers, otherwise the next applicable rule question). If none of the criteria applies, the AI system is outside the scope of the EU AI Act and no obligations under the Regulation attach.\n\nSource: Article 2, Article 3 point 1, Article 3 point 63",
+  "topic": "territorial_material_scope",
+  "related_articles": [2, 3],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

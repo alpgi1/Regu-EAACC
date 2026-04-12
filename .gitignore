@@ -32,3 +32,9 @@ build/
 # ─── Logs ──────────────────────────────────────────────────────
 *.log
 logs/
+
+# ─── Corpus binaries ───────────────────────────────────────────
+# PDFs and large files are gitignored to keep the repo small
+corpus/**/*.pdf
+corpus/**/*.docx
+# But the structured JSON corpus IS tracked

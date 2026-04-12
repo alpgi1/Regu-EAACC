@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr1",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR1: Annex I Section B categories",
+  "content": "## Decision question: Does your AI system fall within any of the high-risk product categories listed in Annex I, Section B?\n\nAnnex I of the EU AI Act lists Union harmonisation legislation under which AI systems may be classified as high-risk. Section B of that Annex covers product categories governed by EU sectoral law that the AI Act treats differently from Section A: for these categories, the AI Act's high-risk obligations apply, but conformity assessment is handled through the existing sectoral framework rather than the Act's own conformity route.\n\nThe Section B categories are:\n\n- Civil aviation security\n- Two- or three-wheel vehicles and quadricycles\n- Agricultural and forestry vehicles\n- Marine equipment\n- Interoperability of the rail systems\n- Motor vehicles and their trailers\n- Civil aviation\n\nIf the AI system falls within any of these categories, it is classified as high-risk under Article 6 point 1. The consequences depend on entity type: an organisation that is already a provider proceeds directly to the scope assessment (S1) carrying the high-risk classification. An organisation that is not yet a provider becomes a provider for the purposes of this system under Article 25, assumes provider obligations from this point forward, and then proceeds to the scope assessment.\n\nIf the AI system does not fall within any Section B category, the assessment proceeds to the Annex I Section A test (HR2).\n\nSource: Article 6 point 1, Annex I Section B",
+  "topic": "high_risk_annex_i_section_b",
+  "related_articles": [6, 25],
+  "related_annex_points": ["I.B"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

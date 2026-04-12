@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_outcome_handover",
+  "chunk_type": "outcome",
+  "section": "status_changes",
+  "section_path": "Understanding your obligations > Status changes > Handover",
+  "content": "## Outcome: Handover\n\nThe Handover outcome is the mirror image of the Become a Provider outcome. When a deployer, distributor, or importer makes a modification to an AI system that triggers provider reassignment under Article 25 — putting a different name or trademark on the system, modifying its intended purpose, or performing a substantial modification — the original provider ceases to be the provider of that particular modified system. The modifying actor steps into the provider role and assumes the corresponding obligations.\n\nThe original provider is not, however, simply released from all responsibility. Article 25 imposes a residual cooperation duty: the original provider must supply the new provider with the information, technical documentation, and reasonable access required for the new provider to comply with the Regulation in respect of the modified system. The exact scope of what must be supplied depends on the nature of the modification and the obligations the new provider faces, but it includes the materials needed to fulfil duties on technical documentation, risk management, data governance, and post-market monitoring where the modified system is high-risk.\n\nIn practical terms, the Handover outcome means that the original provider transitions from being directly subject to provider obligations for the system to being subject to a more limited information-sharing duty in support of the new provider. This regime is designed to ensure that the chain of accountability for an AI system is preserved when it is materially altered by a downstream actor, without imposing duplicative obligations on both the original and new providers in respect of the same modified system.\n\nSource: Article 25",
+  "topic": "provider_handover",
+  "related_articles": [25],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

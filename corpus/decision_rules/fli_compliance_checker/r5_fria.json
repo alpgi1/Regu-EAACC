@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_r5",
+  "chunk_type": "question",
+  "section": "rules",
+  "section_path": "Rules for Particular Types of System > R5: Fundamental Rights Impact Assessment",
+  "content": "## Decision question: Is your organisation a body governed by public law, or a private entity providing public services, deploying a high-risk AI system?\n\nUnder Article 27 of the EU AI Act, certain deployers of high-risk AI systems must perform a Fundamental Rights Impact Assessment (FRIA) prior to deploying the system. The obligation does not apply to all deployers of high-risk systems: it is targeted at public-sector actors and at private entities that perform functions of public significance. This question identifies whether the deployer falls within that targeted group.\n\nThe FRIA obligation applies where the deployer is either:\n\n- A body governed by public law, including public authorities, agencies, and other public bodies; or\n- A private entity providing public services. Recital 96 explains that this captures private entities entrusted with tasks in the public interest, such as in the areas of education, healthcare, social services, housing, and the administration of justice.\n\nWhere the obligation applies, the deployer must, prior to deploying the high-risk system, perform an assessment of the impact on fundamental rights that the use of the system may produce, in accordance with the requirements set out in Article 27. There is one important carve-out: the FRIA obligation does not apply to high-risk AI systems intended to be used in critical infrastructure. Deployers of such systems are exempted from the FRIA requirement even where they are public bodies or private providers of public services.\n\nIf the deployer is a public body or a private provider of public services and the system is not used in critical infrastructure, the Fundamental Rights Impact Assessment obligation under Article 27 attaches, and the assessment ends. If the deployer is neither a public body nor a private provider of public services, no FRIA obligation arises and the assessment ends.\n\nSource: Article 27, Recital 96",
+  "topic": "fundamental_rights_impact_assessment",
+  "related_articles": [27],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

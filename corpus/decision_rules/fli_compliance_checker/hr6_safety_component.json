@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_hr6",
+  "chunk_type": "question",
+  "section": "high_risk_status",
+  "section_path": "High Risk Status > HR6: Safety component in Annex I Section A products",
+  "content": "## Decision question: Does your product include an AI system as a safety component, and does the product fall within one of the Annex I Section A categories?\n\nThis question applies to product manufacturers whose product integrates an AI system under their own name or trademark (the route into HR6 from question E3). It tests whether the AI system functions as a safety component of a product within the Annex I Section A regulated categories — the combination that triggers high-risk classification under Article 6 point 1 via the safety-component route.\n\nA safety component is defined as a component of a product or of a system which fulfils a safety function for that product or system, or the failure or malfunctioning of which endangers the health and safety of persons or property (Article 3 point 14).\n\nThe Annex I Section A product categories are:\n\n- Machinery\n- Toys\n- Recreational craft and personal watercraft\n- Lifts and safety components of lifts\n- Equipment and protective systems intended for use in potentially explosive atmospheres\n- Radio equipment\n- Pressure equipment\n- Cableway installations\n- Personal protective equipment\n- Appliances burning gaseous fuels\n- Medical devices\n- In vitro diagnostic medical devices\n\nIf the AI system is a safety component of a product in any of these categories, the AI system is classified as high-risk. An organisation that is already a provider of the AI system proceeds to the scope assessment (S1) carrying the high-risk classification. An organisation that is not yet a provider becomes a provider for this system under Article 25, assumes provider obligations from this point forward, and then proceeds to the scope assessment.\n\nIf the AI system is not a safety component of a product in any of these categories, no high-risk classification arises through this route. The organisation remains a product manufacturer for the purposes of the Act and is subject to the product manufacturer obligations described in Recitals 47 and 166, but does not assume provider obligations on this basis.\n\nSource: Article 25 point 3, Article 3 point 14, Annex I Section A",
+  "topic": "safety_component_annex_i_a",
+  "related_articles": [25, 3, 6],
+  "related_annex_points": ["I.A"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

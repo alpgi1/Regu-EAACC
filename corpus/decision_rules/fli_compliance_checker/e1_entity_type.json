@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_e1",
+  "chunk_type": "question",
+  "section": "entity",
+  "section_path": "Entity > E1: Organisation type",
+  "content": "## Decision question: What kind of entity is your organisation in relation to this AI system?\n\nThe EU AI Act assigns different obligations to different types of entities involved in the lifecycle of an AI system. Determining your entity type is the first step in understanding which obligations apply to you. Note that an organisation can be more than one type of entity at once, in which case the assessment must be completed separately for each type (Recital 87).\n\nThe Act recognises six entity types:\n\n- **Provider**: a natural or legal person, public authority, agency or other body that develops an AI system or a general purpose AI model (or that has one developed) and places it on the market or puts it into service under its own name or trademark, whether for payment or free of charge.\n\n- **Deployer**: any natural or legal person, public authority, agency or other body using an AI system under its authority, except where the AI system is used in the course of a personal non-professional activity.\n\n- **Distributor**: any natural or legal person in the supply chain, other than the provider or the importer, that makes an AI system available on the Union market.\n\n- **Importer**: any natural or legal person located or established in the Union that places on the market an AI system bearing the name or trademark of a natural or legal person established outside the Union.\n\n- **Product manufacturer**: an entity that places on the market or puts into service an AI system together with their product and under their own name or trademark.\n\n- **Authorised representative**: any natural or legal person located or established in the Union who has received and accepted a written mandate from a provider of an AI system or a general purpose AI model to perform the obligations and procedures established by the Regulation on the provider's behalf.\n\nProviders and deployers face an immediate obligation regardless of system type: under Article 4, they must ensure a sufficient level of AI literacy among their staff and others operating the system on their behalf.\n\nIf the organisation is a provider, deployer, distributor, or importer, the assessment proceeds to the modification question (E2). If the organisation is a product manufacturer, the assessment proceeds to the product integration question (E3). If the organisation is solely an authorised representative, no further entity questions apply and the authorised representative obligations under Article 22 (or Article 54 for GPAI) attach directly.\n\nSource: Article 3 points 2-8, Recital 87",
+  "topic": "entity_classification",
+  "related_articles": [3, 4],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

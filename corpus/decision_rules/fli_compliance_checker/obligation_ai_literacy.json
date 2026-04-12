@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_obligation_ai_literacy",
+  "chunk_type": "obligation",
+  "section": "obligations",
+  "section_path": "Understanding your obligations > Obligations based on entity type > AI Literacy",
+  "content": "## Obligation: AI Literacy\n\nUnder Article 4 of the EU AI Act, providers and deployers of AI systems must take measures to ensure a sufficient level of AI literacy among their staff and other persons dealing with the operation and use of AI systems on their behalf. This is the only obligation in the Regulation that attaches to providers and deployers immediately upon entity classification, regardless of whether the system is high-risk, prohibited, GPAI, or subject to transparency obligations. Every organisation that qualifies as a provider or deployer of any AI system in scope of the Act faces this duty.\n\nThe obligation is calibrated to the context. The level of literacy required is not specified as a fixed standard or certification; instead, Article 4 directs that the measures be designed taking into account the technical knowledge, experience, education, and training of the persons concerned, and the context in which the AI systems are to be used. An organisation deploying a customer-service chatbot in a retail context will face a different literacy expectation than an organisation deploying a clinical decision support system in a hospital.\n\nIn practical terms, compliance with Article 4 typically involves a combination of role-specific training programmes, internal documentation explaining how AI systems are used in the organisation's processes, and awareness measures for staff who interact with AI outputs even indirectly. The obligation extends beyond direct employees: it covers third-party contractors, agents, and other persons who operate or use the system on the organisation's behalf. Failure to maintain a sufficient level of AI literacy is enforceable like other AI Act obligations and can be the subject of supervisory action.\n\nSource: Article 4",
+  "topic": "ai_literacy",
+  "related_articles": [4],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

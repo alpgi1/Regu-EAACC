@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_exception_research_development",
+  "chunk_type": "exception",
+  "section": "exclusions",
+  "section_path": "Understanding your obligations > Exceptions and exclusions > Research and Development",
+  "content": "## Exception: Scientific research and development\n\nThe EU AI Act provides two related but distinct exclusions for research and development activities, both grounded in Article 2.\n\nThe first, under Article 2 point 6, is a hard exclusion for AI systems and AI models, including their output, specifically developed and put into service for the sole purpose of scientific research and development. Where an AI system or model meets this strict sole-purpose test, the entire Regulation does not apply, and no obligations under the AI Act attach in respect of the system, even if it would otherwise have been classified as high-risk or subject to GPAI duties.\n\nThe second, under Article 2 point 8, is a softer exclusion for research, testing, and development activities regarding AI systems or models prior to their being placed on the market or put into service. This exclusion applies to the activities themselves rather than to the systems as a whole: it allows providers to develop, train, and test AI systems without triggering Regulation duties during the development phase. The exclusion ends at the point at which the system is placed on the market or put into service, at which point the full obligation analysis begins. Testing in real-world conditions is a separate regime governed by Article 60, which lays down conditions and safeguards for such testing outside the laboratory setting.\n\nNeither exclusion overrides the prohibition of certain practices under Article 5: a research project that performs a prohibited practice remains unlawful regardless of its research framing. And neither exclusion shields downstream commercial use: once a system developed under the soft exclusion is placed on the market or put into service, it becomes subject to the full obligation analysis from that point forward, including any high-risk classification, transparency duties, or GPAI obligations that may apply.\n\nSource: Article 2 point 6, Article 2 point 8",
+  "topic": "research_development_exclusion",
+  "related_articles": [2, 60],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

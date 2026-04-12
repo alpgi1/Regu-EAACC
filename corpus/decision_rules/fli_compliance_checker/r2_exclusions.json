@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_r2",
+  "chunk_type": "question",
+  "section": "rules",
+  "section_path": "Rules for Particular Types of System > R2: Exclusions and excluded uses",
+  "content": "## Decision question: Does your AI system or use case fall within any of the categories that the EU AI Act excludes from its scope?\n\nArticle 2 of the EU AI Act sets out a number of categories that are either fully excluded from the Regulation or partially excluded subject to conditions. This question identifies whether any of those categories applies. The exclusions divide into two groups: hard exclusions that end the assessment entirely, and soft exclusions that still allow downstream questions to apply because the system may remain subject to prohibited-practice testing or transparency obligations.\n\nThe categories are:\n\n- AI systems developed and used exclusively for military purposes. This is a hard exclusion: the system is fully outside the scope of the AI Act and the assessment ends with no obligations attached.\n- Public authorities or international organisations in third countries using AI systems for law enforcement and judicial cooperation with the Union or a Member State. This is also a hard exclusion: the system is fully outside the scope and the assessment ends.\n- AI research and development activity. This is a soft exclusion: scientific research and development activities are excluded until the system is placed on the market or put into service, but the system is still routed to the prohibited practices question (R3) because Article 5 prohibitions can apply regardless of the research framing.\n- AI components provided under free and open-source licences. This is also a soft exclusion: the open-source component is excluded until it is placed on the market or put into service as part of a system that is high-risk, prohibited, general-purpose, or subject to transparency obligations. The assessment proceeds to R3 to test for those conditions.\n- People using AI systems for purely personal, non-professional activity. This is a soft exclusion for the deployer obligations specifically; the assessment proceeds to R3 because the system itself may still implicate prohibited practices or transparency obligations.\n\nIf the system falls within one of the two hard exclusions (military, or third-country law enforcement and judicial cooperation), the assessment ends and no obligations under the Regulation attach. If the system falls within one of the three soft exclusions, or none of the categories applies at all, the assessment proceeds to the prohibited practices question (R3).\n\nSource: Article 2",
+  "topic": "exclusions_and_excluded_uses",
+  "related_articles": [2],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

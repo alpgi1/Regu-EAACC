@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_exception_excluded",
+  "chunk_type": "exception",
+  "section": "exclusions",
+  "section_path": "Understanding your obligations > Exceptions and exclusions > Excluded",
+  "content": "## Exception: Fully excluded systems\n\nA fully excluded AI system is one that falls within one of the hard exclusions in Article 2 of the EU AI Act and is therefore not subject to any obligations under the Regulation. The two principal hard exclusions are:\n\n- AI systems and AI models, including their output, specifically developed and put into service for the sole purpose of scientific research and development, and AI systems and AI models specifically developed and put into service for the sole purpose of military, defence, or national security purposes, regardless of the type of entity carrying out those activities. These systems fall fully outside the Regulation.\n- AI systems used by public authorities in third countries, or by international organisations falling within the scope of the Regulation, where they are used in the framework of international cooperation or agreements for law enforcement and judicial cooperation with the Union or with one or more Member States, provided that the third country or international organisation provides adequate safeguards with respect to the protection of fundamental rights and freedoms of individuals.\n\nFor systems falling within these exclusions, no provider, deployer, distributor, importer, product manufacturer, or authorised representative obligations apply; no high-risk classification is triggered; no transparency, GPAI, or FRIA duty arises. The exclusion is structural rather than provisional: it does not depend on the system being placed on the market or put into service in a particular way.\n\nOrganisations relying on a hard exclusion should still document the factual basis for it carefully. The military exclusion in particular is limited to systems whose sole purpose is military, defence, or national security; a dual-use system that is also placed on a civilian market may not benefit from the exclusion in respect of its civilian deployment.\n\nSource: Article 2",
+  "topic": "fully_excluded",
+  "related_articles": [2],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

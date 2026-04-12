@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_q_r1",
+  "chunk_type": "question",
+  "section": "rules",
+  "section_path": "Rules for Particular Types of System > R1: GPAI model with systemic risk",
+  "content": "## Decision question: Does your General Purpose AI model meet the criteria for classification as a GPAI model with systemic risk?\n\nUnder Article 51 of the EU AI Act, a General Purpose AI model is classified as a GPAI model with systemic risk where it has high-impact capabilities. Models in this category attract a heavier obligation set under Article 55, in addition to the baseline GPAI provider obligations under Article 53. This question identifies whether either of the two pathways into the systemic risk category applies.\n\nThe two criteria are:\n\n- The model has high-impact capabilities, evaluated on the basis of appropriate technical tools and methodologies. Under Article 51 point 2, a GPAI model is presumed to have high-impact capabilities where the cumulative amount of computation used for its training, measured in floating-point operations, is greater than 10^25.\n- The European Commission has decided, on its own initiative or following a qualified alert, that the model has high-impact capabilities or comparable impact based on the criteria set out in Annex XIII.\n\nIf either criterion is met, the model is classified as a GPAI model with systemic risk and the provider must follow the obligations for providers of GPAI models with systemic risk under Article 55, in addition to the general GPAI provider obligations under Article 53. The assessment then proceeds to the exclusions question (R2).\n\nIf neither criterion is met, the model is a baseline GPAI model without systemic risk classification, and the assessment proceeds to the exclusions question (R2) without the systemic risk designation attached.\n\nSource: Article 51, Annex XIII",
+  "topic": "gpai_systemic_risk",
+  "related_articles": [51],
+  "related_annex_points": ["XIII"],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}

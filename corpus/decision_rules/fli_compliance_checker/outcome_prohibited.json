@@ -1,0 +1,16 @@
+{
+  "rule_id": "fli_outcome_prohibited",
+  "chunk_type": "outcome",
+  "section": "status_changes",
+  "section_path": "Understanding your obligations > Status changes > Prohibited",
+  "content": "## Outcome: Prohibited\n\nAn AI system is classified as prohibited under the EU AI Act when it performs one or more of the practices listed in Article 5. Prohibition is the most severe consequence the Regulation imposes: a prohibited system may not be placed on the market, put into service, or used in the Union, regardless of the entity type or any other consideration. The prohibition takes effect immediately and is not subject to a conformity assessment route or a derogation that providers or deployers can self-apply.\n\nThe practices that trigger prohibition include subliminal, manipulative, or deceptive techniques that materially distort behaviour and cause significant harm; exploitation of vulnerabilities arising from age, disability, or socio-economic situation; biometric categorisation of individuals to deduce protected characteristics such as race, political opinion, religion, or sexual orientation; social scoring by public authorities leading to detrimental treatment in unrelated contexts; predictive policing based solely on profiling; untargeted scraping of facial images to build facial recognition databases; emotion recognition in workplaces and educational institutions outside narrow medical or safety justifications; and real-time remote biometric identification in publicly accessible spaces for law enforcement purposes, subject to the narrow exceptions set out in Article 5.\n\nProviders and deployers of prohibited systems face the highest tier of administrative fines under the Regulation: under Article 99, infringements of the Article 5 prohibitions can attract fines of up to 35 million euros or, in the case of undertakings, up to 7 percent of total worldwide annual turnover for the preceding financial year, whichever is higher. National competent authorities, market surveillance authorities, and the Commission all have enforcement roles in respect of prohibited practices.\n\nSource: Article 5, Article 99",
+  "topic": "prohibited_status",
+  "related_articles": [5, 99],
+  "related_annex_points": [],
+  "source_document": "FLI EU AI Act Compliance Checker",
+  "source_url": "https://artificialintelligenceact.eu/assessment/eu-ai-act-compliance-checker/",
+  "publisher": "Future of Life Institute",
+  "publish_date": "2025-07-28",
+  "version": "1.0",
+  "status": "final"
+}
