@@ -13,36 +13,104 @@
         "label": "Provider — I develop, or have developed, this AI system and place it on the market or put it into service under my own name or trademark",
         "next_key": "E2",
         "is_terminal": false,
-        "obligations": ["ai_literacy"],
-        "flags": ["ai_literacy", "provider"],
-        "keywords": ["developer", "build AI", "train model", "place on market", "put into service", "own name", "own trademark", "AI system creator", "provider", "developed in-house"]
+        "obligations": [
+          "ai_literacy"
+        ],
+        "flags": [
+          "ai_literacy",
+          "provider"
+        ],
+        "keywords": [
+          "developer",
+          "build AI",
+          "train model",
+          "place on market",
+          "put into service",
+          "own name",
+          "own trademark",
+          "AI system creator",
+          "provider",
+          "developed in-house"
+        ]
       },
       {
         "value": "deployer",
-        "label": "Deployer — I use this AI system under my own authority in products, services, or processes (excluding purely personal non-professional use)",
+        "label": "Deployer — I use an AI system under my authority (not for purely personal, non-professional activity)",
         "next_key": "E2",
         "is_terminal": false,
-        "obligations": ["ai_literacy"],
-        "flags": ["ai_literacy", "deployer"],
-        "keywords": ["use AI system", "operate AI", "implement AI", "customer-facing AI", "internal AI use", "run AI tool", "deploy AI", "AI in our product", "integrator", "deployer"]
+        "obligations": [
+          "ai_literacy"
+        ],
+        "flags": [
+          "ai_literacy",
+          "deployer"
+        ],
+        "keywords": [
+          "use AI system",
+          "operate AI",
+          "implement AI",
+          "customer-facing AI",
+          "internal AI use",
+          "run AI tool",
+          "deploy AI",
+          "AI in our product",
+          "integrator",
+          "deployer",
+          "not personal use",
+          "professional context",
+          "business use",
+          "organisational use"
+        ]
       },
       {
         "value": "distributor",
         "label": "Distributor — I supply or resell this AI system on the EU market but I did not develop or substantially modify it",
         "next_key": "E2",
         "is_terminal": false,
-        "obligations": ["ai_literacy"],
-        "flags": ["ai_literacy", "distributor"],
-        "keywords": ["resell AI", "distribute AI", "supply AI", "make AI available", "retail AI", "wholesale AI", "distributor", "channel partner", "marketplace", "AI vendor"]
+        "obligations": [
+          "ai_literacy"
+        ],
+        "flags": [
+          "ai_literacy",
+          "distributor"
+        ],
+        "keywords": [
+          "resell AI",
+          "distribute AI",
+          "supply AI",
+          "make AI available",
+          "retail AI",
+          "wholesale AI",
+          "distributor",
+          "channel partner",
+          "marketplace",
+          "AI vendor"
+        ]
       },
       {
         "value": "importer",
         "label": "Importer — I bring this AI system into the EU from a provider established outside the EU",
         "next_key": "E2",
         "is_terminal": false,
-        "obligations": ["ai_literacy"],
-        "flags": ["ai_literacy", "importer"],
-        "keywords": ["import AI", "bring into EU", "third country provider", "non-EU AI", "import from abroad", "EU market entry", "customs", "importer", "foreign AI system", "establish in EU"]
+        "obligations": [
+          "ai_literacy"
+        ],
+        "flags": [
+          "ai_literacy",
+          "importer"
+        ],
+        "keywords": [
+          "import AI",
+          "bring into EU",
+          "third country provider",
+          "non-EU AI",
+          "import from abroad",
+          "EU market entry",
+          "customs",
+          "importer",
+          "foreign AI system",
+          "establish in EU"
+        ]
       },
       {
         "value": "product_manufacturer",
@@ -50,22 +118,57 @@
         "next_key": "E3",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["product_manufacturer"],
-        "keywords": ["hardware manufacturer", "device maker", "embed AI in product", "AI inside product", "physical product with AI", "OEM", "manufacture", "integrate AI into device", "product with built-in AI", "product manufacturer"]
+        "flags": [
+          "product_manufacturer"
+        ],
+        "keywords": [
+          "hardware manufacturer",
+          "device maker",
+          "embed AI in product",
+          "AI inside product",
+          "physical product with AI",
+          "OEM",
+          "manufacture",
+          "integrate AI into device",
+          "product with built-in AI",
+          "product manufacturer"
+        ]
       },
       {
         "value": "authorised_representative",
         "label": "Authorised Representative — I am formally appointed in writing by a non-EU provider to act on their behalf in the EU",
         "next_key": null,
         "is_terminal": true,
-        "obligations": ["authorised_rep_obligations"],
-        "flags": ["authorised_rep_obligations"],
-        "keywords": ["authorised representative", "EU representative", "appointed by provider", "non-EU provider", "act on behalf", "Article 22", "written mandate", "EU agent", "legal representative", "GPAI representative"]
+        "obligations": [
+          "authorised_rep_obligations"
+        ],
+        "flags": [
+          "authorised_rep_obligations"
+        ],
+        "keywords": [
+          "authorised representative",
+          "EU representative",
+          "appointed by provider",
+          "non-EU provider",
+          "act on behalf",
+          "Article 22",
+          "written mandate",
+          "EU agent",
+          "legal representative",
+          "GPAI representative"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [2, 3, 4, 22, 25],
-  "is_terminal": false
+  "linked_articles": [
+    2,
+    3,
+    4,
+    22,
+    25
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_e1"
 }

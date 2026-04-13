@@ -13,23 +13,59 @@
         "label": "Yes — the AI functions as a safety component of a product in an Annex I Section A category (e.g., machinery, medical device, toy)",
         "next_key": "S1",
         "is_terminal": false,
-        "obligations": ["high_risk_provider_obligations", "become_provider"],
-        "flags": ["high_risk", "become_provider"],
-        "keywords": ["safety component", "Annex I Section A product AI", "product AI safety critical", "high-risk embedded AI", "product manufacturer provider", "AI in regulated product", "Article 6(1) product", "Article 25(3)", "safety critical AI component", "embedded AI product manufacturer high risk"]
+        "obligations": [
+          "high_risk_provider_obligations",
+          "become_provider"
+        ],
+        "flags": [
+          "high_risk",
+          "become_provider"
+        ],
+        "keywords": [
+          "safety component",
+          "Annex I Section A product AI",
+          "product AI safety critical",
+          "high-risk embedded AI",
+          "product manufacturer provider",
+          "AI in regulated product",
+          "Article 6(1) product",
+          "Article 25(3)",
+          "safety critical AI component",
+          "embedded AI product manufacturer high risk"
+        ]
       },
       {
         "value": "none_of_the_above",
         "label": "No — the AI is not a safety component of any Annex I Section A product, or the product does not fall in any listed category",
         "next_key": null,
         "is_terminal": true,
-        "obligations": ["product_manufacturer_obligations"],
-        "flags": ["product_manufacturer_only"],
-        "keywords": ["not a safety component", "no notified body needed", "self-declaration only", "not covered by Annex I", "out of scope product manufacturer", "low-risk product", "no third-party certification", "product manufacturer only", "not high risk product", "manufacturer obligations only"]
+        "obligations": [
+          "product_manufacturer_obligations"
+        ],
+        "flags": [
+          "product_manufacturer_only"
+        ],
+        "keywords": [
+          "not a safety component",
+          "no notified body needed",
+          "self-declaration only",
+          "not covered by Annex I",
+          "out of scope product manufacturer",
+          "low-risk product",
+          "no third-party certification",
+          "product manufacturer only",
+          "not high risk product",
+          "manufacturer obligations only"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [6, 25],
-  "is_terminal": false
+  "linked_articles": [
+    6,
+    25
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_hr6"
 }

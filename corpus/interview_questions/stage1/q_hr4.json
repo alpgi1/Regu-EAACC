@@ -15,7 +15,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["facial recognition", "biometric identification", "fingerprint AI", "iris recognition", "emotion detection", "biometric categorisation", "face match", "remote biometrics", "person identification AI", "biometric system"]
+        "keywords": [
+          "facial recognition",
+          "biometric identification",
+          "fingerprint AI",
+          "iris recognition",
+          "emotion detection",
+          "biometric categorisation",
+          "face match",
+          "remote biometrics",
+          "person identification AI",
+          "biometric system"
+        ]
       },
       {
         "value": "critical_infrastructure",
@@ -24,7 +35,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["critical infrastructure AI", "power grid AI", "water supply AI", "traffic management AI", "gas network AI", "energy grid AI", "digital infrastructure AI", "smart grid", "transport network AI", "infrastructure safety AI"]
+        "keywords": [
+          "critical infrastructure AI",
+          "power grid AI",
+          "water supply AI",
+          "traffic management AI",
+          "gas network AI",
+          "energy grid AI",
+          "digital infrastructure AI",
+          "smart grid",
+          "transport network AI",
+          "infrastructure safety AI"
+        ]
       },
       {
         "value": "education_vocational_training",
@@ -33,16 +55,38 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["education AI", "student assessment AI", "admission AI", "exam proctoring AI", "learning management AI", "vocational training AI", "school AI", "university admission AI", "student scoring AI", "educational evaluation AI"]
+        "keywords": [
+          "education AI",
+          "student assessment AI",
+          "admission AI",
+          "exam proctoring AI",
+          "learning management AI",
+          "vocational training AI",
+          "school AI",
+          "university admission AI",
+          "student scoring AI",
+          "educational evaluation AI"
+        ]
       },
       {
         "value": "employment_workers_management",
-        "label": "Employment, workers management, and access to self-employment — recruitment, selection, promotion, task allocation, performance monitoring, or termination decisions",
+        "label": "Employment, workers management, and access to self-employment (e.g. recruitment, performance monitoring, task allocation)",
         "next_key": "HR5",
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["HR AI", "recruitment AI", "CV screening", "hiring AI", "employee monitoring AI", "job application AI", "performance evaluation AI", "people analytics", "workforce AI", "talent management AI"]
+        "keywords": [
+          "HR AI",
+          "recruitment AI",
+          "CV screening",
+          "hiring AI",
+          "employee monitoring AI",
+          "job application AI",
+          "performance evaluation AI",
+          "people analytics",
+          "workforce AI",
+          "talent management AI"
+        ]
       },
       {
         "value": "essential_services_benefits",
@@ -51,7 +95,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["credit scoring AI", "loan decision AI", "insurance AI", "social benefits AI", "welfare AI", "emergency dispatch AI", "public services AI", "banking AI decision", "credit risk AI", "financial scoring AI"]
+        "keywords": [
+          "credit scoring AI",
+          "loan decision AI",
+          "insurance AI",
+          "social benefits AI",
+          "welfare AI",
+          "emergency dispatch AI",
+          "public services AI",
+          "banking AI decision",
+          "credit risk AI",
+          "financial scoring AI"
+        ]
       },
       {
         "value": "law_enforcement",
@@ -60,7 +115,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["police AI", "law enforcement AI", "crime prediction AI", "predictive policing", "risk assessment criminal", "forensic AI", "surveillance AI law enforcement", "profiling AI", "recidivism AI", "criminal justice AI"]
+        "keywords": [
+          "police AI",
+          "law enforcement AI",
+          "crime prediction AI",
+          "predictive policing",
+          "risk assessment criminal",
+          "forensic AI",
+          "surveillance AI law enforcement",
+          "profiling AI",
+          "recidivism AI",
+          "criminal justice AI"
+        ]
       },
       {
         "value": "migration_asylum_border",
@@ -69,7 +135,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["border control AI", "asylum AI", "migration AI", "visa assessment AI", "border surveillance AI", "refugee processing AI", "passport AI", "border detection AI", "immigration AI", "asylum decision AI"]
+        "keywords": [
+          "border control AI",
+          "asylum AI",
+          "migration AI",
+          "visa assessment AI",
+          "border surveillance AI",
+          "refugee processing AI",
+          "passport AI",
+          "border detection AI",
+          "immigration AI",
+          "asylum decision AI"
+        ]
       },
       {
         "value": "justice_democratic_processes",
@@ -78,7 +155,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["court AI", "legal AI decision", "justice AI", "judicial AI", "democratic process AI", "election AI", "legal case AI", "voting AI", "judicial decision support AI", "legal ruling AI"]
+        "keywords": [
+          "court AI",
+          "legal AI decision",
+          "justice AI",
+          "judicial AI",
+          "democratic process AI",
+          "election AI",
+          "legal case AI",
+          "voting AI",
+          "judicial decision support AI",
+          "legal ruling AI"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -87,12 +175,26 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["none of these", "not high risk", "no Annex III", "not in any category", "not law enforcement", "not biometrics", "not education AI", "none of the above", "does not apply", "no match Annex III"]
+        "keywords": [
+          "none of these",
+          "not high risk",
+          "no Annex III",
+          "not in any category",
+          "not law enforcement",
+          "not biometrics",
+          "not education AI",
+          "none of the above",
+          "does not apply",
+          "no match Annex III"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [6],
-  "is_terminal": false
+  "linked_articles": [
+    6
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_hr4"
 }

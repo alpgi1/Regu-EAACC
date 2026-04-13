@@ -3,7 +3,7 @@
   "stage": 1,
   "section": "rules",
   "display_text": "Does your AI system or use case fall within any of the exclusion categories listed in Article 2 of the EU AI Act? Select the option that best applies.",
-  "hint_text": "Article 2 divides exclusions into 'hard' (assessment ends, no obligations) and 'soft' (partial, assessment continues to R3). Hard exclusions: military/national security, and third-country law enforcement. Soft exclusions: scientific research, open-source components under free licence, and purely personal non-professional use. For soft exclusions the system may still fall under Article 5 prohibited-practice rules, so the assessment must continue.",
+  "hint_text": "Article 2 divides exclusions into 'hard' (assessment ends, no obligations) and 'soft' (partial, assessment continues to R3). Hard exclusions: military/national security, and third-country law enforcement. Soft exclusions: scientific research, open-source components under free licence, and purely personal non-professional use. For soft exclusions the system may still fall under Article 5 prohibited-practice rules, so the assessment must continue. Note: the research exclusion applies only when scientific R&D is the sole purpose of the system. Systems already placed on the market or put into service do not qualify. Open-source exclusion applies until the component is integrated into a high-risk, prohibited, GPAI, or transparency-obligated system. Source: Article 2(6), 2(8), 2(10), 2(12).",
   "answers": {
     "type": "single_select",
     "allow_free_text": true,
@@ -14,35 +14,81 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["excluded"],
-        "keywords": ["military AI", "defence AI", "national security AI", "third country law enforcement", "armed forces AI", "intelligence services AI", "classified AI", "security services AI", "defence application", "Article 2(2) exclusion"]
+        "flags": [
+          "excluded"
+        ],
+        "keywords": [
+          "military AI",
+          "defence AI",
+          "national security AI",
+          "third country law enforcement",
+          "armed forces AI",
+          "intelligence services AI",
+          "classified AI",
+          "security services AI",
+          "defence application",
+          "Article 2(2) exclusion"
+        ]
       },
       {
-        "value": "research_and_development",
-        "label": "Scientific research and development — the system is developed and used solely for the purpose of scientific R&D (not yet placed on the market or in service)",
+        "value": "research_development",
+        "label": "AI research and development — my system exists solely for scientific R&D",
         "next_key": "R3",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["exclusion_partial"],
-        "keywords": ["research AI", "academic AI", "R&D AI", "scientific research AI", "lab AI", "university AI", "research prototype", "Article 2(6) research", "not yet on market", "experimental AI"]
+        "flags": [
+          "exclusion_partial"
+        ],
+        "keywords": [
+          "research",
+          "R&D",
+          "scientific",
+          "academic",
+          "study",
+          "experiment",
+          "prototype",
+          "not deployed",
+          "sole purpose research"
+        ]
       },
       {
-        "value": "open_source_free_licence",
-        "label": "Open-source AI component — the system is released under a free and open-source licence and is not yet part of a high-risk, prohibited, GPAI, or transparency-triggering deployment",
+        "value": "open_source",
+        "label": "Open source — my AI component is provided under a free and open source licence",
         "next_key": "R3",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["exclusion_partial"],
-        "keywords": ["open source AI", "open-source model", "free licence AI", "OSS AI", "Apache licence AI", "MIT licence AI", "openly available AI", "Article 2(12) open source", "free AI model", "open weights AI"]
+        "flags": [
+          "exclusion_partial"
+        ],
+        "keywords": [
+          "open source",
+          "free licence",
+          "MIT",
+          "Apache",
+          "GPL",
+          "publicly available",
+          "open weights",
+          "community model"
+        ]
       },
       {
-        "value": "personal_non_professional",
-        "label": "Purely personal non-professional use — a natural person uses the AI system solely for personal, non-commercial activities",
+        "value": "personal_use",
+        "label": "Personal use only — I use this AI system for purely personal, non-professional activity",
         "next_key": "R3",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["exclusion_partial"],
-        "keywords": ["personal use AI", "hobby AI", "non-professional AI", "private individual AI", "personal non-commercial", "consumer personal AI", "Article 2(10) personal", "individual non-professional use", "not business AI", "private use AI"]
+        "flags": [
+          "exclusion_partial"
+        ],
+        "keywords": [
+          "personal",
+          "private",
+          "hobby",
+          "non-professional",
+          "not for work",
+          "home use",
+          "individual use"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -51,12 +97,26 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["no exclusion", "full scope", "Act applies", "not excluded", "commercial AI", "regulated AI", "no exception", "none of these", "fully in scope", "general commercial use"]
+        "keywords": [
+          "no exclusion",
+          "full scope",
+          "Act applies",
+          "not excluded",
+          "commercial AI",
+          "regulated AI",
+          "no exception",
+          "none of these",
+          "fully in scope",
+          "general commercial use"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [2],
-  "is_terminal": false
+  "linked_articles": [
+    2
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_r2"
 }

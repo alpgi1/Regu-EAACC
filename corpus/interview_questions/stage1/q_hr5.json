@@ -13,23 +13,57 @@
         "label": "Yes — the system poses a significant risk to health, safety, or fundamental rights (none of the safe-harbour conditions apply)",
         "next_key": "S1",
         "is_terminal": false,
-        "obligations": ["high_risk_provider_obligations"],
-        "flags": ["high_risk"],
-        "keywords": ["significant risk", "high impact AI", "not safe harbour", "directly affects rights", "human decision replaced", "automated decision high impact", "risk to safety", "no human review", "profiling", "affects fundamental rights"]
+        "obligations": [
+          "high_risk_provider_obligations"
+        ],
+        "flags": [
+          "high_risk"
+        ],
+        "keywords": [
+          "significant risk",
+          "high impact AI",
+          "not safe harbour",
+          "directly affects rights",
+          "human decision replaced",
+          "automated decision high impact",
+          "risk to safety",
+          "no human review",
+          "profiling",
+          "affects fundamental rights"
+        ]
       },
       {
         "value": "no_not_significant",
         "label": "No — the system meets one or more safe-harbour conditions under Article 6(3) and does not pose significant risk",
         "next_key": "S1",
         "is_terminal": false,
-        "obligations": ["notify_nca"],
-        "flags": ["notify_nca"],
-        "keywords": ["safe harbour", "narrow task", "preparatory task", "human review required", "no autonomous decision", "Article 6(3) exception", "low risk Annex III", "human oversight", "not significant risk", "supportive AI"]
+        "obligations": [
+          "notify_nca"
+        ],
+        "flags": [
+          "notify_nca"
+        ],
+        "keywords": [
+          "safe harbour",
+          "narrow task",
+          "preparatory task",
+          "human review required",
+          "no autonomous decision",
+          "Article 6(3) exception",
+          "low risk Annex III",
+          "human oversight",
+          "not significant risk",
+          "supportive AI"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [6, 49],
-  "is_terminal": false
+  "linked_articles": [
+    6,
+    49
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_hr5"
 }

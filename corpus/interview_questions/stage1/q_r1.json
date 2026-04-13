@@ -13,9 +13,25 @@
         "label": "Yes — this is a GPAI model with high training compute (>10²⁵ FLOPs) or has been designated systemic-risk by the Commission",
         "next_key": "R2",
         "is_terminal": false,
-        "obligations": ["gpai_standard_obligations", "gpai_systemic_risk_obligations"],
-        "flags": ["gpai_systemic_risk"],
-        "keywords": ["GPAI systemic risk", "foundation model systemic risk", "large language model systemic", "high compute model", "10^25 FLOPs", "GPT-level model", "Commission designation systemic", "frontier AI model", "very large AI model", "Article 55 GPAI"]
+        "obligations": [
+          "gpai_standard_obligations",
+          "gpai_systemic_risk_obligations"
+        ],
+        "flags": [
+          "gpai_systemic_risk"
+        ],
+        "keywords": [
+          "GPAI systemic risk",
+          "foundation model systemic risk",
+          "large language model systemic",
+          "high compute model",
+          "10^25 FLOPs",
+          "GPT-level model",
+          "Commission designation systemic",
+          "frontier AI model",
+          "very large AI model",
+          "Article 55 GPAI"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -24,12 +40,29 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["not GPAI", "not general purpose AI", "task-specific AI", "narrow AI", "not foundation model", "no systemic risk", "specialist AI system", "not large model", "not LLM systemic", "standard AI system"]
+        "keywords": [
+          "not GPAI",
+          "not general purpose AI",
+          "task-specific AI",
+          "narrow AI",
+          "not foundation model",
+          "no systemic risk",
+          "specialist AI system",
+          "not large model",
+          "not LLM systemic",
+          "standard AI system"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [51, 52, 53, 55],
-  "is_terminal": false
+  "linked_articles": [
+    51,
+    52,
+    53,
+    55
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_r1"
 }

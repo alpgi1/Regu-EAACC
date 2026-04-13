@@ -13,9 +13,25 @@
         "label": "Yes — I place or intend to place this AI system on the market as part of my product under my own name or trademark",
         "next_key": "HR6",
         "is_terminal": false,
-        "obligations": ["product_manufacturer_obligations"],
-        "flags": ["potential_provider", "product_manufacturer"],
-        "keywords": ["embed AI in product", "AI inside product", "product with AI", "release AI product", "AI-enabled device", "smart device", "AI feature in product", "market under brand", "product manufacturer with AI", "AI component in hardware"]
+        "obligations": [
+          "product_manufacturer_obligations"
+        ],
+        "flags": [
+          "potential_provider",
+          "product_manufacturer"
+        ],
+        "keywords": [
+          "embed AI in product",
+          "AI inside product",
+          "product with AI",
+          "release AI product",
+          "AI-enabled device",
+          "smart device",
+          "AI feature in product",
+          "market under brand",
+          "product manufacturer with AI",
+          "AI component in hardware"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -23,13 +39,31 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["out_of_scope"],
-        "keywords": ["internal use only", "not releasing product", "not on market", "no embedded AI", "research only", "prototype only", "no product launch", "no trademark", "internal tool", "not sold"]
+        "flags": [
+          "out_of_scope"
+        ],
+        "keywords": [
+          "internal use only",
+          "not releasing product",
+          "not on market",
+          "no embedded AI",
+          "research only",
+          "prototype only",
+          "no product launch",
+          "no trademark",
+          "internal tool",
+          "not sold"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [3, 6, 25],
-  "is_terminal": false
+  "linked_articles": [
+    3,
+    6,
+    25
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_e3"
 }

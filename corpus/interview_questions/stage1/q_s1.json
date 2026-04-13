@@ -3,7 +3,7 @@
   "stage": 1,
   "section": "scope",
   "display_text": "Does the EU AI Act apply to your AI system based on where it is placed on the market, put into service, or used? Select all criteria that apply.",
-  "hint_text": "Article 2 sets the territorial scope. The Act applies if: the system is placed on the EU market or put into service in the EU; the output is used in the EU; the provider is established in the EU; or a non-EU provider places the system on the EU market. Selecting 'None of the above' means the Act does not apply to your system in its current deployment context.",
+  "hint_text": "Article 2 sets the territorial scope. The Act applies if: the system is placed on the EU market or put into service in the EU; the output is used in the EU; the provider is established in the EU; or a non-EU provider places the system on the EU market. General Purpose AI model providers are in scope under Article 2 regardless of the intended use of the model downstream. Selecting 'None of the above' means the Act does not apply to your system in its current deployment context. Source: Article 2(1), Article 3(63).",
   "answers": {
     "type": "multi_select",
     "allow_free_text": true,
@@ -14,8 +14,21 @@
         "next_key": "R1",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["scope_confirmed"],
-        "keywords": ["EU market", "sell in EU", "deploy in EU", "available in EU", "EU customers", "European market", "operate in Europe", "product in EU", "service in EU", "EU deployment"]
+        "flags": [
+          "scope_confirmed"
+        ],
+        "keywords": [
+          "EU market",
+          "sell in EU",
+          "deploy in EU",
+          "available in EU",
+          "EU customers",
+          "European market",
+          "operate in Europe",
+          "product in EU",
+          "service in EU",
+          "EU deployment"
+        ]
       },
       {
         "value": "outputs_used_in_eu",
@@ -23,8 +36,21 @@
         "next_key": "R1",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["scope_confirmed"],
-        "keywords": ["outputs in EU", "results used in Europe", "EU users receive output", "AI results affect EU persons", "remote AI EU impact", "output affects EU", "EU data output", "decision affecting EU person", "EU user receives AI result", "offshore AI EU impact"]
+        "flags": [
+          "scope_confirmed"
+        ],
+        "keywords": [
+          "outputs in EU",
+          "results used in Europe",
+          "EU users receive output",
+          "AI results affect EU persons",
+          "remote AI EU impact",
+          "output affects EU",
+          "EU data output",
+          "decision affecting EU person",
+          "EU user receives AI result",
+          "offshore AI EU impact"
+        ]
       },
       {
         "value": "provider_established_in_eu",
@@ -32,8 +58,21 @@
         "next_key": "R1",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["scope_confirmed"],
-        "keywords": ["EU company", "established in Europe", "EU headquartered", "registered in EU", "EU-based provider", "incorporated in EU", "European company", "EU establishment", "EU legal entity", "based in EU"]
+        "flags": [
+          "scope_confirmed"
+        ],
+        "keywords": [
+          "EU company",
+          "established in Europe",
+          "EU headquartered",
+          "registered in EU",
+          "EU-based provider",
+          "incorporated in EU",
+          "European company",
+          "EU establishment",
+          "EU legal entity",
+          "based in EU"
+        ]
       },
       {
         "value": "deployer_established_in_eu",
@@ -41,8 +80,45 @@
         "next_key": "R1",
         "is_terminal": false,
         "obligations": [],
-        "flags": ["scope_confirmed"],
-        "keywords": ["EU deployer", "EU-based operator", "use AI in EU", "European deployer", "EU organization using AI", "deploy in Europe", "EU user of AI system", "operate AI in EU", "EU business using AI", "deployer in Europe"]
+        "flags": [
+          "scope_confirmed"
+        ],
+        "keywords": [
+          "EU deployer",
+          "EU-based operator",
+          "use AI in EU",
+          "European deployer",
+          "EU organization using AI",
+          "deploy in Europe",
+          "EU user of AI system",
+          "operate AI in EU",
+          "EU business using AI",
+          "deployer in Europe"
+        ]
+      },
+      {
+        "value": "gpai_model_provider_eu",
+        "label": "I place a General Purpose AI model on the EU market (e.g. a foundation model, LLM, or multimodal model)",
+        "next_key": "R1",
+        "is_terminal": false,
+        "obligations": [
+          "gpai_standard_obligations"
+        ],
+        "flags": [
+          "scope_confirmed",
+          "gpai_provider"
+        ],
+        "keywords": [
+          "foundation model",
+          "LLM",
+          "large language model",
+          "general purpose",
+          "GPAI",
+          "base model",
+          "multimodal model",
+          "API model",
+          "model provider"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -50,13 +126,29 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["out_of_scope_territorial"],
-        "keywords": ["outside EU", "no EU market", "not in Europe", "non-EU only", "no EU impact", "territorial exclusion", "outside scope", "no EU connection", "not applicable EU", "extraterritorial"]
+        "flags": [
+          "out_of_scope_territorial"
+        ],
+        "keywords": [
+          "outside EU",
+          "no EU market",
+          "not in Europe",
+          "non-EU only",
+          "no EU impact",
+          "territorial exclusion",
+          "outside scope",
+          "no EU connection",
+          "not applicable EU",
+          "extraterritorial"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [2],
-  "is_terminal": false
+  "linked_articles": [
+    2
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_s1"
 }

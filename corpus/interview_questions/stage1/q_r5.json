@@ -3,7 +3,7 @@
   "stage": 1,
   "section": "rules",
   "display_text": "As a deployer of a high-risk AI system, does the system make decisions or assessments about natural persons in a public-body context that warrants a Fundamental Rights Impact Assessment (FRIA)?",
-  "hint_text": "Article 27 requires FRIA only from: (a) bodies governed by public law (public authorities, agencies), or (b) private entities providing public services (healthcare, education, social services, housing, justice). One important exception: even public bodies are exempt from FRIA when the high-risk AI system is used in critical infrastructure. If you are a private commercial deployer (not providing public services), FRIA does not apply.",
+  "hint_text": "Article 27 requires FRIA only from: (a) bodies governed by public law (public authorities, agencies), or (b) private entities providing public services (healthcare, education, social services, housing, justice). One important exception: even public bodies are exempt from FRIA when the high-risk AI system is used in critical infrastructure. If you are a private commercial deployer (not providing public services), FRIA does not apply. Exception: the FRIA obligation does not apply to high-risk AI systems intended for use in critical infrastructure. Source: Article 27(1).",
   "answers": {
     "type": "single_select",
     "allow_free_text": true,
@@ -13,18 +13,42 @@
         "label": "Yes — I am a public body (or perform public functions) deploying a high-risk AI system that assesses or affects natural persons",
         "next_key": null,
         "is_terminal": true,
-        "obligations": ["fria_required"],
-        "flags": ["fria_required"],
-        "keywords": ["FRIA required", "public body deployer", "fundamental rights impact assessment", "Article 27", "government AI deployer", "public authority AI", "public service AI FRIA", "rights assessment required", "public body high risk AI", "deployer FRIA obligation"]
+        "obligations": [
+          "fria_required"
+        ],
+        "flags": [
+          "fria_required"
+        ],
+        "keywords": [
+          "FRIA required",
+          "public body deployer",
+          "fundamental rights impact assessment",
+          "Article 27",
+          "government AI deployer",
+          "public authority AI",
+          "public service AI FRIA",
+          "rights assessment required",
+          "public body high risk AI",
+          "deployer FRIA obligation"
+        ]
       },
       {
         "value": "yes_public_body_critical_infra",
-        "label": "Yes — I am a public body or public-service provider, but the system is used specifically for critical infrastructure management",
+        "label": "Yes — I am a public body, but the system is intended for use in critical infrastructure",
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
         "flags": [],
-        "keywords": ["critical infrastructure FRIA exemption", "public body no FRIA", "infrastructure AI exception", "Article 27 carve-out", "critical infrastructure deployer", "FRIA not required infrastructure", "power grid public body", "water utility AI", "transport infrastructure AI", "FRIA exception"]
+        "keywords": [
+          "critical infrastructure",
+          "energy",
+          "water",
+          "transport",
+          "public body",
+          "FRIA exempt",
+          "Article 27 exception",
+          "infrastructure operator"
+        ]
       },
       {
         "value": "no",
@@ -33,15 +57,32 @@
         "is_terminal": true,
         "obligations": [],
         "flags": [],
-        "keywords": ["no FRIA required", "private sector deployer", "not public body", "no fundamental rights assessment", "Article 27 not applicable", "commercial deployer", "private deployer", "FRIA not required", "not government", "no public authority"]
+        "keywords": [
+          "no FRIA required",
+          "private sector deployer",
+          "not public body",
+          "no fundamental rights assessment",
+          "Article 27 not applicable",
+          "commercial deployer",
+          "private deployer",
+          "FRIA not required",
+          "not government",
+          "no public authority"
+        ]
       }
     ]
   },
   "preconditions": {
-    "require_flags": ["high_risk", "deployer"],
+    "require_flags": [
+      "high_risk",
+      "deployer"
+    ],
     "require_answers": {}
   },
   "linked_rule_chunk": null,
-  "linked_articles": [27],
-  "is_terminal": false
+  "linked_articles": [
+    27
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_r5"
 }

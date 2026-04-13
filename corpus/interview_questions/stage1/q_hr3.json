@@ -13,9 +13,24 @@
         "label": "Yes — the product requires a third-party conformity assessment by a notified body under the applicable regulation",
         "next_key": "S1",
         "is_terminal": false,
-        "obligations": ["high_risk_provider_obligations"],
-        "flags": ["high_risk"],
-        "keywords": ["notified body", "third-party assessment", "CE marking notified body", "conformity assessment required", "independent certification", "type-examination", "MDR notified body", "product certification required", "Article 6(1)", "not self-declaration"]
+        "obligations": [
+          "high_risk_provider_obligations"
+        ],
+        "flags": [
+          "high_risk"
+        ],
+        "keywords": [
+          "notified body",
+          "third-party assessment",
+          "CE marking notified body",
+          "conformity assessment required",
+          "independent certification",
+          "type-examination",
+          "MDR notified body",
+          "product certification required",
+          "Article 6(1)",
+          "not self-declaration"
+        ]
       },
       {
         "value": "no_self_declaration_sufficient",
@@ -24,12 +39,27 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["self-declaration", "manufacturer declaration", "no notified body", "self-certified", "DoC only", "low-risk product", "self-assessment sufficient", "not third-party certified", "no external body", "Article 6(1) not met"]
+        "keywords": [
+          "self-declaration",
+          "manufacturer declaration",
+          "no notified body",
+          "self-certified",
+          "DoC only",
+          "low-risk product",
+          "self-assessment sufficient",
+          "not third-party certified",
+          "no external body",
+          "Article 6(1) not met"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [6, 43],
-  "is_terminal": false
+  "linked_articles": [
+    6,
+    43
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_hr3"
 }

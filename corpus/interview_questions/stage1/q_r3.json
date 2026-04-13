@@ -14,8 +14,21 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["subliminal AI", "manipulative AI", "deceptive AI", "dark patterns AI", "psychological manipulation", "unconscious influence AI", "hidden persuasion", "behavioural manipulation", "cognitive manipulation AI", "Article 5(1)(a)"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "subliminal AI",
+          "manipulative AI",
+          "deceptive AI",
+          "dark patterns AI",
+          "psychological manipulation",
+          "unconscious influence AI",
+          "hidden persuasion",
+          "behavioural manipulation",
+          "cognitive manipulation AI",
+          "Article 5(1)(a)"
+        ]
       },
       {
         "value": "vulnerability_exploitation",
@@ -23,8 +36,21 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["vulnerability exploitation", "exploit children AI", "manipulate elderly AI", "exploit disabled persons AI", "target vulnerable groups", "harmful targeting", "disability manipulation AI", "Article 5(1)(b)", "protected group manipulation", "harmful AI targeting"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "vulnerability exploitation",
+          "exploit children AI",
+          "manipulate elderly AI",
+          "exploit disabled persons AI",
+          "target vulnerable groups",
+          "harmful targeting",
+          "disability manipulation AI",
+          "Article 5(1)(b)",
+          "protected group manipulation",
+          "harmful AI targeting"
+        ]
       },
       {
         "value": "biometric_categorisation_sensitive",
@@ -32,17 +58,45 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["biometric categorisation prohibited", "infer race from biometrics", "political opinion inference", "religion inference AI", "sexual orientation AI", "trade union membership AI", "sensitive attribute inference", "Article 5(1)(g)", "prohibited biometric categorisation", "discriminatory biometric AI"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "biometric categorisation prohibited",
+          "infer race from biometrics",
+          "political opinion inference",
+          "religion inference AI",
+          "sexual orientation AI",
+          "trade union membership AI",
+          "sensitive attribute inference",
+          "Article 5(1)(g)",
+          "prohibited biometric categorisation",
+          "discriminatory biometric AI"
+        ]
       },
       {
         "value": "social_scoring",
-        "label": "Social scoring by public authorities or on their behalf — general scoring of natural persons based on social behaviour leading to detrimental or disproportionate treatment in unrelated contexts",
+        "label": "Social scoring by public authorities — my system scores natural persons on behalf of a public authority, causing detrimental treatment unrelated to the data's original context",
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["social credit AI", "social scoring AI", "citizen scoring", "reputation scoring AI", "general social AI score", "behaviour scoring", "China-style scoring", "Article 5(1)(c)", "trustworthiness scoring", "social rating AI"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "social credit AI",
+          "social scoring AI",
+          "citizen scoring",
+          "public authority",
+          "government scoring",
+          "citizen score",
+          "state surveillance",
+          "social credit",
+          "public body scoring",
+          "Article 5(1)(c)",
+          "trustworthiness scoring",
+          "social rating AI"
+        ]
       },
       {
         "value": "predictive_policing",
@@ -50,8 +104,21 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["predictive policing AI", "pre-crime AI", "individual criminal prediction", "personality-based crime risk", "future crime AI", "offender prediction AI", "Article 5(1)(d)", "precrime profiling", "crime probability AI individual", "risk score criminal AI"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "predictive policing AI",
+          "pre-crime AI",
+          "individual criminal prediction",
+          "personality-based crime risk",
+          "future crime AI",
+          "offender prediction AI",
+          "Article 5(1)(d)",
+          "precrime profiling",
+          "crime probability AI individual",
+          "risk score criminal AI"
+        ]
       },
       {
         "value": "facial_recognition_database_expansion",
@@ -59,17 +126,46 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["facial recognition database", "scrape faces internet", "CCTV face scraping", "mass facial recognition", "face database expansion", "Article 5(1)(e)", "bulk facial data collection", "internet face scraping AI", "surveillance face database", "face harvest AI"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "facial recognition database",
+          "scrape faces internet",
+          "CCTV face scraping",
+          "mass facial recognition",
+          "face database expansion",
+          "Article 5(1)(e)",
+          "bulk facial data collection",
+          "internet face scraping AI",
+          "surveillance face database",
+          "face harvest AI"
+        ]
       },
       {
         "value": "emotion_recognition_workplace_education",
-        "label": "Emotion recognition in the workplace or educational institutions (excluding systems used for medical or safety reasons)",
+        "label": "Emotion recognition in workplaces or educational institutions (excluding systems used for medical or safety reasons)",
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["emotion recognition workplace", "emotion AI office", "employee emotion detection", "student emotion AI", "classroom emotion monitoring", "affect recognition workplace", "Article 5(1)(f)", "mood detection staff", "emotional state AI work", "sentiment detection employee"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "emotion recognition workplace",
+          "emotion AI office",
+          "employee emotion detection",
+          "student emotion AI",
+          "classroom emotion monitoring",
+          "affect recognition workplace",
+          "Article 5(1)(f)",
+          "mood detection staff",
+          "workplace emotion AI",
+          "student emotion detection",
+          "not medical",
+          "not safety purpose",
+          "emotion surveillance"
+        ]
       },
       {
         "value": "realtime_remote_biometrics",
@@ -77,8 +173,21 @@
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
-        "flags": ["PROHIBITED"],
-        "keywords": ["real-time facial recognition public", "live biometric ID", "CCTV biometric identification", "public surveillance biometrics", "Article 5(1)(h)", "mass surveillance biometrics", "street facial recognition", "real-time face match public", "live face recognition", "public space biometric AI"]
+        "flags": [
+          "PROHIBITED"
+        ],
+        "keywords": [
+          "real-time facial recognition public",
+          "live biometric ID",
+          "CCTV biometric identification",
+          "public surveillance biometrics",
+          "Article 5(1)(h)",
+          "mass surveillance biometrics",
+          "street facial recognition",
+          "real-time face match public",
+          "live face recognition",
+          "public space biometric AI"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -87,12 +196,26 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["no prohibited function", "not banned AI", "not prohibited", "Article 5 does not apply", "no forbidden use", "none of these", "lawful AI", "compliant AI", "no Article 5 match", "no prohibited practice"]
+        "keywords": [
+          "no prohibited function",
+          "not banned AI",
+          "not prohibited",
+          "Article 5 does not apply",
+          "no forbidden use",
+          "none of these",
+          "lawful AI",
+          "compliant AI",
+          "no Article 5 match",
+          "no prohibited practice"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [5],
-  "is_terminal": false
+  "linked_articles": [
+    5
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_r3"
 }

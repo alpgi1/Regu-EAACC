@@ -15,7 +15,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["machinery", "industrial machine", "manufacturing robot", "mechanical equipment", "2006/42", "2023/1230", "factory automation", "robotic machinery", "production line AI", "machine safety"]
+        "keywords": [
+          "machinery",
+          "industrial machine",
+          "manufacturing robot",
+          "mechanical equipment",
+          "2006/42",
+          "2023/1230",
+          "factory automation",
+          "robotic machinery",
+          "production line AI",
+          "machine safety"
+        ]
       },
       {
         "value": "toys",
@@ -24,7 +35,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["toy AI", "children's toy", "interactive toy", "smart toy", "2009/48", "toys directive", "AI toy", "child product AI", "educational toy AI", "robot toy"]
+        "keywords": [
+          "toy AI",
+          "children's toy",
+          "interactive toy",
+          "smart toy",
+          "2009/48",
+          "toys directive",
+          "AI toy",
+          "child product AI",
+          "educational toy AI",
+          "robot toy"
+        ]
       },
       {
         "value": "recreational_craft_personal_watercraft",
@@ -33,7 +55,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["recreational boat", "yacht AI", "jet ski", "personal watercraft", "2013/53", "boat AI", "leisure vessel", "watercraft AI", "sailing AI", "nautical AI"]
+        "keywords": [
+          "recreational boat",
+          "yacht AI",
+          "jet ski",
+          "personal watercraft",
+          "2013/53",
+          "boat AI",
+          "leisure vessel",
+          "watercraft AI",
+          "sailing AI",
+          "nautical AI"
+        ]
       },
       {
         "value": "lifts_safety_components",
@@ -42,7 +75,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["elevator AI", "lift AI", "escalator AI", "2014/33", "lift safety", "building lift", "elevator control AI", "predictive maintenance lift", "lift monitoring", "escalator system"]
+        "keywords": [
+          "elevator AI",
+          "lift AI",
+          "escalator AI",
+          "2014/33",
+          "lift safety",
+          "building lift",
+          "elevator control AI",
+          "predictive maintenance lift",
+          "lift monitoring",
+          "escalator system"
+        ]
       },
       {
         "value": "explosive_atmospheres_equipment",
@@ -51,7 +95,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["ATEX", "explosive atmosphere", "hazardous zone equipment", "2014/34", "explosion protection", "flammable environment AI", "gas sensor AI", "chemical plant AI", "Zone 1 AI", "intrinsically safe AI"]
+        "keywords": [
+          "ATEX",
+          "explosive atmosphere",
+          "hazardous zone equipment",
+          "2014/34",
+          "explosion protection",
+          "flammable environment AI",
+          "gas sensor AI",
+          "chemical plant AI",
+          "Zone 1 AI",
+          "intrinsically safe AI"
+        ]
       },
       {
         "value": "radio_equipment",
@@ -60,7 +115,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["radio equipment", "wireless device AI", "RED directive", "2014/53", "IoT device", "RF equipment", "WiFi device AI", "Bluetooth AI", "radio transmitter AI", "connected device AI"]
+        "keywords": [
+          "radio equipment",
+          "wireless device AI",
+          "RED directive",
+          "2014/53",
+          "IoT device",
+          "RF equipment",
+          "WiFi device AI",
+          "Bluetooth AI",
+          "radio transmitter AI",
+          "connected device AI"
+        ]
       },
       {
         "value": "pressure_equipment",
@@ -69,7 +135,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["pressure vessel", "boiler AI", "pressure equipment", "2014/68", "PED directive", "pipeline AI", "pressure system monitoring", "steam equipment AI", "pressure control AI", "industrial pressure AI"]
+        "keywords": [
+          "pressure vessel",
+          "boiler AI",
+          "pressure equipment",
+          "2014/68",
+          "PED directive",
+          "pipeline AI",
+          "pressure system monitoring",
+          "steam equipment AI",
+          "pressure control AI",
+          "industrial pressure AI"
+        ]
       },
       {
         "value": "cableway_installations",
@@ -78,7 +155,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["cable car AI", "ski lift AI", "gondola AI", "cableway", "2016/424", "ropeway AI", "aerial tramway AI", "funicular AI", "mountain transport AI", "cableway installation"]
+        "keywords": [
+          "cable car AI",
+          "ski lift AI",
+          "gondola AI",
+          "cableway",
+          "2016/424",
+          "ropeway AI",
+          "aerial tramway AI",
+          "funicular AI",
+          "mountain transport AI",
+          "cableway installation"
+        ]
       },
       {
         "value": "personal_protective_equipment",
@@ -87,7 +175,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["PPE AI", "safety helmet AI", "protective gear AI", "2016/425", "wearable safety AI", "smart PPE", "protective equipment monitoring", "safety wearable", "exoskeleton AI", "PPE compliance AI"]
+        "keywords": [
+          "PPE AI",
+          "safety helmet AI",
+          "protective gear AI",
+          "2016/425",
+          "wearable safety AI",
+          "smart PPE",
+          "protective equipment monitoring",
+          "safety wearable",
+          "exoskeleton AI",
+          "PPE compliance AI"
+        ]
       },
       {
         "value": "gas_appliances",
@@ -96,7 +195,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["gas appliance AI", "boiler AI", "gas burner AI", "2016/426", "gas heating AI", "gas safety AI", "smart boiler", "combustion AI", "gas control AI", "heating system AI"]
+        "keywords": [
+          "gas appliance AI",
+          "boiler AI",
+          "gas burner AI",
+          "2016/426",
+          "gas heating AI",
+          "gas safety AI",
+          "smart boiler",
+          "combustion AI",
+          "gas control AI",
+          "heating system AI"
+        ]
       },
       {
         "value": "medical_devices",
@@ -105,7 +215,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["medical device AI", "MDR", "2017/745", "clinical AI", "diagnostic device", "medical equipment AI", "patient monitoring AI", "surgical AI", "health device AI", "medical software AI"]
+        "keywords": [
+          "medical device AI",
+          "MDR",
+          "2017/745",
+          "clinical AI",
+          "diagnostic device",
+          "medical equipment AI",
+          "patient monitoring AI",
+          "surgical AI",
+          "health device AI",
+          "medical software AI"
+        ]
       },
       {
         "value": "in_vitro_diagnostic_medical_devices",
@@ -114,7 +235,18 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["IVD AI", "IVDR", "2017/746", "laboratory diagnostics AI", "blood test AI", "genetic testing AI", "diagnostic reagent AI", "in vitro AI", "biomarker AI", "pathology AI"]
+        "keywords": [
+          "IVD AI",
+          "IVDR",
+          "2017/746",
+          "laboratory diagnostics AI",
+          "blood test AI",
+          "genetic testing AI",
+          "diagnostic reagent AI",
+          "in vitro AI",
+          "biomarker AI",
+          "pathology AI"
+        ]
       },
       {
         "value": "none_of_the_above",
@@ -123,12 +255,26 @@
         "is_terminal": false,
         "obligations": [],
         "flags": [],
-        "keywords": ["none of these", "not a medical device", "not machinery", "not regulated product", "no product safety directive", "none of the above", "does not apply", "no match", "not covered", "not a safety component"]
+        "keywords": [
+          "none of these",
+          "not a medical device",
+          "not machinery",
+          "not regulated product",
+          "no product safety directive",
+          "none of the above",
+          "does not apply",
+          "no match",
+          "not covered",
+          "not a safety component"
+        ]
       }
     ]
   },
   "preconditions": null,
   "linked_rule_chunk": null,
-  "linked_articles": [6],
-  "is_terminal": false
+  "linked_articles": [
+    6
+  ],
+  "is_terminal": false,
+  "linked_rule_chunk_ref": "fli_q_hr2"
 }
