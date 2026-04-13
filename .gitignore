@@ -38,3 +38,6 @@ logs/
 corpus/**/*.pdf
 corpus/**/*.docx
 # But the structured JSON corpus IS tracked
+
+# ─── Documentation ─────────────────────────────────────────────
+docs/
