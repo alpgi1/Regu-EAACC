@@ -1,0 +1,35 @@
+{
+  "question_key": "HR5",
+  "stage": 1,
+  "section": "high_risk",
+  "display_text": "Does your AI system pose a significant risk of harm to health, safety, or fundamental rights, given how it is actually used in practice?",
+  "hint_text": "Article 6(3) provides a safe harbour: an Annex III system is NOT high-risk if it performs only a narrow procedural task, merely improves the outcome of a prior human activity, detects patterns without replacing human assessment and the result is not used without human review, or only performs preparatory tasks for a human decision. However, any AI system that profiles natural persons is always high-risk, regardless of these conditions. Consult Recital 48 for examples.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "yes_significant_risk",
+        "label": "Yes — the system poses a significant risk to health, safety, or fundamental rights (none of the safe-harbour conditions apply)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["significant risk", "high impact AI", "not safe harbour", "directly affects rights", "human decision replaced", "automated decision high impact", "risk to safety", "no human review", "profiling", "affects fundamental rights"]
+      },
+      {
+        "value": "no_not_significant",
+        "label": "No — the system meets one or more safe-harbour conditions under Article 6(3) and does not pose significant risk",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["notify_nca"],
+        "flags": ["notify_nca"],
+        "keywords": ["safe harbour", "narrow task", "preparatory task", "human review required", "no autonomous decision", "Article 6(3) exception", "low risk Annex III", "human oversight", "not significant risk", "supportive AI"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [6, 49],
+  "is_terminal": false
+}

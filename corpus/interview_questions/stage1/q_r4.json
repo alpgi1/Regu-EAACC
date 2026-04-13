@@ -1,0 +1,71 @@
+{
+  "question_key": "R4",
+  "stage": 1,
+  "section": "rules",
+  "display_text": "Does your AI system perform any of the following functions that trigger transparency obligations under Article 50 of the EU AI Act? Select all that apply.",
+  "hint_text": "Article 50 imposes disclosure and labelling obligations on AI systems that interact with people or generate content — regardless of whether the system is high-risk. Each function below triggers a specific obligation. You can select multiple functions; each adds its own obligation. If none apply, proceed to R5 (relevant only if you are a high-risk deployer).",
+  "answers": {
+    "type": "multi_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "direct_interaction_with_persons",
+        "label": "The system interacts directly and in real time with natural persons (e.g., a chatbot, virtual assistant, or conversational AI)",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": ["transparency_natural_persons"],
+        "flags": ["transparency_obligations"],
+        "keywords": ["chatbot", "virtual assistant", "conversational AI", "customer service AI", "real-time interaction", "AI chat", "human-AI conversation", "voice assistant", "dialogue system", "Article 50(1)"]
+      },
+      {
+        "value": "synthetic_content_generation",
+        "label": "The system generates synthetic audio, image, video, or text content (as a provider obligation to mark output as AI-generated)",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": ["transparency_synthetic_content"],
+        "flags": ["transparency_obligations"],
+        "keywords": ["synthetic content AI", "AI-generated text", "AI image generation", "AI video generation", "AI audio generation", "generative AI", "content generation", "Article 50(2)", "machine-readable watermark", "AI content labelling"]
+      },
+      {
+        "value": "deepfake_generation",
+        "label": "The system generates or manipulates image, audio, or video that constitutes a deep fake (realistic AI-generated portrayal of real people or events)",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": ["transparency_content_resemblance"],
+        "flags": ["transparency_obligations"],
+        "keywords": ["deepfake AI", "AI face swap", "synthetic video real persons", "voice cloning", "realistic AI video", "AI-manipulated media", "Article 50(4)", "fake video AI", "AI misinformation content", "digitally altered media AI"]
+      },
+      {
+        "value": "public_interest_text_generation",
+        "label": "The system generates text published for the purpose of informing the public on matters of public interest (e.g., AI-authored news, political commentary)",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": ["transparency_synthetic_content"],
+        "flags": ["transparency_obligations"],
+        "keywords": ["AI news generation", "AI journalism", "AI political text", "public interest AI content", "AI-written articles", "automated news", "article generation AI", "Article 50(4) text", "AI propaganda detection", "AI-generated public content"]
+      },
+      {
+        "value": "emotion_recognition_or_biometric_categorisation",
+        "label": "The system performs emotion recognition or biometric categorisation of natural persons (in contexts where it is still permitted)",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": ["transparency_emotion_biometric"],
+        "flags": ["transparency_obligations"],
+        "keywords": ["emotion recognition permitted", "biometric categorisation AI", "affect recognition", "facial expression AI", "biometric classification", "Article 50(3)", "emotion AI disclosure", "biometric system transparency", "permitted emotion AI", "mood detection AI permitted"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — my AI system does not trigger any Article 50 transparency obligation",
+        "next_key": "R5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["no transparency obligation", "Article 50 does not apply", "no deepfake", "no chatbot", "no synthetic content", "not applicable", "none of these", "no interaction with persons", "no content generation", "transparency not required"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [50],
+  "is_terminal": false
+}

@@ -1,0 +1,47 @@
+{
+  "question_key": "R5",
+  "stage": 1,
+  "section": "rules",
+  "display_text": "As a deployer of a high-risk AI system, does the system make decisions or assessments about natural persons in a public-body context that warrants a Fundamental Rights Impact Assessment (FRIA)?",
+  "hint_text": "Article 27 requires FRIA only from: (a) bodies governed by public law (public authorities, agencies), or (b) private entities providing public services (healthcare, education, social services, housing, justice). One important exception: even public bodies are exempt from FRIA when the high-risk AI system is used in critical infrastructure. If you are a private commercial deployer (not providing public services), FRIA does not apply.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "yes_public_body",
+        "label": "Yes — I am a public body (or perform public functions) deploying a high-risk AI system that assesses or affects natural persons",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": ["fria_required"],
+        "flags": ["fria_required"],
+        "keywords": ["FRIA required", "public body deployer", "fundamental rights impact assessment", "Article 27", "government AI deployer", "public authority AI", "public service AI FRIA", "rights assessment required", "public body high risk AI", "deployer FRIA obligation"]
+      },
+      {
+        "value": "yes_public_body_critical_infra",
+        "label": "Yes — I am a public body or public-service provider, but the system is used specifically for critical infrastructure management",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["critical infrastructure FRIA exemption", "public body no FRIA", "infrastructure AI exception", "Article 27 carve-out", "critical infrastructure deployer", "FRIA not required infrastructure", "power grid public body", "water utility AI", "transport infrastructure AI", "FRIA exception"]
+      },
+      {
+        "value": "no",
+        "label": "No — I am not a public body, or the system does not require an FRIA in my deployment context",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["no FRIA required", "private sector deployer", "not public body", "no fundamental rights assessment", "Article 27 not applicable", "commercial deployer", "private deployer", "FRIA not required", "not government", "no public authority"]
+      }
+    ]
+  },
+  "preconditions": {
+    "require_flags": ["high_risk", "deployer"],
+    "require_answers": {}
+  },
+  "linked_rule_chunk": null,
+  "linked_articles": [27],
+  "is_terminal": false
+}

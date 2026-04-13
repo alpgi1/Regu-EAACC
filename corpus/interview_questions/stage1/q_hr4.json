@@ -1,0 +1,98 @@
+{
+  "question_key": "HR4",
+  "stage": 1,
+  "section": "high_risk",
+  "display_text": "Does your AI system fall within any of the high-risk use-case categories listed in Annex III of the EU AI Act? Select all that apply.",
+  "hint_text": "Annex III lists specific high-risk AI use cases regardless of the product it runs on. These cover sensitive domains where AI decisions have significant impact on people's rights, safety, or access to services. If your system matches any category, you will be asked to assess whether it poses significant risk (HR5). If none apply, proceed to scope assessment (S1).",
+  "answers": {
+    "type": "multi_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "biometrics",
+        "label": "Biometrics — remote biometric identification, biometric categorisation, or emotion recognition of natural persons",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["facial recognition", "biometric identification", "fingerprint AI", "iris recognition", "emotion detection", "biometric categorisation", "face match", "remote biometrics", "person identification AI", "biometric system"]
+      },
+      {
+        "value": "critical_infrastructure",
+        "label": "Critical infrastructure — safety components for management and operation of road traffic, water, gas, heating, electricity, or digital infrastructure",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["critical infrastructure AI", "power grid AI", "water supply AI", "traffic management AI", "gas network AI", "energy grid AI", "digital infrastructure AI", "smart grid", "transport network AI", "infrastructure safety AI"]
+      },
+      {
+        "value": "education_vocational_training",
+        "label": "Education and vocational training — determining access, admission, or assessment of students",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["education AI", "student assessment AI", "admission AI", "exam proctoring AI", "learning management AI", "vocational training AI", "school AI", "university admission AI", "student scoring AI", "educational evaluation AI"]
+      },
+      {
+        "value": "employment_workers_management",
+        "label": "Employment, workers management, and access to self-employment — recruitment, selection, promotion, task allocation, performance monitoring, or termination decisions",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["HR AI", "recruitment AI", "CV screening", "hiring AI", "employee monitoring AI", "job application AI", "performance evaluation AI", "people analytics", "workforce AI", "talent management AI"]
+      },
+      {
+        "value": "essential_services_benefits",
+        "label": "Essential private and public services — credit scoring, insurance, social benefits assessment, or emergency service dispatch",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["credit scoring AI", "loan decision AI", "insurance AI", "social benefits AI", "welfare AI", "emergency dispatch AI", "public services AI", "banking AI decision", "credit risk AI", "financial scoring AI"]
+      },
+      {
+        "value": "law_enforcement",
+        "label": "Law enforcement — individual risk assessments, polygraphs, crime analytics, victimisation prediction, evidence reliability, or profiling",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["police AI", "law enforcement AI", "crime prediction AI", "predictive policing", "risk assessment criminal", "forensic AI", "surveillance AI law enforcement", "profiling AI", "recidivism AI", "criminal justice AI"]
+      },
+      {
+        "value": "migration_asylum_border",
+        "label": "Migration, asylum, and border control — risk assessment of persons, examining visa or asylum applications, detecting behaviour at borders",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["border control AI", "asylum AI", "migration AI", "visa assessment AI", "border surveillance AI", "refugee processing AI", "passport AI", "border detection AI", "immigration AI", "asylum decision AI"]
+      },
+      {
+        "value": "justice_democratic_processes",
+        "label": "Administration of justice and democratic processes — assisting courts with fact research or applying law, or influencing election outcomes",
+        "next_key": "HR5",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["court AI", "legal AI decision", "justice AI", "judicial AI", "democratic process AI", "election AI", "legal case AI", "voting AI", "judicial decision support AI", "legal ruling AI"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — my AI system does not fall within any Annex III high-risk use-case category",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["none of these", "not high risk", "no Annex III", "not in any category", "not law enforcement", "not biometrics", "not education AI", "none of the above", "does not apply", "no match Annex III"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [6],
+  "is_terminal": false
+}

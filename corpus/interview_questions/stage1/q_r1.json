@@ -1,0 +1,35 @@
+{
+  "question_key": "R1",
+  "stage": 1,
+  "section": "rules",
+  "display_text": "Is your AI system a general-purpose AI (GPAI) model that has been designated, or is likely to be designated, as posing systemic risk due to high training compute or a Commission decision?",
+  "hint_text": "Article 51 defines systemic-risk GPAI models as those trained with more than 10^25 FLOPs, or models so designated by Commission decision due to their capabilities or reach. If your system is a GPAI model with systemic risk, additional obligations under Article 55 apply on top of the standard GPAI obligations under Article 53. If you are not a GPAI provider, select 'None of the above'.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "high_impact_or_commission_decision",
+        "label": "Yes — this is a GPAI model with high training compute (>10²⁵ FLOPs) or has been designated systemic-risk by the Commission",
+        "next_key": "R2",
+        "is_terminal": false,
+        "obligations": ["gpai_standard_obligations", "gpai_systemic_risk_obligations"],
+        "flags": ["gpai_systemic_risk"],
+        "keywords": ["GPAI systemic risk", "foundation model systemic risk", "large language model systemic", "high compute model", "10^25 FLOPs", "GPT-level model", "Commission designation systemic", "frontier AI model", "very large AI model", "Article 55 GPAI"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — the system is not a GPAI model with systemic risk, or is not a GPAI model at all",
+        "next_key": "R2",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["not GPAI", "not general purpose AI", "task-specific AI", "narrow AI", "not foundation model", "no systemic risk", "specialist AI system", "not large model", "not LLM systemic", "standard AI system"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [51, 52, 53, 55],
+  "is_terminal": false
+}

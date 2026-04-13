@@ -1,0 +1,35 @@
+{
+  "question_key": "E3",
+  "stage": 1,
+  "section": "entity",
+  "display_text": "As a product manufacturer, do you intend to place this AI system on the EU market or put it into service as part of your product, under your own name or trademark?",
+  "hint_text": "Under Article 25 and Recital 47, a product manufacturer who does this is treated as a provider of the embedded AI system. If your product is regulated under existing EU product safety law (Annex I Section A), the embedded AI may be a high-risk safety component. 'None of the above' means the AI is used only internally and not embedded in a product you release.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "placed_on_market_under_trademark",
+        "label": "Yes — I place or intend to place this AI system on the market as part of my product under my own name or trademark",
+        "next_key": "HR6",
+        "is_terminal": false,
+        "obligations": ["product_manufacturer_obligations"],
+        "flags": ["potential_provider", "product_manufacturer"],
+        "keywords": ["embed AI in product", "AI inside product", "product with AI", "release AI product", "AI-enabled device", "smart device", "AI feature in product", "market under brand", "product manufacturer with AI", "AI component in hardware"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "No — the AI system is not being placed on the market or into service as part of a product under my name",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": [],
+        "flags": ["out_of_scope"],
+        "keywords": ["internal use only", "not releasing product", "not on market", "no embedded AI", "research only", "prototype only", "no product launch", "no trademark", "internal tool", "not sold"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [3, 6, 25],
+  "is_terminal": false
+}

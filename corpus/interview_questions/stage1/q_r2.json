@@ -1,0 +1,62 @@
+{
+  "question_key": "R2",
+  "stage": 1,
+  "section": "rules",
+  "display_text": "Does your AI system or use case fall within any of the exclusion categories listed in Article 2 of the EU AI Act? Select the option that best applies.",
+  "hint_text": "Article 2 divides exclusions into 'hard' (assessment ends, no obligations) and 'soft' (partial, assessment continues to R3). Hard exclusions: military/national security, and third-country law enforcement. Soft exclusions: scientific research, open-source components under free licence, and purely personal non-professional use. For soft exclusions the system may still fall under Article 5 prohibited-practice rules, so the assessment must continue.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "military_or_third_country_law_enforcement",
+        "label": "The AI system is used exclusively for military, national security, defence purposes, OR by a public authority in a third country for law enforcement and judicial cooperation with the EU",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": [],
+        "flags": ["excluded"],
+        "keywords": ["military AI", "defence AI", "national security AI", "third country law enforcement", "armed forces AI", "intelligence services AI", "classified AI", "security services AI", "defence application", "Article 2(2) exclusion"]
+      },
+      {
+        "value": "research_and_development",
+        "label": "Scientific research and development — the system is developed and used solely for the purpose of scientific R&D (not yet placed on the market or in service)",
+        "next_key": "R3",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["exclusion_partial"],
+        "keywords": ["research AI", "academic AI", "R&D AI", "scientific research AI", "lab AI", "university AI", "research prototype", "Article 2(6) research", "not yet on market", "experimental AI"]
+      },
+      {
+        "value": "open_source_free_licence",
+        "label": "Open-source AI component — the system is released under a free and open-source licence and is not yet part of a high-risk, prohibited, GPAI, or transparency-triggering deployment",
+        "next_key": "R3",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["exclusion_partial"],
+        "keywords": ["open source AI", "open-source model", "free licence AI", "OSS AI", "Apache licence AI", "MIT licence AI", "openly available AI", "Article 2(12) open source", "free AI model", "open weights AI"]
+      },
+      {
+        "value": "personal_non_professional",
+        "label": "Purely personal non-professional use — a natural person uses the AI system solely for personal, non-commercial activities",
+        "next_key": "R3",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["exclusion_partial"],
+        "keywords": ["personal use AI", "hobby AI", "non-professional AI", "private individual AI", "personal non-commercial", "consumer personal AI", "Article 2(10) personal", "individual non-professional use", "not business AI", "private use AI"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — no exclusion applies; the AI Act applies in full to this system",
+        "next_key": "R3",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["no exclusion", "full scope", "Act applies", "not excluded", "commercial AI", "regulated AI", "no exception", "none of these", "fully in scope", "general commercial use"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [2],
+  "is_terminal": false
+}

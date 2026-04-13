@@ -1,0 +1,89 @@
+{
+  "question_key": "HR1",
+  "stage": 1,
+  "section": "high_risk",
+  "display_text": "Does your AI system fall within any of the product safety categories listed in Annex I, Section B of the EU AI Act? Select all that apply.",
+  "hint_text": "Annex I Section B lists EU product safety regulations for transport, aviation, and marine sectors. If your AI system is a safety component in — or is itself — a product covered by any of these regulations, it is automatically classified as high-risk under Article 6(1). You are routed directly to the scope question (S1) without needing a third-party conformity assessment check.",
+  "answers": {
+    "type": "multi_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "civil_aviation_security",
+        "label": "Civil aviation security (Regulation (EC) No 300/2008)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["aviation security", "airport security", "air transport", "civil aviation", "300/2008", "flight security screening", "aviation regulation", "airport AI", "air travel safety", "security screening AI"]
+      },
+      {
+        "value": "two_three_wheel_vehicles_quadricycles",
+        "label": "Two- or three-wheel vehicles and quadricycles (Regulation (EU) No 168/2013)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["motorbike", "motorcycle", "scooter", "quadricycle", "moped", "three-wheel vehicle", "168/2013", "two-wheel vehicle", "L-category vehicle", "electric scooter AI"]
+      },
+      {
+        "value": "agricultural_forestry_vehicles",
+        "label": "Agricultural and forestry vehicles (Regulation (EU) No 167/2013)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["tractor", "farm vehicle", "agricultural machinery", "forestry machine", "167/2013", "farming equipment AI", "precision agriculture", "autonomous tractor", "agricultural AI", "forest vehicle AI"]
+      },
+      {
+        "value": "marine_equipment",
+        "label": "Marine equipment (Directive 2014/90/EU)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["marine equipment", "ship equipment", "vessel AI", "maritime", "2014/90/EU", "marine safety", "ship navigation AI", "maritime equipment", "offshore AI", "boat equipment regulation"]
+      },
+      {
+        "value": "rail_interoperability",
+        "label": "Rail interoperability — locomotives and passenger rolling stock (Directive (EU) 2016/797)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["railway AI", "train AI", "rail system", "locomotives", "rolling stock", "2016/797", "rail interoperability", "train safety", "metro AI", "railway automation"]
+      },
+      {
+        "value": "motor_vehicles_trailers",
+        "label": "Motor vehicles and trailers (Regulation (EU) 2018/858)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["car AI", "autonomous vehicle", "vehicle AI", "motor vehicle", "trailer", "2018/858", "automotive AI", "self-driving", "ADAS", "vehicle safety system"]
+      },
+      {
+        "value": "civil_aviation_products",
+        "label": "Civil aviation products, parts, and appliances (Regulation (EU) 2018/1139 / EASA)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["aircraft AI", "EASA", "aviation product", "2018/1139", "aircraft parts", "avionics AI", "drone regulation", "aircraft component", "civil aviation product", "airplane AI system"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — my AI system is not a safety component in any of these regulated product categories",
+        "next_key": "HR2",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["not in transport", "not aviation", "not automotive", "none of these", "not covered", "no regulated product", "not a safety component", "none of the categories", "does not apply", "no match"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [6],
+  "is_terminal": false
+}

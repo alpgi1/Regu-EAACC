@@ -1,0 +1,35 @@
+{
+  "question_key": "HR6",
+  "stage": 1,
+  "section": "high_risk",
+  "display_text": "Does your integrated AI system function as a safety component of the product, AND does that product fall within one of the Annex I Section A regulated categories?",
+  "hint_text": "Article 25(3) and Article 6(1) together make a product manufacturer's embedded AI high-risk if it is a safety component of an Annex I Section A product (machinery, medical devices, toys, etc.). A 'safety component' is any part whose failure could endanger persons or property (Article 3(14)). No separate third-party assessment check is needed here — falling into Annex I Section A via this route directly triggers high-risk classification and full provider obligations (Article 16).",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "safety_component_annex1a",
+        "label": "Yes — the AI functions as a safety component of a product in an Annex I Section A category (e.g., machinery, medical device, toy)",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["safety component", "Annex I Section A product AI", "product AI safety critical", "high-risk embedded AI", "product manufacturer provider", "AI in regulated product", "Article 6(1) product", "Article 25(3)", "safety critical AI component", "embedded AI product manufacturer high risk"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "No — the AI is not a safety component of any Annex I Section A product, or the product does not fall in any listed category",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": ["product_manufacturer_obligations"],
+        "flags": ["product_manufacturer_only"],
+        "keywords": ["not a safety component", "no notified body needed", "self-declaration only", "not covered by Annex I", "out of scope product manufacturer", "low-risk product", "no third-party certification", "product manufacturer only", "not high risk product", "manufacturer obligations only"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [6, 25],
+  "is_terminal": false
+}

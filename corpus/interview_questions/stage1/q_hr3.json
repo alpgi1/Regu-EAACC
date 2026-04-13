@@ -1,0 +1,35 @@
+{
+  "question_key": "HR3",
+  "stage": 1,
+  "section": "high_risk",
+  "display_text": "Does the product containing your AI system require a third-party conformity assessment under the applicable Annex I Section A regulation?",
+  "hint_text": "Article 6(1) makes an AI system high-risk only when two conditions are met: (1) it is a safety component of an Annex I product, AND (2) that product requires a third-party conformity assessment (i.e., an independent notified body must certify it — not a manufacturer's self-declaration). Check the specific regulation that applies to your product. For example, Class IIa or higher medical devices require a notified body assessment; many general machinery products do not.",
+  "answers": {
+    "type": "single_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "yes_third_party_required",
+        "label": "Yes — the product requires a third-party conformity assessment by a notified body under the applicable regulation",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations"],
+        "flags": ["high_risk"],
+        "keywords": ["notified body", "third-party assessment", "CE marking notified body", "conformity assessment required", "independent certification", "type-examination", "MDR notified body", "product certification required", "Article 6(1)", "not self-declaration"]
+      },
+      {
+        "value": "no_self_declaration_sufficient",
+        "label": "No — the product only requires a manufacturer's self-declaration of conformity (no notified body involved)",
+        "next_key": "HR4",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["self-declaration", "manufacturer declaration", "no notified body", "self-certified", "DoC only", "low-risk product", "self-assessment sufficient", "not third-party certified", "no external body", "Article 6(1) not met"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [6, 43],
+  "is_terminal": false
+}

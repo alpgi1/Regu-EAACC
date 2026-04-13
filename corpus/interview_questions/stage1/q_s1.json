@@ -1,0 +1,62 @@
+{
+  "question_key": "S1",
+  "stage": 1,
+  "section": "scope",
+  "display_text": "Does the EU AI Act apply to your AI system based on where it is placed on the market, put into service, or used? Select all criteria that apply.",
+  "hint_text": "Article 2 sets the territorial scope. The Act applies if: the system is placed on the EU market or put into service in the EU; the output is used in the EU; the provider is established in the EU; or a non-EU provider places the system on the EU market. Selecting 'None of the above' means the Act does not apply to your system in its current deployment context.",
+  "answers": {
+    "type": "multi_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "placed_on_eu_market",
+        "label": "The AI system is or will be placed on the EU market or put into service in the EU",
+        "next_key": "R1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["scope_confirmed"],
+        "keywords": ["EU market", "sell in EU", "deploy in EU", "available in EU", "EU customers", "European market", "operate in Europe", "product in EU", "service in EU", "EU deployment"]
+      },
+      {
+        "value": "outputs_used_in_eu",
+        "label": "The outputs of the AI system are used in the EU, even if the system is operated outside the EU",
+        "next_key": "R1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["scope_confirmed"],
+        "keywords": ["outputs in EU", "results used in Europe", "EU users receive output", "AI results affect EU persons", "remote AI EU impact", "output affects EU", "EU data output", "decision affecting EU person", "EU user receives AI result", "offshore AI EU impact"]
+      },
+      {
+        "value": "provider_established_in_eu",
+        "label": "My organisation (as provider) is established in the EU",
+        "next_key": "R1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["scope_confirmed"],
+        "keywords": ["EU company", "established in Europe", "EU headquartered", "registered in EU", "EU-based provider", "incorporated in EU", "European company", "EU establishment", "EU legal entity", "based in EU"]
+      },
+      {
+        "value": "deployer_established_in_eu",
+        "label": "My organisation (as deployer) is established in the EU or the AI system is used in the EU",
+        "next_key": "R1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": ["scope_confirmed"],
+        "keywords": ["EU deployer", "EU-based operator", "use AI in EU", "European deployer", "EU organization using AI", "deploy in Europe", "EU user of AI system", "operate AI in EU", "EU business using AI", "deployer in Europe"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — the AI system is not placed on the EU market, not used in the EU, and my organisation is not established in the EU",
+        "next_key": null,
+        "is_terminal": true,
+        "obligations": [],
+        "flags": ["out_of_scope_territorial"],
+        "keywords": ["outside EU", "no EU market", "not in Europe", "non-EU only", "no EU impact", "territorial exclusion", "outside scope", "no EU connection", "not applicable EU", "extraterritorial"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [2],
+  "is_terminal": false
+}

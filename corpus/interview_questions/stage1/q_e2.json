@@ -1,0 +1,53 @@
+{
+  "question_key": "E2",
+  "stage": 1,
+  "section": "entity",
+  "display_text": "Has your organisation done any of the following to an AI system originally developed by someone else? Select all that apply.",
+  "hint_text": "Under Article 25, performing any of these actions makes you legally treated as the Provider of the AI system, with full provider obligations (Article 16). 'Substantial modification' means a change that affects compliance or intended purpose — not a minor bug fix. Select 'None of the above' only if you have not done any of these things.",
+  "answers": {
+    "type": "multi_select",
+    "allow_free_text": true,
+    "options": [
+      {
+        "value": "place_under_own_name_trademark",
+        "label": "I place or have placed this AI system on the market or into service under my own name or trademark",
+        "next_key": "HR1",
+        "is_terminal": false,
+        "obligations": ["become_provider"],
+        "flags": ["become_provider"],
+        "keywords": ["own brand AI", "own trademark", "own name on AI", "rebrand AI system", "white-label AI", "branded AI product", "sell under own name", "market under our brand", "OEM branding", "put into service own name"]
+      },
+      {
+        "value": "modify_intended_purpose",
+        "label": "I have changed the intended purpose of this AI system beyond what the original provider specified",
+        "next_key": "HR1",
+        "is_terminal": false,
+        "obligations": ["become_provider"],
+        "flags": ["become_provider"],
+        "keywords": ["change intended purpose", "repurpose AI", "new use case", "different application", "use AI for something else", "extend use", "new domain", "modify purpose", "changed what AI is for", "out-of-scope use"]
+      },
+      {
+        "value": "substantial_modification",
+        "label": "I have made a substantial modification to the AI system (e.g., retraining, significant architectural change, major update affecting compliance)",
+        "next_key": "HR1",
+        "is_terminal": false,
+        "obligations": ["become_provider"],
+        "flags": ["become_provider"],
+        "keywords": ["substantial modification", "retrain model", "fine-tune", "significant change", "major update", "architectural change", "modify AI system", "update AI", "technical modification", "change model"]
+      },
+      {
+        "value": "none_of_the_above",
+        "label": "None of the above — I have not modified the system, changed its purpose, or marketed it under my own name",
+        "next_key": "HR1",
+        "is_terminal": false,
+        "obligations": [],
+        "flags": [],
+        "keywords": ["no modification", "not modified", "as-is", "unchanged", "unmodified", "original system", "no changes", "third-party AI as provided", "none of these", "no rebranding"]
+      }
+    ]
+  },
+  "preconditions": null,
+  "linked_rule_chunk": null,
+  "linked_articles": [25],
+  "is_terminal": false
+}
