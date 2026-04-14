@@ -41,11 +41,12 @@ public class Stage2Submission {
     private UUID sessionId;
 
     /**
-     * FK to {@code annex_iv_sections.section_number} — stored as Integer.
+     * FK to {@code annex_iv_sections.section_number} — stored as Short to
+     * match the {@code SMALLINT} column type (Hibernate 7 validates strictly).
      * Combined with {@code sessionId} the pair is UNIQUE in the database.
      */
     @Column(name = "section_number", nullable = false)
-    private Integer sectionNumber;
+    private Short sectionNumber;
 
     /**
      * Submission mode: {@code "upload"} or {@code "qa"}.
@@ -125,7 +126,7 @@ public class Stage2Submission {
 
     protected Stage2Submission() { }
 
-    public Stage2Submission(UUID sessionId, Integer sectionNumber, String mode) {
+    public Stage2Submission(UUID sessionId, Short sectionNumber, String mode) {
         this.sessionId = sessionId;
         this.sectionNumber = sectionNumber;
         this.mode = mode;
@@ -141,8 +142,8 @@ public class Stage2Submission {
     public UUID getSessionId() { return sessionId; }
     public void setSessionId(UUID sessionId) { this.sessionId = sessionId; }
 
-    public Integer getSectionNumber() { return sectionNumber; }
-    public void setSectionNumber(Integer sectionNumber) { this.sectionNumber = sectionNumber; }
+    public Short getSectionNumber() { return sectionNumber; }
+    public void setSectionNumber(Short sectionNumber) { this.sectionNumber = sectionNumber; }
 
     public String getMode() { return mode; }
     public void setMode(String mode) { this.mode = mode; }

@@ -28,9 +28,11 @@ public class AnnexIvSection {
     /**
      * Annex IV section number (1–9). UNIQUE in the database.
      * Referenced directly by {@code stage2_submissions.section_number}.
+     * Mapped as {@code Short} to match the {@code SMALLINT} column type —
+     * Hibernate 7 validates JDBC type codes strictly (int2 ≠ int4).
      */
     @Column(name = "section_number", nullable = false)
-    private Integer sectionNumber;
+    private Short sectionNumber;
 
     @Column(name = "section_key", nullable = false, length = 40)
     private String sectionKey;
@@ -70,7 +72,7 @@ public class AnnexIvSection {
 
     protected AnnexIvSection() { }
 
-    public AnnexIvSection(Integer sectionNumber, String sectionKey,
+    public AnnexIvSection(Short sectionNumber, String sectionKey,
                           String displayTitle, String instructions) {
         this.sectionNumber = sectionNumber;
         this.sectionKey = sectionKey;
@@ -85,8 +87,8 @@ public class AnnexIvSection {
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 
-    public Integer getSectionNumber() { return sectionNumber; }
-    public void setSectionNumber(Integer sectionNumber) { this.sectionNumber = sectionNumber; }
+    public Short getSectionNumber() { return sectionNumber; }
+    public void setSectionNumber(Short sectionNumber) { this.sectionNumber = sectionNumber; }
 
     public String getSectionKey() { return sectionKey; }
     public void setSectionKey(String sectionKey) { this.sectionKey = sectionKey; }

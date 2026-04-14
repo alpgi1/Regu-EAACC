@@ -31,7 +31,7 @@ public interface Stage2SubmissionRepository extends JpaRepository<Stage2Submissi
      * Find the submission for a specific section within a session.
      * The pair (sessionId, sectionNumber) is UNIQUE in the database.
      */
-    Optional<Stage2Submission> findBySessionIdAndSectionNumber(UUID sessionId, Integer sectionNumber);
+    Optional<Stage2Submission> findBySessionIdAndSectionNumber(UUID sessionId, Short sectionNumber);
 
     /**
      * Find all submissions in a given analysis status, ordered oldest first.

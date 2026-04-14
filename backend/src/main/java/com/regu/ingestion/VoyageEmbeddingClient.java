@@ -37,10 +37,9 @@ public class VoyageEmbeddingClient {
     private final RestClient restClient;
 
     public VoyageEmbeddingClient(
-            @Value("${regu.ingestion.voyage-api-key}") String apiKey,
-            RestClient.Builder builder) {
-        this.apiKey      = apiKey;
-        this.restClient  = builder.baseUrl(BASE_URL).build();
+            @Value("${regu.ingestion.voyage-api-key}") String apiKey) {
+        this.apiKey     = apiKey;
+        this.restClient = RestClient.builder().baseUrl(BASE_URL).build();
     }
 
     /**

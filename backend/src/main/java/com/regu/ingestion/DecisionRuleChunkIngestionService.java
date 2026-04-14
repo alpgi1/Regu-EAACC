@@ -36,19 +36,18 @@ public class DecisionRuleChunkIngestionService {
 
     private static final Logger log = LoggerFactory.getLogger(DecisionRuleChunkIngestionService.class);
 
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     private final NamedParameterJdbcTemplate jdbc;
     private final VoyageEmbeddingClient      voyageClient;
-    private final ObjectMapper               objectMapper;
     private final Path                       rulesDir;
 
     public DecisionRuleChunkIngestionService(
             NamedParameterJdbcTemplate jdbc,
             VoyageEmbeddingClient voyageClient,
-            ObjectMapper objectMapper,
             @Value("${regu.ingestion.corpus-root}") String corpusRoot) {
         this.jdbc         = jdbc;
         this.voyageClient = voyageClient;
-        this.objectMapper = objectMapper;
         this.rulesDir     = Path.of(corpusRoot).resolve("decision_rules/fli_compliance_checker");
     }
 
@@ -74,7 +73,7 @@ public class DecisionRuleChunkIngestionService {
         List<String>   ruleIds = new ArrayList<>(files.size());
 
         for (Path file : files) {
-            JsonNode node = objectMapper.readTree(file.toFile());
+            JsonNode node = OBJECT_MAPPER.readTree(file.toFile());
             nodes.add(node);
             ruleIds.add(node.get("rule_id").asText());
         }

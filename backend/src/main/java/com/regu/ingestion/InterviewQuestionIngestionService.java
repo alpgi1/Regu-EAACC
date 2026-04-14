@@ -44,16 +44,15 @@ public class InterviewQuestionIngestionService {
 
     private static final Logger log = LoggerFactory.getLogger(InterviewQuestionIngestionService.class);
 
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
     private final NamedParameterJdbcTemplate jdbc;
-    private final ObjectMapper               objectMapper;
     private final Path                       questionsDir;
 
     public InterviewQuestionIngestionService(
             NamedParameterJdbcTemplate jdbc,
-            ObjectMapper objectMapper,
             @Value("${regu.ingestion.corpus-root}") String corpusRoot) {
         this.jdbc         = jdbc;
-        this.objectMapper = objectMapper;
         this.questionsDir = Path.of(corpusRoot).resolve("interview_questions/stage1");
     }
 
@@ -77,7 +76,7 @@ public class InterviewQuestionIngestionService {
         List<String>   keys  = new ArrayList<>(files.size());
 
         for (Path file : files) {
-            JsonNode node = objectMapper.readTree(file.toFile());
+            JsonNode node = OBJECT_MAPPER.readTree(file.toFile());
             nodes.add(node);
             keys.add(node.get("question_key").asText());
         }
@@ -121,7 +120,7 @@ public class InterviewQuestionIngestionService {
 
         Map<String, String> questionKeyToRef = new LinkedHashMap<>();
         for (Path file : files) {
-            JsonNode node = objectMapper.readTree(file.toFile());
+            JsonNode node = OBJECT_MAPPER.readTree(file.toFile());
             String   key  = node.get("question_key").asText();
             JsonNode ref  = node.get("linked_rule_chunk_ref");
             if (ref != null && !ref.isNull()) {
@@ -208,7 +207,7 @@ public class InterviewQuestionIngestionService {
                 .addValue("section",        node.get("section").asText())
                 .addValue("displayText",    node.get("display_text").asText())
                 .addValue("hintText",       textOrNull(node, "hint_text"))
-                .addValue("answers",        objectMapper.writeValueAsString(node.get("answers")))
+                .addValue("answers",        OBJECT_MAPPER.writeValueAsString(node.get("answers")))
                 .addValue("preconditions",  jsonOrNull(node, "preconditions"))
                 .addValue("linkedArticles", DecisionRuleChunkIngestionService.formatIntArray(node.get("linked_articles")))
                 .addValue("isTerminal",     node.get("is_terminal").asBoolean());
@@ -225,7 +224,7 @@ public class InterviewQuestionIngestionService {
             throws com.fasterxml.jackson.core.JsonProcessingException {
         JsonNode val = node.get(field);
         if (val == null || val.isNull()) return null;
-        return objectMapper.writeValueAsString(val);
+        return OBJECT_MAPPER.writeValueAsString(val);
     }
 
     // ── Result record ────────────────────────────────────────────────────

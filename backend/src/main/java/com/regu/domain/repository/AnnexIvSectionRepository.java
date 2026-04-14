@@ -21,7 +21,7 @@ public interface AnnexIvSectionRepository extends JpaRepository<AnnexIvSection, 
      * Find a section by its Annex IV section number (1–9).
      * Used to validate and enrich Stage 2 submissions.
      */
-    Optional<AnnexIvSection> findBySectionNumber(Integer sectionNumber);
+    Optional<AnnexIvSection> findBySectionNumber(Short sectionNumber);
 
     /**
      * Find a section by its stable section key (e.g. {@code "annex_iv_s1"}).
