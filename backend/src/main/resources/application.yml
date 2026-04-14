@@ -40,3 +40,9 @@ regu:
   service:
     name: regu-backend
     version: 0.1.0
+  ingestion:
+    # Path to the corpus/ directory relative to the working directory (backend/).
+    # Override with REGU_CORPUS_ROOT env var when running from a different location.
+    corpus-root: ${REGU_CORPUS_ROOT:../corpus}
+    # Voyage AI API key — required when running with the 'ingest' profile.
+    voyage-api-key: ${VOYAGE_API_KEY:}
