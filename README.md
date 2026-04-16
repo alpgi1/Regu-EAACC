@@ -2,180 +2,126 @@
 
 An autonomous risk and compliance engine for the EU AI Act (effective 2 August 2026). REGU analyzes AI system documentation and produces structured legal compliance reports with citations to the official legal text.
 
-**Status:** Phase 1 — Foundation complete. The backend runs and connects to PostgreSQL, but no business logic or AI features exist yet.
+**Current Status:** Phase 3.2 — EU AI Act legal chunk ingestion pipeline complete.
 
-## What REGU will do (when complete)
+## 🚀 Project Overview
 
-- Accept a natural-language description or uploaded document (PDF or DOCX) describing an AI system
-- Classify the system under the EU AI Act risk tiers: Unacceptable, High, Limited, or Minimal
-- Cite the specific articles, annex points, and paragraphs that justify the classification
-- List the concrete obligations that apply (risk management, data governance, human oversight, etc.)
-- Produce a structured compliance report with full citations traceable to the source legal text
+Target user: EU startup founder asking *"am I in trouble, and what do I need to do?"*
 
-## What exists today (Phase 1)
+REGU accepts a natural-language description or uploaded document (PDF/DOCX) describing an AI system and produces a structured legal compliance report under the EU AI Act.
 
-- Spring Boot 4 backend running on Java 21
-- PostgreSQL 17 with the pgvector extension, managed via Docker Compose
-- Flyway database migrations (V1 enables pgvector)
-- Environment-aware configuration (dev and prod profiles)
-- Global exception handler with a stable JSON error response shape
-- A health check endpoint at `/api/v1/health`
+### Key Principles
+1. **Citation mandatory** — every claim in the report traces to a chunk ID; no uncited sentences.
+2. **Law-primary** — legal text is authoritative; use cases and guides serve it, never override it.
+3. **Fail-safe not fail-silent** — low confidence results are flagged for manual review.
+4. **Versioned corpus** — every chunk carries source, date, version, and status metadata.
 
-No AI, embedding, retrieval, or report logic exists yet. Those are added in Phases 3 through 6.
+## 🛠 Tech Stack
 
-## Tech stack
+| Concern | Choice |
+|---|---|
+| **Language** | Java 21 |
+| **Framework** | Spring Boot 4.0.5 |
+| **Build** | Maven Wrapper (`./mvnw`) |
+| **Database** | PostgreSQL 17 + pgvector 0.8.2 |
+| **Migrations** | Flyway 11.14.1 (manually configured) |
+| **ORM** | Spring Data JPA (for domain tables) |
+| **Embeddings** | Voyage `voyage-3-large` (1024 dims) |
+| **Classification LLM** | Gemini 2.5 Flash |
+| **Reasoning LLM** | Claude Sonnet 4.6 |
+| **LLM Framework** | Spring AI 2.0 |
+| **Frontend** | React 19 + TypeScript + Vite (Phase 7) |
+| **Dev Infra** | Docker Compose |
 
-| Layer | Technology |
-|-------|-----------|
-| Language | Java 21 |
-| Framework | Spring Boot 4.0.x |
-| Build tool | Maven (via Maven Wrapper) |
-| Database | PostgreSQL 17 with pgvector extension |
-| Migrations | Flyway |
-| Containerization | Docker Compose (development database only) |
+## 📐 RAG Architecture
 
-The AI layer (Spring AI 2.0, Claude Sonnet 4.6, Gemini 2.5 Flash, Voyage embeddings) and the React frontend are planned for later phases and are not present in the current codebase.
+Four distinct vector tables for precise retrieval:
 
-## Project structure
+| Table | Content | Search Method |
+|---|---|---|
+| `legal_chunks` | EU AI Act full text | Hybrid (Vector + Keyword) |
+| `use_case_chunks` | Curated scenarios | Pure Vector |
+| `guide_chunks` | Commission guidance | Vector + Metadata Filter |
+| `decision_rule_chunks` | FLI Compliance logic | Vector + Metadata Filter |
+
+## 📁 Repository Structure
 
 ```
 regu/
-├── backend/                       Spring Boot 4 application
-│   ├── src/main/java/com/regu/   Java source code (packages scaffolded for all phases)
-│   ├── src/main/resources/        Config files, Flyway migrations
-│   ├── src/test/java/             Tests
-│   ├── compose.yaml               Docker Compose for local PostgreSQL
-│   ├── pom.xml                    Maven build configuration
-│   └── .env.example               Environment variable template
-├── frontend/                      Placeholder for the React frontend (Phase 7)
-├── docs/                          Project documentation and verification records
-└── README.md                      This file
+├── backend/          Spring Boot 4 application
+│   ├── src/main/java/com/regu/   Java source code
+│   ├── src/main/resources/        Config & Flyway migrations (V1-V9)
+│   └── compose.yaml               Docker Compose for local DB
+├── corpus/           Ingestion source files (JSON)
+│   ├── legal/raw_extraction/      EU AI Act batches
+│   ├── decision_rules/            FLI flowchart logic
+│   └── interview_questions/       Stage 1 question bank
+├── frontend/         Placeholder (Phase 7)
+└── docs/             Verification records
 ```
 
-## Getting started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Java 21 or newer (verify with `java -version`)
-- Docker Desktop or Docker Engine with the Compose plugin
-- Git
-- `curl` for health check verification (usually preinstalled)
+- **Java 21+** (e.g., OpenJDK 25.0.2)
+- **Docker Desktop**
+- **Voyage AI API Key** (for ingestion)
 
-You do NOT need a global Maven installation. The project uses the Maven Wrapper (`./mvnw`) which downloads the correct Maven version automatically.
-
-### 1. Clone the repository
+### 1. Start the Environment
 
 ```bash
-git clone <repository-url> regu
-cd regu
-```
-
-### 2. Start the database
-
-```bash
-cd backend
+cd regu/backend
 docker compose up -d
 ```
 
-Wait for the container to become healthy (usually 10–15 seconds). Verify with:
+### 2. Run Ingestion Pipeline
+
+To populate the vector database with the EU AI Act text, decision rules, and interview questions:
 
 ```bash
-docker compose ps
+export VOYAGE_API_KEY=your_key_here
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev,ingest
 ```
 
-The `regu-postgres` container should show status `Up` and health `healthy`.
+**Ingestion Steps:**
+1. Legal chunks (885 chunks)
+2. Decision rule chunks (40 rules)
+3. Interview questions (15 questions)
+4. Foreign key back-fills
 
-### 3. Run the backend
+### 3. Start the Backend
 
-From the `backend` directory:
+For normal development (without ingestion):
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-The application starts on port 8080. On the first run, Flyway applies the `V1__enable_pgvector.sql` migration. On subsequent runs, Flyway reports "Schema is up to date. No migration necessary."
+Check health: `curl http://localhost:8080/api/v1/health`
 
-### 4. Verify the health endpoint
+## 🧠 Development Gotchas
 
-In another terminal:
+- **Spring Boot 4 / Flyway:** Autoconfiguration was removed; we use a manual `FlywayConfig` and `JpaOrderingConfig` to ensure Migrations run before Hibernate validation.
+- **Strict Typing:** PostgreSQL `SMALLINT` must map to Java `Short` (Hibernate 7 requirement).
+- **JSONB Mapping:** JPA entities use `@JdbcTypeCode(SqlTypes.JSON)` for String-to-JSONB mapping.
+- **Idempotency:** Ingestion is safe to re-run. Existing chunks are skipped based on `source_chunk_id` or `rule_id`.
 
-```bash
-curl http://localhost:8080/api/v1/health
-```
+## 🗺 Roadmap
 
-Expected response:
+- [x] **Phase 1** — Foundation & Skeleton
+- [x] **Phase 2** — Data Model & Vector Tables (V1-V7)
+- [x] **Phase 3.1** — Stage 1 Interview & FLI Ingestion
+- [x] **Phase 3.2** — EU AI Act Legal Text Ingestion (V9)
+- [ ] **Phase 4** — Retrieval Layer (Hybrid Search)
+- [ ] **Phase 5** — LLM Orchestration
+- [ ] **Phase 6** — Report Generation
+- [ ] **Phase 7** — React Frontend
 
-```json
-{
-  "status": "UP",
-  "service": "regu-backend",
-  "version": "0.1.0",
-  "timestamp": "2026-04-11T12:34:56.789Z"
-}
-```
-
-If you see this response, Phase 1 is working correctly on your machine.
-
-## Configuration profiles
-
-The backend supports two Spring profiles:
-
-- `dev` (default) — verbose logging, formatted SQL output, relaxed for local development
-- `prod` — minimal logging, no SQL output, expects all sensitive values from environment variables
-
-To run with the production profile locally (useful for verifying env-var-based config):
-
-```bash
-SPRING_PROFILES_ACTIVE=prod ./mvnw spring-boot:run
-```
-
-## Development commands
-
-From the `backend` directory:
-
-| Command | Purpose |
-|---------|---------|
-| `./mvnw clean compile` | Compile the backend |
-| `./mvnw spring-boot:run` | Start the application (dev profile) |
-| `./mvnw test` | Run the test suite |
-| `./mvnw clean package` | Build an executable JAR in `target/` |
-| `docker compose up -d` | Start the PostgreSQL container |
-| `docker compose down` | Stop the PostgreSQL container (data persists in the volume) |
-| `docker compose down -v` | Stop and DELETE all database data |
-
-## Error response format
-
-Every error produced by the backend follows this stable JSON shape:
-
-```json
-{
-  "timestamp": "2026-04-11T12:34:56.789Z",
-  "status": 404,
-  "error": "Not Found",
-  "message": "No endpoint found for GET /api/v1/nonexistent",
-  "path": "/api/v1/nonexistent",
-  "details": null
-}
-```
-
-The `details` field is only present for validation errors and lists field-level problems. For all other errors it is omitted from the JSON response entirely.
-
-## Roadmap
-
-- [x] **Phase 1** — Foundation: Spring Boot 4, PostgreSQL, pgvector, Flyway, health endpoint, exception handler
-- [ ] **Phase 2** — Data model and vector tables
-- [ ] **Phase 3** — Ingestion pipeline (EU AI Act, use case examples, business guides)
-- [ ] **Phase 4** — Retrieval layer (vector + keyword hybrid search)
-- [ ] **Phase 5** — LLM orchestration (Gemini + Claude routing, cross-check validation)
-- [ ] **Phase 6** — Report generation and REST API
-- [ ] **Phase 7** — React frontend
-- [ ] **Phase 8** — Evaluation harness (30 golden test scenarios)
-- [ ] **Phase 9** — Polish and deployment
-
-## License
+## 📄 License
 
 MIT — see [LICENSE](LICENSE).
 
 ---
 
-**Disclaimer:** REGU is a decision-support tool. It is not a substitute for qualified legal advice. The EU AI Act is a complex regulation; always consult a qualified legal professional for compliance decisions that carry regulatory or financial risk.
+**Disclaimer:** REGU is a decision-support tool. It is not a substitute for qualified legal advice. The EU AI Act is a complex regulation; always consult a legal professional.

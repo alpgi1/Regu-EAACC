@@ -10,27 +10,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * {@code corpus/legal/raw_extraction/batch_NN_*.json} and contain a
  * JSON array of objects conforming to this schema.
  *
- * <p>Field mapping (JSON → Java):
+ * <p>Key JSON → Java field mappings:
  * <ul>
- *   <li>{@code source_chunk_id} — stable ID for idempotent re-ingestion
- *       (e.g. {@code eu_ai_act_recital_001}, {@code eu_ai_act_art10_para2})</li>
- *   <li>{@code chunk_type} — granular type: {@code article_paragraph},
- *       {@code annex_point}, {@code recital_text}, {@code definition_entry}</li>
- *   <li>{@code document_type} — coarse type stored in {@code legal_chunks}:
- *       {@code article}, {@code annex}, {@code recital}, {@code definition}</li>
- *   <li>{@code content} — raw paragraph text shown to the LLM at retrieval</li>
+ *   <li>{@code article_title} → {@code title} (article title string)</li>
+ *   <li>{@code source_document} → {@code source} (source document name)</li>
+ *   <li>{@code chapter_number} → {@code chapterNumber} as {@code String}
+ *       (Roman numerals: "I"–"X"); converted to {@code int} by the service
+ *       before DB insertion</li>
  * </ul>
  *
- * <p>All nullable fields are represented as {@code null} in JSON (not omitted)
- * so that Jackson deserialization is unambiguous. Unknown fields are ignored.
+ * <p>{@code source_chunk_id} is not present in the JSON files — the
+ * {@link LegalChunkIngestionService} generates it from structural metadata
+ * for idempotent re-ingestion.
+ *
+ * <p>Unknown fields are ignored so new extraction fields do not break
+ * existing ingestion runs.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record LegalChunkDto(
-
-        // ── Idempotency key ────────────────────────────────────────────────
-
-        @JsonProperty("source_chunk_id")
-        String sourceChunkId,
 
         // ── Content ────────────────────────────────────────────────────────
 
@@ -39,7 +36,7 @@ public record LegalChunkDto(
 
         // ── Type classification ────────────────────────────────────────────
 
-        /** Granular: article_paragraph | annex_point | recital_text | definition_entry */
+        /** Granular: article_paragraph | annex_point | recital | definition_entry */
         @JsonProperty("chunk_type")
         String chunkType,
 
@@ -60,14 +57,18 @@ public record LegalChunkDto(
         @JsonProperty("paragraph_number")
         Integer paragraphNumber,
 
-        /** Article title (e.g. "Data and data governance") */
-        @JsonProperty("title")
+        /** Article title (JSON field: article_title) */
+        @JsonProperty("article_title")
         String title,
 
         // ── Chapter / section fields ───────────────────────────────────────
 
+        /**
+         * Chapter identifier as Roman numeral string (JSON: "I"–"X").
+         * Stored as INTEGER in the DB after conversion.
+         */
         @JsonProperty("chapter_number")
-        Integer chapterNumber,
+        String chapterNumber,
 
         @JsonProperty("chapter_title")
         String chapterTitle,
@@ -84,11 +85,11 @@ public record LegalChunkDto(
         @JsonProperty("annex_number")
         String annexNumber,
 
-        /** Point identifier within the annex (e.g. "1", "2a") */
+        /** Point identifier within the annex (e.g. "1", "2a", "intro") */
         @JsonProperty("annex_point")
         String annexPoint,
 
-        /** Named section within the annex (e.g. "Section A") */
+        /** Named section within the annex (e.g. "A", "B", "1", "2") */
         @JsonProperty("annex_section")
         String annexSection,
 
@@ -102,7 +103,8 @@ public record LegalChunkDto(
 
         // ── Source / versioning ────────────────────────────────────────────
 
-        @JsonProperty("source")
+        /** Source document name (JSON field: source_document) */
+        @JsonProperty("source_document")
         String source,
 
         @JsonProperty("publish_date")
