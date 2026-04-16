@@ -1,0 +1,274 @@
+[
+  {
+    "use_case_id": "UC_HR_A1",
+    "metadata": {
+      "sector": "HR & Staffing",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Deployer",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A Recruitment Process Outsourcing (RPO) provider utilizes an AI algorithm for automated resume scanning and candidate ranking. The system evaluates profiles to determine job suitability and rank applicants, classifying it as a high-risk application in the employment sector.",
+    "compliance_roadmap": [
+      "Establish and maintain a human oversight technical measure to ensure no final rejection occurs without human validation.",
+      "Implement a continuous monitoring process to detect and mitigate algorithmic biases in input data.",
+      "Provide transparency by informing all candidates that they are being evaluated by an AI-driven system.",
+      "Configure and maintain automated system logs for a minimum duration of six months to ensure traceability."
+    ]
+  },
+  {
+    "use_case_id": "UC_HR_A2",
+    "metadata": {
+      "sector": "HR & Staffing",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Deployer",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A staffing agency deploys an AI-powered chatbot to interact with job applicants and perform preliminary screening. The chatbot autonomously filters out candidates based on pre-qualification questions, triggering high-risk compliance obligations.",
+    "compliance_roadmap": [
+      "Verify with the AI vendor that the system has successfully undergone the required conformity assessments.",
+      "Secure and review the technical documentation and instructions for use provided by the AI provider.",
+      "Define and implement clear protocols for human intervention during the automated screening process.",
+      "Ensure candidates are explicitly informed of the AI interaction and provide explanations for automated decisions upon request."
+    ]
+  },
+  {
+    "use_case_id": "UC_HR_A3",
+    "metadata": {
+      "sector": "HR & Staffing",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Deployer",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A workforce platform or Vendor Management System uses AI for algorithmic matching of freelance workers to assignments. The system performs profiling by evaluating performance history, location, and reliability to predict work suitability.",
+    "compliance_roadmap": [
+      "Conduct mandatory consultations with workers and their representatives prior to the deployment of the AI matching system.",
+      "Monitor the system output regularly for demographic or geographic biases to prevent discriminatory matching.",
+      "Verify that the datasets used for matching are representative and free of historical bias.",
+      "Appoint staff with verified AI literacy to oversee and override algorithmic matching decisions when necessary."
+    ]
+  },
+  {
+    "use_case_id": "UC_HR_A4",
+    "metadata": {
+      "sector": "HR & Staffing",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Deployer",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "An Employer of Record (EOR) implements AI monitoring to track remote worker productivity and active hours. The system identifies underperformance to assist in contract termination decisions, impacting the fundamental rights of employees.",
+    "compliance_roadmap": [
+      "Apply rigorous human oversight to validate AI-generated productivity flags before initiating any termination or disciplinary action.",
+      "Provide detailed information to workers regarding the AI's logic, monitoring scope, and its role in employment-related decisions.",
+      "Establish a feedback loop to identify and correct erroneous or discriminatory patterns in behavior tracking.",
+      "Ensure the system's operation is limited to the minimum necessary for the stated productivity assessment purpose."
+    ]
+  },
+  {
+    "use_case_id": "UC_HR_A5",
+    "metadata": {
+      "sector": "HR & Staffing",
+      "ai_act_classification": "Minimal/No Risk",
+      "legal_basis": "Article 6(3)",
+      "actor_role": "Deployer",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "An HR agency uses AI tools for the narrow procedural task of translating and formatting CVs into standardized templates. Since the system does not perform scoring or profiling, it qualifies for a high-risk exemption under the AI Act.",
+    "compliance_roadmap": [
+      "Draft and maintain internal documentation justifying the assessment that the system falls under the Article 6(3) exemption.",
+      "Monitor for any updates to system functionality that might trigger profiling or scoring, which would void the exemption.",
+      "Check for registration requirements in the EU database for high-risk AI systems (even if exempted from other high-risk obligations).",
+      "Ensure the tool is used strictly for preparatory tasks as defined in the documented assessment."
+    ]
+  },
+  {
+    "use_case_id": "UC_ENERGY_B1",
+    "metadata": {
+      "sector": "Energy",
+      "ai_act_classification": "Exempt/R&D",
+      "legal_basis": "Article 57 / Article 58",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": true
+    },
+    "searchable_context": "A start-up is developing an innovative AI system for urban energy grid optimization and needs to conduct real-world testing. During this R&D phase, the company utilizes regulatory sandboxes to navigate complex legal requirements while benefiting from SME-specific innovation support.",
+    "compliance_roadmap": [
+      "Submit an application to the relevant National AI Regulatory Sandbox for priority access.",
+      "Engage with national competent authorities to receive guidance on legal certainty and regulatory requirements.",
+      "Utilize the sandbox testing environment to generate and preserve documentation for future conformity assessments.",
+      "Ensure the system's real-world testing remains within the sandbox's specific legal and temporal boundaries."
+    ]
+  },
+  {
+    "use_case_id": "UC_MANUF_B2",
+    "metadata": {
+      "sector": "Manufacturing",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III / Article 6(1)",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": true
+    },
+    "searchable_context": "A medium-sized enterprise manufactures AI-driven safety components for machinery, classifying the product as a high-risk system. The business seeks to fulfill extensive technical documentation requirements using simplified pathways designed to reduce administrative costs for SMEs.",
+    "compliance_roadmap": [
+      "Identify and download the simplified technical documentation templates provided by the European Commission for SMEs.",
+      "Compile required technical data and system architecture details into the simplified forms to meet transparency obligations.",
+      "Submit the completed simplified documentation to a notified body or national authority for the conformity assessment.",
+      "Establish a quality management system proportional to the size and scale of the medium-sized enterprise."
+    ]
+  },
+  {
+    "use_case_id": "UC_TECH_B3",
+    "metadata": {
+      "sector": "Cross-Sector / SME",
+      "ai_act_classification": "Transparency Risk",
+      "legal_basis": "Article 53 / Article 55",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": true
+    },
+    "searchable_context": "A small European tech company is developing a non-systemic General-Purpose AI (GPAI) model for downstream integration. The provider must comply with transparency and copyright laws through proportional rules tailored for smaller market participants.",
+    "compliance_roadmap": [
+      "Draft technical documentation and instructions for use for downstream providers using the model.",
+      "Implement a policy to respect Union copyright law, including the identification and respect of rights reservations.",
+      "Publish a sufficiently detailed summary about the content used for training the GPAI model.",
+      "Align internal compliance monitoring with the specific Key Performance Indicators (KPIs) set for SMEs under the Code of Practice."
+    ]
+  },
+  {
+    "use_case_id": "UC_CROSS_B4",
+    "metadata": {
+      "sector": "Cross-Sector / SME",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Article 71",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": true
+    },
+    "searchable_context": "A microenterprise faces regulatory investigation due to administrative errors in CE marking and registration of their high-risk AI product. The AI Act provides specific protections for micro-enterprises to ensure that administrative fines are proportionate and not financially ruinous.",
+    "compliance_roadmap": [
+      "Initiate immediate corrective actions to rectify the CE marking and registration errors with the market surveillance authority.",
+      "Document the administrative nature of the breach to demonstrate a lack of intent or systemic negligence.",
+      "Invoke the SME fine calculation rules to ensure the penalty is capped at the lower fixed amount or percentage of turnover.",
+      "Review internal compliance procedures to prevent future administrative lapses in the EU database registration process."
+    ]
+  },
+  {
+    "use_case_id": "UC_FIN_C1",
+    "metadata": {
+      "sector": "FinTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Both (Provider & Deployer)",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A large EU bank develops and utilizes an internal AI system to assess creditworthiness for individual loan applications. The system is integrated into existing financial risk management and governance frameworks (CRD/CRR) to achieve compliance synergy.",
+    "compliance_roadmap": [
+      "Integrate AI risk management processes into existing Capital Requirements Directive (CRD) and Capital Requirements Regulation (CRR) frameworks.",
+      "Update internal governance structures to include AI-specific technical documentation and risk assessment protocols.",
+      "Ensure the in-house system meets provider-level standards for transparency and data quality while maintaining deployer-level monitoring.",
+      "Document the specific adjustments made to the system structure to bridge the gap between financial legislation and AI Act requirements."
+    ]
+  },
+  {
+    "use_case_id": "UC_FIN_C2",
+    "metadata": {
+      "sector": "FinTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Distributor",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A payment institution acquires a third-party AI tool to evaluate user credit scores and automate rejection decisions. Due to a lack of direct regulatory synergies, the institution must implement specific AI Act protections for consumers and human oversight.",
+    "compliance_roadmap": [
+      "Implement robust human oversight protocols to review automated credit rejections and ensure manual intervention is possible.",
+      "Establish a clear mechanism for fulfilling the consumer's 'Right to Disclose' regarding automated decision-making logic.",
+      "Adapt existing Digital Operational Resilience Act (DORA) or Consumer Credit Directive (CCD) frameworks to address unique AI Act obligations.",
+      "Verify that the third-party provider has fulfilled its obligations before the system is made available to users."
+    ]
+  },
+  {
+    "use_case_id": "UC_FIN_C3",
+    "metadata": {
+      "sector": "FinTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Article 65",
+      "actor_role": "Both (Provider & Deployer)",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A credit provider prepares to launch a high-risk AI credit rating tool, utilizing a legal derogation that allows banking regulations to supersede AI Act QMS requirements. This synergy avoids regulatory duplication by relying on existing sectoral quality and monitoring standards.",
+    "compliance_roadmap": [
+      "Document the reliance on the AI Act's derogation/synergy clause for the financial sector to justify the absence of a standalone AI QMS.",
+      "Map existing banking quality management processes to AI Act requirements to ensure all high-risk safety thresholds are covered.",
+      "Utilize existing sectoral post-market monitoring events to satisfy AI Act monitoring obligations for distributors/deployers.",
+      "Ensure that the established financial governance frameworks are updated to reflect the operational specificities of the AI credit rating tool."
+    ]
+  },
+  {
+    "use_case_id": "UC_HEALTH_D1",
+    "metadata": {
+      "sector": "HealthTech",
+      "ai_act_classification": "Exempt/R&D",
+      "legal_basis": "Article 2(6)",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": true
+    },
+    "searchable_context": "A HealthTech startup utilizes unsupervised learning AI models to predict new disease treatments and analyze chemical compounds in a laboratory setting. This system is used exclusively for scientific research and development purposes, qualifying it for a high-risk regulatory exemption.",
+    "compliance_roadmap": [
+      "Maintain detailed documentation of all training data sources and analytical decisions to ensure scientific reproducibility.",
+      "Ensure data governance and documentation practices align with medical GxP (Good Practice) standards for future clinical validation.",
+      "Establish a clear internal firewall to ensure the model remains in a research setting and is not used for clinical decisions without a new assessment.",
+      "Implement traceable and verifiable logging of model iterations to facilitate future regulatory approval processes for drug candidates."
+    ]
+  },
+  {
+    "use_case_id": "UC_HEALTH_D2",
+    "metadata": {
+      "sector": "HealthTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Article 6(1) / Annex I",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A healthcare company develops an AI-driven tumor diagnosis system that analyzes radiological images, classified as a safety component under the EU Medical Devices Regulation (MDR). The dual-regulated nature of the system requires complex third-party conformity assessments.",
+    "compliance_roadmap": [
+      "Execute a combined conformity assessment procedure that satisfies both the AI Act requirements and Medical Device Regulation (MDR) standards.",
+      "Assemble an interdisciplinary team comprising software engineers and medical experts to guide the system's design and risk assessment.",
+      "Conduct clinical environment testing to evaluate Human-AI interaction and determine how clinicians trust or reject automated suggestions.",
+      "Validate the system using specific hardware accuracy metrics alongside clinical performance data."
+    ]
+  },
+  {
+    "use_case_id": "UC_HEALTH_D3",
+    "metadata": {
+      "sector": "HealthTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "An AI model is deployed for pharmacovigilance to monitor real-world adverse drug effects through electronic health records. The system requires continuous lifecycle management to address data drift caused by aging populations and evolving medical terminology.",
+    "compliance_roadmap": [
+      "Implement a post-market monitoring system specifically designed to measure 'data drift' and statistical deviations in real-world health data.",
+      "Establish a schedule for regular re-evaluation of model performance at planned intervals to ensure ongoing consistency.",
+      "Develop a retraining pipeline to update the model with representative data once significant drift or false alarm thresholds are met.",
+      "Update the internal Quality Management System (QMS) and risk management protocols iteratively based on lifecycle monitoring results."
+    ]
+  },
+  {
+    "use_case_id": "UC_HEALTH_D4",
+    "metadata": {
+      "sector": "HealthTech",
+      "ai_act_classification": "High-Risk",
+      "legal_basis": "Annex III",
+      "actor_role": "Provider",
+      "sme_privilege_applicable": false
+    },
+    "searchable_context": "A mobile application uses AI to predict medication and insulin dosages based on real-time patient symptoms and blood values. Due to its critical impact on patient safety, the system must adhere to strict transparency and human-centered design requirements.",
+    "compliance_roadmap": [
+      "Translate complex technical metrics and statistical algorithms into plain language instructions for use suitable for non-expert patients.",
+      "Explicitly state the AI's decision-making logic and the specific limitations of the dataset (e.g., age-based testing exclusions) within the app interface.",
+      "Incorporate human-centeredness principles to ensure patients understand the working principles and risks of the dosage predictions.",
+      "Maintain a transparent disclosure regarding the data sources and logic used by the AI to build user trust and ensure safety."
+    ]
+  }
+]
