@@ -169,7 +169,7 @@ public class DecisionRuleChunkIngestionService {
     /**
      * Formats a float[] as a pgvector text literal: {@code [f0,f1,...,fn-1]}.
      */
-    static String formatVector(float[] v) {
+    public static String formatVector(float[] v) {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < v.length; i++) {
             if (i > 0) sb.append(',');
