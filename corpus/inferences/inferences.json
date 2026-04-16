@@ -1,0 +1,443 @@
+[
+    {
+        "requirement_id": "1_a_1",
+        "category": "1_a (Intended Purpose, Provider and Version of the System)",
+        "entity_name": "Intended purpose",
+        "extraction_target": "The specific purpose for which the AI system is intended to be used",
+        "fallback_prompt": "Ask the user to describe the specific problem the AI system solves and its exact intended use case."
+    },
+    {
+        "requirement_id": "1_a_2",
+        "category": "1_a (Intended Purpose, Provider and Version of the System)",
+        "entity_name": "Name of the provider",
+        "extraction_target": "The name of the company/entity that developed the system or places it on the market under its own name",
+        "fallback_prompt": "Ask the user to provide the legal name of the company or entity providing the AI system."
+    },
+    {
+        "requirement_id": "1_a_3",
+        "category": "1_a (Intended Purpose, Provider and Version of the System)",
+        "entity_name": "System version",
+        "extraction_target": "The current version information of the AI system",
+        "fallback_prompt": "Ask the user to specify the current version number or identifier of the AI system."
+    },
+    {
+        "requirement_id": "1_a_4",
+        "category": "1_a (Intended Purpose, Provider and Version of the System)",
+        "entity_name": "Relation to previous versions",
+        "extraction_target": "The relation of the current version to previous versions, modifications made, or differences",
+        "fallback_prompt": "Ask the user to summarize the main differences or modifications from previous versions of the system, or state if it is the first version."
+    },
+    {
+        "requirement_id": "1_b_1",
+        "category": "1_b (Interaction with External Systems)",
+        "entity_name": "Interaction with external hardware",
+        "extraction_target": "How the system interacts with external hardware that is not part of the system itself",
+        "fallback_prompt": "Ask the user to explain if and how the AI system interacts with external hardware like sensors or cameras."
+    },
+    {
+        "requirement_id": "1_b_2",
+        "category": "1_b (Interaction with External Systems)",
+        "entity_name": "Interaction with external software",
+        "extraction_target": "How the system interacts with external software",
+        "fallback_prompt": "Ask the user to describe any integrations with external software (e.g., ERP, CRM) and how data flows between them."
+    },
+    {
+        "requirement_id": "1_b_3",
+        "category": "1_b (Interaction with External Systems)",
+        "entity_name": "Interaction with other AI systems",
+        "extraction_target": "Where applicable, the system's interaction with other AI systems",
+        "fallback_prompt": "Ask the user to detail any interactions or dependencies with other AI systems or third-party models."
+    },
+    {
+        "requirement_id": "1_c_1",
+        "category": "1_c (Software/Firmware Versions and Updates)",
+        "entity_name": "Versions of relevant software or firmware",
+        "extraction_target": "The versions of software or firmware relevant to the operation of the system",
+        "fallback_prompt": "Ask the user to list the relevant software or firmware versions required for the system's operation."
+    },
+    {
+        "requirement_id": "1_c_2",
+        "category": "1_c (Software/Firmware Versions and Updates)",
+        "entity_name": "Version update requirements",
+        "extraction_target": "Requirements and procedures related to version updates",
+        "fallback_prompt": "Ask the user to explain their version control policy and the criteria for future updates."
+    },
+    {
+        "requirement_id": "1_d_1",
+        "category": "1_d (Forms of Placing on the Market)",
+        "entity_name": "Forms of placing on the market or putting into service",
+        "extraction_target": "The form in which the system is placed on the market; e.g., whether it is an API, a downloadable file, or software embedded into hardware",
+        "fallback_prompt": "Ask the user to clarify how the system is delivered to customers (e.g., as an API, SaaS, downloadable software, or embedded in hardware)."
+    },
+    {
+        "requirement_id": "1_e_1",
+        "category": "1_e (Hardware Requirements)",
+        "entity_name": "Hardware intended to run the AI system",
+        "extraction_target": "Description of the hardware on which the AI system is intended/required to run",
+        "fallback_prompt": "Ask the user to specify the hardware or cloud infrastructure required to run the AI system (e.g., local servers, AWS, edge devices)."
+    },
+    {
+        "requirement_id": "1_f_1",
+        "category": "1_f (Physical Features of AI Systems that are Product Components)",
+        "entity_name": "Photographs or illustrations of external features",
+        "extraction_target": "Photographs or illustrations showing the external features of the products",
+        "fallback_prompt": "Ask the user to upload photos or illustrations of the product's external features, or mark as N/A if it is a software-only product."
+    },
+    {
+        "requirement_id": "1_f_2",
+        "category": "1_f (Physical Features of AI Systems that are Product Components)",
+        "entity_name": "Marking of the products",
+        "extraction_target": "The markings and labels on the products",
+        "fallback_prompt": "Ask the user to describe or upload the physical markings and labels on the product, or mark as N/A if not applicable."
+    },
+    {
+        "requirement_id": "1_f_3",
+        "category": "1_f (Physical Features of AI Systems that are Product Components)",
+        "entity_name": "Internal layout of the products",
+        "extraction_target": "The internal layout of the products",
+        "fallback_prompt": "Ask the user to provide technical drawings or descriptions of the product's internal layout, or mark as N/A if not applicable."
+    },
+    {
+        "requirement_id": "1_g_1",
+        "category": "1_g (User Interface - For the Deployer)",
+        "entity_name": "Basic description of the deployer user-interface",
+        "extraction_target": "A basic description of the user-interface provided to the person/entity [deployer] using the system",
+        "fallback_prompt": "Ask the user to describe the user interface, dashboard, or control panel provided to the deployer, or upload UI mockups."
+    },
+    {
+        "requirement_id": "1_h_1",
+        "category": "1_h (Instructions for Use - For the Deployer)",
+        "entity_name": "Instructions for use for the deployer",
+        "extraction_target": "Instructions for use prepared for the person/entity [deployer] operating the system under their own authority",
+        "fallback_prompt": "Ask the user to upload the 'Instructions for Use' or user manual provided to the deployers/customers."
+    },
+    {
+        "requirement_id": "1_h_2",
+        "category": "1_h (Instructions for Use - For the Deployer)",
+        "entity_name": "Basic description of the user-interface (where applicable)",
+        "extraction_target": "Description of the deployer user-interface where applicable - a requirement parallel to 1_g_1",
+        "fallback_prompt": "Ask the user to ensure a basic description of the user interface is included within their instructions for use."
+    },
+    {
+        "requirement_id": "2_a_1",
+        "category": "2_a (Development Methods and Third-Party Tools)",
+        "entity_name": "Methods and steps for development",
+        "extraction_target": "The methods and steps followed for the development of the AI system",
+        "fallback_prompt": "Ask the user to describe the overall lifecycle, methodologies, and specific steps followed during the development of the AI system."
+    },
+    {
+        "requirement_id": "2_a_2",
+        "category": "2_a (Development Methods and Third-Party Tools)",
+        "entity_name": "Use of third-party pre-trained systems or tools",
+        "extraction_target": "Where relevant, the use of pre-trained systems or tools provided by third parties",
+        "fallback_prompt": "Ask the user to list any pre-trained models, external APIs, or third-party tools used in building the system, or mark as N/A if built entirely from scratch."
+    },
+    {
+        "requirement_id": "2_a_3",
+        "category": "2_a (Development Methods and Third-Party Tools)",
+        "entity_name": "Integration or modification of third-party tools",
+        "extraction_target": "How the third-party tools used were integrated or modified by the provider",
+        "fallback_prompt": "Ask the user to explain how they integrated, fine-tuned, or modified the third-party tools and pre-trained models mentioned, or mark as N/A."
+    },
+    {
+        "requirement_id": "2_b_1",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "General logic and algorithms",
+        "extraction_target": "The general logic of the AI system and its algorithms",
+        "fallback_prompt": "Ask the user to explain the core algorithms and the general logic behind how the AI system processes inputs to generate outputs."
+    },
+    {
+        "requirement_id": "2_b_2",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Key design choices, rationale and assumptions",
+        "extraction_target": "The key design choices made, the rationale for these choices, and the assumptions they are based on",
+        "fallback_prompt": "Ask the user to detail their key architectural design choices, the reasons for these choices, and any underlying assumptions made during development."
+    },
+    {
+        "requirement_id": "2_b_3",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Target persons or groups",
+        "extraction_target": "Target audience assumptions regarding the persons or groups of persons on whom the system is intended to be used",
+        "fallback_prompt": "Ask the user to specify the target demographic or specific groups of people the AI system is intended to be used on."
+    },
+    {
+        "requirement_id": "2_b_4",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Main classification choices",
+        "extraction_target": "The main classification choices made by the system",
+        "fallback_prompt": "Ask the user to describe the main classification categories or sorting choices the AI system is designed to make."
+    },
+    {
+        "requirement_id": "2_b_5",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "System optimization goals",
+        "extraction_target": "What the system is designed to optimize for",
+        "fallback_prompt": "Ask the user to define what specific outcomes, functions, or metrics the AI system is designed to optimize (e.g., speed, accuracy, cost reduction)."
+    },
+    {
+        "requirement_id": "2_b_6",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Relevance of parameters",
+        "extraction_target": "The purpose and relevance of the different parameters to each other",
+        "fallback_prompt": "Ask the user to explain the purpose and relevance of the key parameters used in the model to achieve its goals."
+    },
+    {
+        "requirement_id": "2_b_7",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Expected output and output quality",
+        "extraction_target": "Description of the expected output from the system and the quality of this output",
+        "fallback_prompt": "Ask the user to describe the expected output format and the anticipated quality or accuracy of these outputs."
+    },
+    {
+        "requirement_id": "2_b_8",
+        "category": "2_b (Design Specifications and Algorithm Logic)",
+        "entity_name": "Trade-offs for technical compliance",
+        "extraction_target": "Decisions about any possible trade-offs made regarding the technical solutions adopted to comply with the mandatory requirements set out in Chapter III, Section 2",
+        "fallback_prompt": "Ask the user to explain any trade-offs made between technical performance (e.g., speed, accuracy) and compliance requirements (e.g., fairness, robustness, non-discrimination)."
+    },
+    {
+        "requirement_id": "2_c_1",
+        "category": "2_c (System Architecture and Computational Resources)",
+        "entity_name": "System architecture and software components",
+        "extraction_target": "The system architecture explaining how software components build on or feed into each other and integrate into the overall processing",
+        "fallback_prompt": "Ask the user to provide a system architecture description or diagram showing how the software components interact and process data."
+    },
+    {
+        "requirement_id": "2_c_2",
+        "category": "2_c (System Architecture and Computational Resources)",
+        "entity_name": "Computational resources",
+        "extraction_target": "The computational resources used to develop, train, test, and validate the AI system",
+        "fallback_prompt": "Ask the user to detail the computational resources (e.g., GPU hours, cloud infrastructure, hardware types) used to develop, train, and test the AI system."
+    },
+    {
+        "requirement_id": "2_d_1",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "Training methodologies and techniques",
+        "extraction_target": "Datasheets describing the training methodologies and techniques",
+        "fallback_prompt": "Ask the user to upload datasheets or describe the specific methodologies and techniques used to train the AI model."
+    },
+    {
+        "requirement_id": "2_d_2",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "General description of training data sets",
+        "extraction_target": "A general description, scope, and main characteristics of the training data sets used",
+        "fallback_prompt": "Ask the user to provide a general description, the scope, and the main characteristics of the datasets used for training."
+    },
+    {
+        "requirement_id": "2_d_3",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "Provenance of data",
+        "extraction_target": "The provenance of the training data and where it was obtained from",
+        "fallback_prompt": "Ask the user to state the exact provenance of the training data and explicitly list the sources from which the data was obtained."
+    },
+    {
+        "requirement_id": "2_d_4",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "Data acquisition and selection",
+        "extraction_target": "How the data was obtained and selected",
+        "fallback_prompt": "Ask the user to explain the process and criteria used for acquiring, filtering, and selecting the training data."
+    },
+    {
+        "requirement_id": "2_d_5",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "Labelling procedures",
+        "extraction_target": "Data labelling procedures for situations such as supervised learning",
+        "fallback_prompt": "Ask the user to describe the data labelling procedures and protocols used, or mark as N/A if no labelling was involved."
+    },
+    {
+        "requirement_id": "2_d_6",
+        "category": "2_d (Data Requirements and Methodologies)",
+        "entity_name": "Data cleaning methodologies",
+        "extraction_target": "Data cleaning methodologies, e.g., outliers detection",
+        "fallback_prompt": "Ask the user to detail the data cleaning methodologies applied, such as outlier detection and handling of missing values."
+    },
+    {
+        "requirement_id": "2_e_1",
+        "category": "2_e (Human Oversight)",
+        "entity_name": "Assessment of human oversight measures",
+        "extraction_target": "Assessment of the human oversight measures needed in accordance with Article 14",
+        "fallback_prompt": "Ask the user to describe the 'human-in-the-loop' or human oversight measures implemented to monitor the system's operation and intervene if necessary."
+    },
+    {
+        "requirement_id": "2_e_2",
+        "category": "2_e (Human Oversight)",
+        "entity_name": "Technical measures for output interpretation",
+        "extraction_target": "Assessment of the technical measures needed to facilitate the interpretation of the outputs by the deployers, in accordance with Article 13(3)",
+        "fallback_prompt": "Ask the user to explain the technical measures provided to help deployers interpret, understand, and trust the AI system's outputs."
+    },
+    {
+        "requirement_id": "2_f_1",
+        "category": "2_f (Pre-determined Changes)",
+        "entity_name": "Pre-determined changes to the AI system",
+        "extraction_target": "Where applicable, a detailed description of pre-determined changes to the AI system and its performance",
+        "fallback_prompt": "Ask the user to describe any pre-planned updates or continuous learning mechanisms allowed for the AI system post-deployment, or mark as N/A if the model is static."
+    },
+    {
+        "requirement_id": "2_f_2",
+        "category": "2_f (Pre-determined Changes)",
+        "entity_name": "Technical solutions for continuous compliance",
+        "extraction_target": "Information related to the technical solutions adopted to ensure the continuous compliance of the AI system with the relevant requirements set out in Chapter III, Section 2",
+        "fallback_prompt": "Ask the user to detail the technical solutions adopted to ensure the AI system remains legally compliant and safe over time, especially after any pre-determined changes."
+    },
+    {
+        "requirement_id": "2_g_1",
+        "category": "2_g (Validation and Testing Procedures)",
+        "entity_name": "Validation and testing procedures",
+        "extraction_target": "The validation and testing procedures used",
+        "fallback_prompt": "Ask the user to describe the validation and testing procedures used during the AI system's development."
+    },
+    {
+        "requirement_id": "2_g_2",
+        "category": "2_g (Validation and Testing Procedures)",
+        "entity_name": "Validation and testing data sets",
+        "extraction_target": "Information about the validation and testing data used and their main characteristics",
+        "fallback_prompt": "Ask the user to provide information and the main characteristics of the data sets used for validation and testing."
+    },
+    {
+        "requirement_id": "2_g_3",
+        "category": "2_g (Validation and Testing Procedures)",
+        "entity_name": "Metrics for accuracy, robustness and compliance",
+        "extraction_target": "Metrics used to measure accuracy, robustness, and compliance with other relevant requirements",
+        "fallback_prompt": "Ask the user to specify the exact metrics used to measure the system's accuracy, robustness, and overall compliance."
+    },
+    {
+        "requirement_id": "2_g_4",
+        "category": "2_g (Validation and Testing Procedures)",
+        "entity_name": "Discriminatory impacts measurement",
+        "extraction_target": "Metrics/methods used to measure potentially discriminatory impacts",
+        "fallback_prompt": "Ask the user to explain the metrics or methods used to measure, evaluate, and mitigate potentially discriminatory impacts or biases."
+    },
+    {
+        "requirement_id": "2_g_5",
+        "category": "2_g (Validation and Testing Procedures)",
+        "entity_name": "Test logs and signed reports",
+        "extraction_target": "Test logs and all test reports dated and signed by the responsible persons, including with regard to pre-determined changes",
+        "fallback_prompt": "Ask the user to upload the test logs and the formal test reports dated and signed by the responsible persons."
+    },
+    {
+        "requirement_id": "2_h_1",
+        "category": "2_h (Cybersecurity)",
+        "entity_name": "Cybersecurity measures",
+        "extraction_target": "Cybersecurity measures put in place",
+        "fallback_prompt": "Ask the user to detail the cybersecurity measures implemented to protect the AI system against unauthorized access, attacks, or data poisoning."
+    },
+    {
+        "requirement_id": "3_1",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Capabilities and limitations in performance",
+        "extraction_target": "The capabilities and limitations in the performance of the system",
+        "fallback_prompt": "Ask the user to clearly describe both the capabilities and the known technical limitations in the performance of the AI system."
+    },
+    {
+        "requirement_id": "3_2",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Degrees of accuracy for specific target persons/groups",
+        "extraction_target": "Degrees of accuracy for specific persons or groups of persons on which the system is intended to be used",
+        "fallback_prompt": "Ask the user to state the evaluated degrees of accuracy specifically for the demographic groups or target persons the system will be used on."
+    },
+    {
+        "requirement_id": "3_3",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Overall expected level of accuracy",
+        "extraction_target": "The overall expected level of accuracy in relation to its intended purpose",
+        "fallback_prompt": "Ask the user to provide the overall expected level of accuracy of the AI system considering its specific intended purpose."
+    },
+    {
+        "requirement_id": "3_4",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Foreseeable unintended outcomes",
+        "extraction_target": "Foreseeable unintended outcomes",
+        "fallback_prompt": "Ask the user to list any foreseeable unintended outcomes or side effects that may occur during the system's operation."
+    },
+    {
+        "requirement_id": "3_5",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Sources of risks to health, safety, fundamental rights and discrimination",
+        "extraction_target": "Sources of risks to health, safety, fundamental rights, and discrimination in view of the intended purpose",
+        "fallback_prompt": "Ask the user to identify the potential sources of risks to health, safety, fundamental rights, and discrimination arising from the system's intended use."
+    },
+    {
+        "requirement_id": "3_6",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Human oversight measures",
+        "extraction_target": "The human oversight measures needed in accordance with Article 14",
+        "fallback_prompt": "Ask the user to describe the human oversight guidelines and procedures required for deployers to safely monitor and intervene with the AI system."
+    },
+    {
+        "requirement_id": "3_7",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Technical measures for output interpretation by deployers",
+        "extraction_target": "Technical measures put in place to facilitate the interpretation of the outputs by the deployers",
+        "fallback_prompt": "Ask the user to explain the technical features or interface elements put in place to help deployers easily and accurately interpret the system's outputs."
+    },
+    {
+        "requirement_id": "3_8",
+        "category": "3 (Detailed information about the monitoring, functioning and control of the AI system)",
+        "entity_name": "Specifications on input data",
+        "extraction_target": "Specifications on input data, where applicable",
+        "fallback_prompt": "Ask the user to define the exact specifications, quality requirements, and formats needed for the input data to ensure the system functions properly, or mark as N/A."
+    },
+    {
+        "requirement_id": "4_1",
+        "category": "4 (A description of the appropriateness of the performance metrics for the specific AI system)",
+        "entity_name": "Appropriateness of the performance metrics",
+        "extraction_target": "Explanation of why the selected performance metrics are appropriate for the specific AI system",
+        "fallback_prompt": "Ask the user to explain why the chosen performance metrics are appropriate, relevant, and sufficient for measuring this specific AI system's intended purpose."
+    },
+    {
+        "requirement_id": "5_1",
+        "category": "5 (A detailed description of the risk management system in accordance with Article 9)",
+        "entity_name": "Risk management system description",
+        "extraction_target": "Detailed description of the risk management system established in accordance with Article 9",
+        "fallback_prompt": "Ask the user to provide a detailed description of their risk management system, explaining how they continuously identify, evaluate, and mitigate risks to health, safety, and fundamental rights."
+    },
+    {
+        "requirement_id": "6_1",
+        "category": "6 (A description of relevant changes made by the provider to the system through its lifecycle)",
+        "entity_name": "Relevant changes during lifecycle",
+        "extraction_target": "Description of relevant changes made by the provider to the AI ​​system throughout its lifecycle",
+        "fallback_prompt": "Ask the user to describe any relevant updates, modifications, or changes made to the AI system throughout its lifecycle, or mark as N/A if it is the first release."
+    },
+    {
+        "requirement_id": "7_1",
+        "category": "7 (Harmonised standards and other adopted solutions)",
+        "entity_name": "List of applied harmonised standards",
+        "extraction_target": "List of harmonized standards published in the Official Journal of the European Union and fully or partially implemented",
+        "fallback_prompt": "Ask the user to list any EU harmonised standards applied to the system, or mark as N/A if none were used."
+    },
+    {
+        "requirement_id": "7_2",
+        "category": "7 (Harmonised standards and other adopted solutions)",
+        "entity_name": "Detailed description of adopted solutions (where no harmonised standards applied)",
+        "extraction_target": "Detailed description of alternative solutions adopted to meet the requirements in Section III Part 2, where no harmonized standards were applied",
+        "fallback_prompt": "Ask the user to detail the alternative technical solutions adopted to meet the mandatory safety and compliance requirements since no EU harmonised standards were applied."
+    },
+    {
+        "requirement_id": "7_3",
+        "category": "7 (Harmonised standards and other adopted solutions)",
+        "entity_name": "List of other relevant standards and technical specifications applied",
+        "extraction_target": "List of other relevant standards and technical specifications applied, where no harmonized standards were applied",
+        "fallback_prompt": "Ask the user to list any other industry standards, frameworks, or technical specifications they applied in the absence of EU harmonised standards."
+    },
+    {
+        "requirement_id": "8_1",
+        "category": "8 (A copy of the EU declaration of conformity referred to in Article 47)",
+        "entity_name": "EU declaration of conformity",
+        "extraction_target": "A copy of the EU declaration of conformity referred to in Article 47",
+        "fallback_prompt": "Ask the user to upload a copy of the formally signed EU declaration of conformity, or state if it has not yet been drawn up."
+    },
+    {
+        "requirement_id": "9_1",
+        "category": "9 (Post-market monitoring and evaluation)",
+        "entity_name": "Post-market evaluation system description",
+        "extraction_target": "Detailed description of the system established to evaluate the performance of the artificial intelligence system after it is placed on the market [post-market phase], in accordance with Article 72",
+        "fallback_prompt": "Ask the user to describe the post-market monitoring system established to actively and systematically collect data on the AI system's performance once it is live on the market."
+    },
+    {
+        "requirement_id": "9_2",
+        "category": "9 (Post-market monitoring and evaluation)",
+        "entity_name": "Post-market monitoring plan",
+        "extraction_target": "Post-market monitoring plan specified in Article 72(3)",
+        "fallback_prompt": "Ask the user to upload or provide the specific post-market monitoring plan that details how post-market evaluation is systematically planned and executed."
+    }
+]
