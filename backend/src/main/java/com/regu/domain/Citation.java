@@ -63,6 +63,9 @@ public class Citation {
 
     protected Citation() { }
 
+    /** Factory for service-layer creation. JPA requires the no-arg constructor to remain protected. */
+    public static Citation create() { return new Citation(); }
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 

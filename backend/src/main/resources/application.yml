@@ -30,7 +30,6 @@ spring:
   web:
     resources:
       add-mappings: false
-
 server:
   port: ${SERVER_PORT:8080}
   servlet:
@@ -46,3 +45,11 @@ regu:
     corpus-root: ${REGU_CORPUS_ROOT:../corpus}
     # Voyage AI API key — required when running with the 'ingest' profile.
     voyage-api-key: ${VOYAGE_API_KEY:}
+  llm:
+    # Anthropic API key — required for LLM calls; app starts safely without it.
+    api-key: ${ANTHROPIC_API_KEY:}
+    model: claude-sonnet-4-20250514
+    temperature: 0.1
+    max-retries: 2
+    classification-max-tokens: 2048
+    report-max-tokens: 8192

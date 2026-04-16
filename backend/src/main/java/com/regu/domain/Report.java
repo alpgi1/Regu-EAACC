@@ -54,6 +54,9 @@ public class Report {
 
     protected Report() { }
 
+    /** Factory for service-layer creation. JPA requires the no-arg constructor to remain protected. */
+    public static Report create() { return new Report(); }
+
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
 

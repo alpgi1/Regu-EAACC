@@ -1,5 +1,9 @@
 package com.regu.common.exception;
 
+import com.regu.orchestration.exception.ClassificationException;
+import com.regu.orchestration.exception.InterviewStateException;
+import com.regu.orchestration.exception.ReportGenerationException;
+import com.regu.orchestration.exception.Stage2NotApplicableException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -66,6 +70,46 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
+    }
+
+    @ExceptionHandler({ClassificationException.class, ReportGenerationException.class})
+    public ResponseEntity<ApiErrorResponse> handleLlmFailure(
+            RuntimeException ex,
+            HttpServletRequest request) {
+        log.error("LLM upstream failure at {}: {}", request.getRequestURI(), ex.getMessage(), ex);
+        ApiErrorResponse body = ApiErrorResponse.of(
+                HttpStatus.BAD_GATEWAY.value(),
+                HttpStatus.BAD_GATEWAY.getReasonPhrase(),
+                "The AI classification service is temporarily unavailable. Please try again.",
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(body);
+    }
+
+    @ExceptionHandler(InterviewStateException.class)
+    public ResponseEntity<ApiErrorResponse> handleInterviewState(
+            InterviewStateException ex,
+            HttpServletRequest request) {
+        ApiErrorResponse body = ApiErrorResponse.of(
+                HttpStatus.CONFLICT.value(),
+                HttpStatus.CONFLICT.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(body);
+    }
+
+    @ExceptionHandler(Stage2NotApplicableException.class)
+    public ResponseEntity<ApiErrorResponse> handleStage2NotApplicable(
+            Stage2NotApplicableException ex,
+            HttpServletRequest request) {
+        ApiErrorResponse body = ApiErrorResponse.of(
+                HttpStatus.BAD_REQUEST.value(),
+                HttpStatus.BAD_REQUEST.getReasonPhrase(),
+                ex.getMessage(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
     }
 
     @ExceptionHandler(Exception.class)

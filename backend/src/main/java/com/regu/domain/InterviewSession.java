@@ -122,6 +122,9 @@ public class InterviewSession {
 
     protected InterviewSession() { }
 
+    /** Factory for service/test-layer creation (JPA requires protected no-arg constructor). */
+    public static InterviewSession create() { return new InterviewSession(); }
+
     /**
      * Creates a session linked to an existing analysis.
      * Use the protected no-arg constructor (via JPA) or the factory method
