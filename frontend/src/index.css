@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Fonts ───────────────────────────────────────────────────────── */
+  /* swap in Gilmer Bold + Helvetica Now Display/Text when licensed */
+  --font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Canvas — deep navy, NOT pure black ─────────────────────────── */
+  --color-regu-bg:        #060814;
+  --color-regu-surface:   #0A0F1F;
+  --color-regu-surface-2: #111733;
+
+  /* ── Primary text — crisp off-white ─────────────────────────────── */
+  --color-regu-fg:        #EBEBEB;
+  --color-regu-fg-muted:  rgba(235, 235, 235, 0.62);
+  --color-regu-fg-subtle: rgba(235, 235, 235, 0.38);
+
+  /* ── Brand accent — serious blue for dark-mode contrast ─────────── */
+  --color-regu-accent:    #2A52BE;
+  --color-regu-accent-hi: #4A6FE5;
+  --color-regu-accent-lo: #10367D;
+
+  /* ── Semantic — only where legally meaningful ────────────────────── */
+  --color-regu-danger: #E5484D;
+  --color-regu-warn:   #F5A524;
+  --color-regu-ok:     #30A46C;
+
+  /* ── Borders / dividers ──────────────────────────────────────────── */
+  --color-regu-border:    rgba(235, 235, 235, 0.08);
+  --color-regu-border-hi: rgba(235, 235, 235, 0.16);
+}
+
+/* ── Base styles ──────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background-color: #060814;
+  color: #ebebeb;
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* Tabular numerics for any heading that shows numbers */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11", "tnum";
+}
+
+::selection {
+  background: rgba(42, 82, 190, 0.35);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a2040;
+  border-radius: 3px;
+}
+
+/* ── Focus ring — accent blue, 2px, 2px offset ───────────────────── */
+:focus-visible {
+  outline: 2px solid #2A52BE;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Reduced motion: disable all transitions and animations ──────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
