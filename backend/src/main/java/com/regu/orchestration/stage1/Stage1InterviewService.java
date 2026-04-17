@@ -340,7 +340,7 @@ public class Stage1InterviewService {
     private InterviewQuestionDto loadQuestion(String questionKey) {
         String sql = """
                 SELECT question_key, display_text, hint_text, answers::text,
-                       preconditions::text, stage, section, display_order,
+                       preconditions::text, stage, section,
                        linked_rule_chunk, is_terminal
                 FROM interview_questions
                 WHERE question_key = :key
@@ -355,11 +355,11 @@ public class Stage1InterviewService {
     private List<InterviewQuestionDto> loadAllStage1Questions() {
         String sql = """
                 SELECT question_key, display_text, hint_text, answers::text,
-                       preconditions::text, stage, section, display_order,
+                       preconditions::text, stage, section,
                        linked_rule_chunk, is_terminal
                 FROM interview_questions
                 WHERE stage = 1
-                ORDER BY display_order
+                ORDER BY question_key
                 """;
         return jdbc.queryForList(sql, Map.of()).stream()
                 .map(this::mapRow)
@@ -376,7 +376,7 @@ public class Stage1InterviewService {
                 (String)  row.get("preconditions"),
                 row.get("stage") != null ? ((Number) row.get("stage")).shortValue() : (short) 1,
                 (String)  row.get("section"),
-                row.get("display_order") != null ? ((Number) row.get("display_order")).intValue() : 0,
+                0,
                 linkedRuleChunk != null ? linkedRuleChunk.longValue() : null,
                 Boolean.TRUE.equals(row.get("is_terminal"))
         );

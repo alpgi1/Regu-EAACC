@@ -61,7 +61,7 @@ regu:
   llm:
     # Anthropic API key — required for LLM calls; app starts safely without it.
     api-key: ${ANTHROPIC_API_KEY:}
-    model: claude-sonnet-4-20250514
+    model: claude-sonnet-4-6
     temperature: 0.1
     max-retries: 2
     classification-max-tokens: 2048
