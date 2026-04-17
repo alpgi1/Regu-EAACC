@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.util.List;
@@ -110,6 +112,32 @@ public class GlobalExceptionHandler {
                 request.getRequestURI()
         );
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ApiErrorResponse> handleFileTooLarge(
+            MaxUploadSizeExceededException ex,
+            HttpServletRequest request) {
+        ApiErrorResponse body = ApiErrorResponse.of(
+                HttpStatus.CONTENT_TOO_LARGE.value(),
+                HttpStatus.CONTENT_TOO_LARGE.getReasonPhrase(),
+                "File size exceeds the maximum allowed limit of 10 MB",
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(HttpStatus.CONTENT_TOO_LARGE).body(body);
+    }
+
+    @ExceptionHandler(ResponseStatusException.class)
+    public ResponseEntity<ApiErrorResponse> handleResponseStatus(
+            ResponseStatusException ex,
+            HttpServletRequest request) {
+        ApiErrorResponse body = ApiErrorResponse.of(
+                ex.getStatusCode().value(),
+                ex.getReason() != null ? ex.getReason() : ex.getMessage(),
+                ex.getReason() != null ? ex.getReason() : ex.getMessage(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(ex.getStatusCode()).body(body);
     }
 
     @ExceptionHandler(Exception.class)
