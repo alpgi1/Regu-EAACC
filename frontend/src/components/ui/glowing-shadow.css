@@ -1,0 +1,108 @@
+/*
+ * Glowing shadow card.
+ * @property declarations are standard CSS (Chromium + Safari).
+ * Firefox degrades gracefully (no animated gradient, static glow).
+ *
+ * Reduced-motion: freeze at static state (handled in index.css global rule).
+ */
+
+@property --card-x {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+
+@property --card-y {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
+@property --card-rotate {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@property --card-glow-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+/* ── Card wrapper ─────────────────────────────────────────────────── */
+.regu-glow-card {
+  --card-width:       min(360px, 28vw);
+  --animation-speed: 8s;
+
+  position: relative;
+  width: var(--card-width);
+  border-radius: 16px;
+  padding: 1px;               /* border rendered via gradient pseudo */
+  background: transparent;
+  isolation: isolate;
+  transition:
+    --card-x 0.4s ease,
+    --card-y 0.4s ease;
+}
+
+/* Animated gradient border */
+.regu-glow-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--card-rotate),
+    transparent 0%,
+    rgba(42, 82, 190, 0.6) 15%,
+    rgba(74, 111, 229, 0.8) 30%,
+    rgba(42, 82, 190, 0.6) 45%,
+    transparent 60%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: regu-glow-rotate var(--animation-speed) linear infinite;
+}
+
+/* Inner fill */
+.regu-glow-card__inner {
+  position: relative;
+  z-index: 1;
+  border-radius: 15px;
+  background: #0A0F1F;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Radial glow beneath the card */
+.regu-glow-card::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: radial-gradient(
+    ellipse at var(--card-x) var(--card-y),
+    rgba(42, 82, 190, 0.35) 0%,
+    transparent 70%
+  );
+  opacity: var(--card-glow-opacity);
+  filter: blur(12px);
+  z-index: -1;
+  transition: --card-glow-opacity 0.3s ease;
+}
+
+.regu-glow-card:hover {
+  --card-glow-opacity: 1;
+}
+
+@keyframes regu-glow-rotate {
+  from { --card-rotate: 0deg; }
+  to   { --card-rotate: 360deg; }
+}
