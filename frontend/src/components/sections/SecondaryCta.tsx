@@ -5,6 +5,7 @@
 
 import { Link } from "react-router-dom";
 import { m as motion, useReducedMotion } from "framer-motion";
+import { EASE_SMOOTH } from "@/lib/utils";
 import { ChevronRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -30,7 +31,7 @@ export default function SecondaryCta() {
         initial={prefersReduced ? false : { opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: [0.23, 0.86, 0.39, 0.96] }}
+        transition={{ duration: 0.6, ease: EASE_SMOOTH }}
         className="relative z-10 max-w-6xl mx-auto px-6 flex flex-col items-center text-center gap-6"
       >
         <h2

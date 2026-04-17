@@ -9,7 +9,7 @@
  */
 
 import { motion, useReducedMotion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import { cn, EASE_SMOOTH } from "@/lib/utils";
 
 // ─── Single elongated capsule shape ───────────────────────────────────────
 
@@ -39,7 +39,7 @@ export function ElegantShape({
       transition={{
         duration: 2.4,
         delay,
-        ease: [0.23, 0.86, 0.39, 0.96],
+        ease: EASE_SMOOTH,
         opacity: { duration: 1.2 },
       }}
       className={cn("absolute", className)}

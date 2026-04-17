@@ -6,7 +6,7 @@
 import { m as motion, useReducedMotion } from "framer-motion";
 import { Section } from "@/components/ui/section";
 import { Marquee } from "@/components/ui/marquee";
-import { cn } from "@/lib/utils";
+import { cn, EASE_SMOOTH } from "@/lib/utils";
 
 const STAT_CARDS = [
   {
@@ -60,7 +60,7 @@ const cardReveal = {
     transition: {
       duration: 0.6,
       delay: i * 0.1,
-      ease: [0.23, 0.86, 0.39, 0.96],
+      ease: EASE_SMOOTH,
     },
   }),
 };

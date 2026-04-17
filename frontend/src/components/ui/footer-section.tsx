@@ -10,8 +10,9 @@
  */
 
 import { motion, useReducedMotion } from "framer-motion";
-import { ShieldCheck, Linkedin, Github } from "lucide-react";
+import { ShieldCheck, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
+import { EASE_SMOOTH } from "@/lib/utils";
 
 const FOOTER_LINKS = {
   Product: [
@@ -53,7 +54,7 @@ function AnimatedContainer({ children, delay = 0 }: AnimatedContainerProps) {
       initial={prefersReduced ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5, delay, ease: [0.23, 0.86, 0.39, 0.96] }}
+      transition={{ duration: 0.5, delay, ease: EASE_SMOOTH }}
     >
       {children}
     </motion.div>
@@ -100,19 +101,21 @@ export function FooterSection() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="REGU on LinkedIn"
-                  className="text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] transition-colors"
+                  aria-label="REGU on LinkedIn (opens in new tab)"
+                  className="text-xs text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] transition-colors flex items-center gap-1"
                 >
-                  <Linkedin size={16} aria-hidden />
+                  LinkedIn
+                  <ExternalLink size={10} aria-hidden />
                 </a>
                 <a
                   href="https://github.com/alpgi1/Regu-EAACC"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="REGU on GitHub"
-                  className="text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] transition-colors"
+                  aria-label="REGU on GitHub (opens in new tab)"
+                  className="text-xs text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] transition-colors flex items-center gap-1"
                 >
-                  <Github size={16} aria-hidden />
+                  GitHub
+                  <ExternalLink size={10} aria-hidden />
                 </a>
               </div>
             </div>

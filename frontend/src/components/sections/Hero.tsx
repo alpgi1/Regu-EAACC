@@ -11,7 +11,7 @@ import { Drawer } from "vaul";
 import { Button } from "@/components/ui/button";
 import { Countdown } from "@/components/ui/countdown";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
-import { cn } from "@/lib/utils";
+import { cn, EASE_SMOOTH } from "@/lib/utils";
 
 const EU_AI_ACT_DATE = new Date("2026-08-02T00:00:00Z");
 
@@ -29,7 +29,7 @@ const item = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.23, 0.86, 0.39, 0.96] },
+    transition: { duration: 0.8, ease: EASE_SMOOTH },
   },
 };
 

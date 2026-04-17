@@ -9,7 +9,7 @@ import { m as motion, useReducedMotion } from "framer-motion";
 import { Mail, MapPin, Calendar } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, EASE_SMOOTH } from "@/lib/utils";
 
 const reveal = {
   hidden: { opacity: 0, y: 16, filter: "blur(6px)" },
@@ -17,7 +17,7 @@ const reveal = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, delay: i * 0.1, ease: [0.23, 0.86, 0.39, 0.96] },
+    transition: { duration: 0.55, delay: i * 0.1, ease: EASE_SMOOTH },
   }),
 };
 
@@ -108,7 +108,7 @@ export default function Contact() {
         {/* ── Left column ─────────────────────────────────────────────── */}
         <motion.div
           custom={0}
-          variants={prefersReduced ? {} : reveal}
+          variants={prefersReduced ? undefined : reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
@@ -162,7 +162,7 @@ export default function Contact() {
         {/* ── Right column: contact form ─────────────────────────────── */}
         <motion.div
           custom={1}
-          variants={prefersReduced ? {} : reveal}
+          variants={prefersReduced ? undefined : reveal}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}

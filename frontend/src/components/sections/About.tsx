@@ -4,6 +4,7 @@
  */
 
 import { m as motion, useReducedMotion } from "framer-motion";
+import { EASE_SMOOTH } from "@/lib/utils";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ const PRINCIPLES = [
   },
   {
     label: "Fail-safe, not fail-silent",
-    description: "Low confidence triggers a "review recommended" flag — never a false pass.",
+    description: 'Low confidence triggers a "review recommended" flag — never a false pass.',
   },
 ] as const;
 
@@ -33,7 +34,7 @@ export default function About() {
         initial={prefersReduced ? false : { opacity: 0, y: 16, filter: "blur(6px)" }}
         whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.6, ease: [0.23, 0.86, 0.39, 0.96] }}
+        transition={{ duration: 0.6, ease: EASE_SMOOTH }}
         className="max-w-3xl"
       >
         <h2
@@ -74,7 +75,7 @@ export default function About() {
         initial={prefersReduced ? false : { opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 0.55, delay: 0.2, ease: [0.23, 0.86, 0.39, 0.96] }}
+        transition={{ duration: 0.55, delay: 0.2, ease: EASE_SMOOTH }}
         className="mt-14 flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[rgba(235,235,235,0.08)]"
         role="list"
         aria-label="Core principles"

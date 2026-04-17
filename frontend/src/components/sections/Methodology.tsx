@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { GlowingCard } from "@/components/ui/glowing-shadow";
-import { cn } from "@/lib/utils";
+import { cn, EASE_SMOOTH } from "@/lib/utils";
 
 // ─── Four RAG pillars (actual architecture from project context) ──────────
 
@@ -70,7 +70,7 @@ const reveal = {
     opacity: 1,
     y: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.23, 0.86, 0.39, 0.96] },
+    transition: { duration: 0.55, delay: i * 0.08, ease: EASE_SMOOTH },
   }),
 };
 
