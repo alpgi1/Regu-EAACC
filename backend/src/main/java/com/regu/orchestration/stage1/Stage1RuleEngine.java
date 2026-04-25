@@ -60,12 +60,12 @@ public class Stage1RuleEngine {
      *
      * <p>Priority order (first match wins):
      * <ol>
-     *   <li>PROHIBITED — unacceptable (Article 5)</li>
+     *   <li>high_risk or fria_required — high (Article 6); takes precedence so Annex IV review runs</li>
+     *   <li>gpai_systemic_risk — high (Article 51)</li>
+     *   <li>PROHIBITED — unacceptable (Article 5); only when no confirmed high-risk path</li>
      *   <li>excluded — minimal, outside scope (Article 2(3))</li>
      *   <li>out_of_scope / out_of_scope_territorial / product_manufacturer_only — minimal</li>
      *   <li>authorised_rep_obligations — limited (Article 22)</li>
-     *   <li>high_risk or fria_required — high (Article 6)</li>
-     *   <li>gpai_systemic_risk — high (Article 51)</li>
      *   <li>notify_nca — limited (Article 6(3))</li>
      *   <li>transparency_obligations — limited (Article 50)</li>
      *   <li>gpai_provider — limited (Article 53)</li>
@@ -74,6 +74,37 @@ public class Stage1RuleEngine {
      */
     public ClassificationResult classifyByRules(Set<String> flags) {
         log.info("Rule-based classification with flags: {}", flags);
+
+        if (flags.contains("high_risk") || flags.contains("fria_required")) {
+            List<Integer> articles = new ArrayList<>(List.of(4, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17));
+            if (flags.contains("fria_required")) {
+                articles.add(27);
+            }
+            String fria = flags.contains("fria_required")
+                    ? " As a public-body deployer, a Fundamental Rights Impact Assessment (FRIA) is also " +
+                      "required before deployment (Article 27)."
+                    : "";
+            String prohibited = flags.contains("PROHIBITED")
+                    ? " Note: one or more selected practices also fall under Article 5 prohibited practices — " +
+                      "this will be addressed in the Annex IV documentation review."
+                    : "";
+            return result("high", "Article 6",
+                    articles,
+                    "The system qualifies as high-risk under Annex I or Annex III. Mandatory obligations include: " +
+                    "risk management system (Art. 9), data governance (Art. 10), technical documentation (Art. 11), " +
+                    "record-keeping (Art. 12), transparency to deployers (Art. 13), human oversight measures (Art. 14), " +
+                    "accuracy/robustness requirements (Art. 15), and registration in the EU database (Art. 16)." +
+                    fria + prohibited);
+        }
+
+        if (flags.contains("gpai_systemic_risk")) {
+            return result("high", "Article 51",
+                    List.of(4, 51, 52, 53, 54, 55),
+                    "The system is a General-Purpose AI (GPAI) model with systemic risk under Article 51 " +
+                    "(training compute ≥ 10²⁵ FLOPs or Commission designation). In addition to general GPAI " +
+                    "obligations (Art. 53), systemic-risk obligations apply: adversarial testing, incident reporting " +
+                    "to the Commission, cybersecurity measures, and energy-efficiency reporting (Art. 55).");
+        }
 
         if (flags.contains("PROHIBITED")) {
             return result("unacceptable", "Article 5",
@@ -125,33 +156,6 @@ public class Stage1RuleEngine {
                     "cooperating with market surveillance authorities, and ensuring the provider's technical " +
                     "documentation is available. The risk category of the underlying system is determined by the " +
                     "provider and is not assessed here.");
-        }
-
-        if (flags.contains("high_risk") || flags.contains("fria_required")) {
-            List<Integer> articles = new ArrayList<>(List.of(4, 6, 9, 10, 11, 12, 13, 14, 15, 16, 17));
-            if (flags.contains("fria_required")) {
-                articles.add(27);
-            }
-            String fria = flags.contains("fria_required")
-                    ? " As a public-body deployer, a Fundamental Rights Impact Assessment (FRIA) is also " +
-                      "required before deployment (Article 27)."
-                    : "";
-            return result("high", "Article 6",
-                    articles,
-                    "The system qualifies as high-risk under Annex I (safety-component in regulated product) " +
-                    "or Annex III (listed high-risk domain). Mandatory obligations include: risk management system " +
-                    "(Art. 9), data governance (Art. 10), technical documentation (Art. 11), record-keeping (Art. 12), " +
-                    "transparency to deployers (Art. 13), human oversight measures (Art. 14), accuracy/robustness " +
-                    "requirements (Art. 15), and registration in the EU database (Art. 16)." + fria);
-        }
-
-        if (flags.contains("gpai_systemic_risk")) {
-            return result("high", "Article 51",
-                    List.of(4, 51, 52, 53, 54, 55),
-                    "The system is a General-Purpose AI (GPAI) model with systemic risk under Article 51 " +
-                    "(training compute ≥ 10²⁵ FLOPs or Commission designation). In addition to general GPAI " +
-                    "obligations (Art. 53), systemic-risk obligations apply: adversarial testing, incident reporting " +
-                    "to the Commission, cybersecurity measures, and energy-efficiency reporting (Art. 55).");
         }
 
         if (flags.contains("notify_nca")) {
