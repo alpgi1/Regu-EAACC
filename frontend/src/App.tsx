@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "@/lib/queries";
 import Landing from "@/pages/Landing";
+import ComingSoon from "@/pages/ComingSoon";
 import EntryPage from "@/pages/EntryPage";
 import Stage1Page from "@/pages/Stage1Page";
 import Stage2Page from "@/pages/Stage2Page";
@@ -39,6 +40,9 @@ export default function App() {
           <Route path="/app/session/:id/stage2" element={<Stage2Page />} />
           <Route path="/app/session/:id/stage2/:n" element={<Stage2Page />} />
           <Route path="/app/session/:id/report" element={<ReportPage />} />
+
+          {/* Placeholder route for footer/CTA links not yet built */}
+          <Route path="/coming-soon" element={<ComingSoon />} />
 
           {/* Legal pages — not yet built */}
           {["/privacy", "/terms", "/cookies", "/dpa"].map((path) => (

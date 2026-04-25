@@ -2,11 +2,12 @@
 
 @theme {
   /* ── Fonts ───────────────────────────────────────────────────────── */
-  /* swap in Gilmer Bold + Helvetica Now Display/Text when licensed */
   --font-heading: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   --font-sans:    "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif:   "Instrument Serif", "Iowan Old Style", "Apple Garamond", "Palatino", serif;
+  --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* ── Canvas — deep navy, NOT pure black ─────────────────────────── */
+  /* ── Canvas — deep navy (legacy/app routes) ─────────────────────── */
   --color-regu-bg:        #060814;
   --color-regu-surface:   #0A0F1F;
   --color-regu-surface-2: #111733;
@@ -21,7 +22,7 @@
   --color-regu-accent-hi: #4A6FE5;
   --color-regu-accent-lo: #10367D;
 
-  /* ── Semantic — only where legally meaningful ────────────────────── */
+  /* ── Semantic ────────────────────────────────────────────────────── */
   --color-regu-danger: #E5484D;
   --color-regu-warn:   #F5A524;
   --color-regu-ok:     #30A46C;
@@ -31,7 +32,65 @@
   --color-regu-border-hi: rgba(235, 235, 235, 0.16);
 }
 
-/* ── Base styles ──────────────────────────────────────────────────── */
+@layer base {
+  /* ── Landing page tokens (Phase 8 rebuild) ───────────────────────── */
+  :root {
+    /* Surface */
+    --bg-base: #050814;
+    --bg-elev-1: #0A0F1F;
+    --bg-elev-2: #111729;
+    --hairline: rgba(255, 255, 255, 0.08);
+    --hairline-strong: rgba(255, 255, 255, 0.14);
+
+    /* Ink */
+    --ink-primary: #F5F7FA;
+    --ink-secondary: #B5BCCB;
+    --ink-tertiary: #6B7388;
+    --ink-quaternary: #444B5E;
+
+    /* Brand — legal navy */
+    --brand-500: #3D5AFE;
+    --brand-400: #6B82FF;
+    --brand-600: #2740E0;
+    --brand-glow: rgba(61, 90, 254, 0.18);
+
+    /* Semantic */
+    --warn: #E5A23B;
+    --danger: #E5484D;
+    --ok: #3CCB7F;
+
+    /* Type scale (rem) */
+    --text-display: 5.5rem;
+    --text-h1: 3.5rem;
+    --text-h2: 2.5rem;
+    --text-h3: 1.5rem;
+    --text-body-lg: 1.125rem;
+    --text-body: 1rem;
+    --text-caption: 0.8125rem;
+    --text-micro: 0.6875rem;
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 150ms;
+    --dur-base: 240ms;
+    --dur-slow: 480ms;
+  }
+}
+
+/* ── Reduced motion: global override ─────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Base ────────────────────────────────────────────────────────── */
 *,
 *::before,
 *::after {
@@ -44,20 +103,24 @@
 }
 
 html {
-  background-color: #060814;
-  color: #ebebeb;
+  background-color: #050814;
+  color: #F5F7FA;
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
-  scroll-behavior: smooth;
 }
 
-/* Tabular numerics for any heading that shows numbers */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   font-feature-settings: "ss01", "cv11", "tnum";
 }
 
+/* Italic serif accent — applied via `.font-serif` utility class */
+.font-serif {
+  font-family: var(--font-serif);
+  font-feature-settings: "liga";
+}
+
 ::selection {
-  background: rgba(42, 82, 190, 0.35);
+  background: rgba(61, 90, 254, 0.35);
 }
 
 ::-webkit-scrollbar {
@@ -71,23 +134,11 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
 }
 
-/* ── Focus ring — accent blue, 2px, 2px offset ───────────────────── */
+/* ── Focus ring — brand blue, 2px, 2px offset ───────────────────── */
 :focus-visible {
-  outline: 2px solid #2A52BE;
+  outline: 2px solid var(--brand-500);
   outline-offset: 2px;
   border-radius: 4px;
-}
-
-/* ── Reduced motion: disable all transitions and animations ──────── */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
 /* ── Indeterminate progress bar animation ─────────────────────────── */
@@ -102,8 +153,15 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
 @keyframes zoomIn95 { from { transform: scale(0.95); } to { transform: scale(1); } }
 @keyframes zoomOut95 { from { transform: scale(1); } to { transform: scale(0.95); } }
+@keyframes accordionDown {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordionUp {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
 
-/* Animate-in/out utilities for Radix primitives */
 .animate-in { animation-duration: 200ms; animation-fill-mode: both; animation-timing-function: cubic-bezier(0.23, 0.86, 0.39, 0.96); }
 .animate-out { animation-duration: 150ms; animation-fill-mode: both; animation-timing-function: cubic-bezier(0.23, 0.86, 0.39, 0.96); }
 .fade-in-0 { animation-name: fadeIn; }
