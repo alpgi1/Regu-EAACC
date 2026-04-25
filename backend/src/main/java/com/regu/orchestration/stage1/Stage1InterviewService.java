@@ -24,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import com.fasterxml.jackson.databind.JsonNode;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * Drives the Stage 1 guided risk-classification interview.
@@ -84,6 +87,7 @@ public class Stage1InterviewService {
     private final LlmClient                   llm;
     private final PromptBuilder               promptBuilder;
     private final NamedParameterJdbcTemplate  jdbc;
+    private final Stage1RuleEngine            ruleEngine;
     private final int                         maxRetries;
     private final int                         classificationMaxTokens;
 
@@ -95,6 +99,7 @@ public class Stage1InterviewService {
             LlmClient llm,
             PromptBuilder promptBuilder,
             NamedParameterJdbcTemplate jdbc,
+            Stage1RuleEngine ruleEngine,
             @Value("${regu.llm.max-retries:2}")               int maxRetries,
             @Value("${regu.llm.classification-max-tokens:2048}") int classificationMaxTokens) {
         this.sessionRepo              = sessionRepo;
@@ -104,6 +109,7 @@ public class Stage1InterviewService {
         this.llm                      = llm;
         this.promptBuilder            = promptBuilder;
         this.jdbc                     = jdbc;
+        this.ruleEngine               = ruleEngine;
         this.maxRetries               = maxRetries;
         this.classificationMaxTokens  = classificationMaxTokens;
     }
@@ -126,8 +132,14 @@ public class Stage1InterviewService {
     }
 
     /**
-     * Records an answer, selects the next question via LLM, and returns either
-     * the next question or a completed classification.
+     * Records an answer and routes to the next step.
+     *
+     * <p>Routing strategy:
+     * <ul>
+     *   <li>Predefined option selected → deterministic next_key routing, no LLM.</li>
+     *   <li>Option is terminal (or next_key is null) → rule-based classification, no LLM.</li>
+     *   <li>No option matched (free-text input) → LLM selects next question or classifies.</li>
+     * </ul>
      *
      * @param sessionId   the active session
      * @param questionKey the question being answered
@@ -144,28 +156,65 @@ public class Stage1InterviewService {
         answerRepo.save(answer);
         log.debug("Recorded answer for session {} question {}", sessionId, questionKey);
 
-        // Load all answers for this session and all Stage 1 questions
+        // Load all answers for this session (includes the one just saved)
         List<InterviewAnswer> allAnswers = answerRepo.findAllBySession_IdOrderByAnsweredAtAsc(session.getId());
+
+        // ── Attempt deterministic routing from the matched answer option ───
+        InterviewQuestionDto answeredQuestion = loadQuestion(questionKey);
+        AnswerOptionRouting routing = resolveAnswerRouting(answeredQuestion, answerText);
+
+        if (routing != null) {
+            // Predefined option matched — never call LLM for routing or classification
+
+            if (routing.isTerminal || routing.nextKey == null) {
+                // Terminal option: classify via rule engine (no LLM)
+                log.info("Session {}: terminal option reached — rule-based classification (flags accumulated)",
+                        sessionId);
+                Set<String> flags = ruleEngine.accumulateFlags(allAnswers, this::loadQuestion);
+                ClassificationResult result = ruleEngine.classifyByRules(flags);
+                persistClassificationResult(session, result);
+                return NextQuestionResponse.classified(result);
+            }
+
+            // Non-terminal option: follow next_key deterministically
+            try {
+                InterviewQuestionDto nextQuestion = loadQuestion(routing.nextKey);
+                session.setCurrentQuestionKey(nextQuestion.questionKey());
+                sessionRepo.save(session);
+                log.info("Session {}: deterministic routing {} → {}",
+                        sessionId, questionKey, routing.nextKey);
+                return NextQuestionResponse.ongoing(nextQuestion);
+            } catch (InterviewStateException e) {
+                log.warn("Session {}: next_key '{}' not found in DB, falling back to LLM",
+                        sessionId, routing.nextKey);
+                // fall through to LLM path
+            }
+        }
+
+        // ── LLM path: free-text answer or unrecognised option value ───────
+        log.info("Session {}: no option match for question {} — using LLM", sessionId, questionKey);
+
+        // Question-level terminal check (safety net for non-option questions)
+        if (answeredQuestion.isTerminal()) {
+            return completeClassification(session, allAnswers);
+        }
+
         Set<String> answeredKeys = allAnswers.stream()
                 .map(InterviewAnswer::getQuestionKey)
                 .collect(Collectors.toSet());
-
         List<InterviewQuestionDto> remaining = loadAllStage1Questions().stream()
                 .filter(q -> !answeredKeys.contains(q.questionKey()))
                 .toList();
 
-        // Check if the answered question is terminal
-        InterviewQuestionDto answeredQuestion = loadQuestion(questionKey);
-        if (answeredQuestion.isTerminal() || remaining.isEmpty()) {
+        if (remaining.isEmpty()) {
             return completeClassification(session, allAnswers);
         }
 
-        // Ask LLM to pick the next question
         String userPrompt = promptBuilder.buildNextQuestionPrompt(allAnswers, remaining);
         NextQuestionDecision decision = llm.callWithSchema(
                 NEXT_QUESTION_SYSTEM, userPrompt, NextQuestionDecision.class);
 
-        log.info("Session {}: next-question decision — readyToClassify={}, nextKey={}",
+        log.info("Session {}: LLM next-question decision — readyToClassify={}, nextKey={}",
                 sessionId, decision.readyToClassify(), decision.nextQuestion());
 
         if (decision.readyToClassify() || decision.nextQuestion() == null) {
@@ -177,6 +226,112 @@ public class Stage1InterviewService {
         sessionRepo.save(session);
 
         return NextQuestionResponse.ongoing(nextQuestion);
+    }
+
+    // ── Answer option routing helper ────────────────────────────────────
+
+    private record AnswerOptionRouting(String nextKey, boolean isTerminal, List<String> flags) {}
+
+    /**
+     * Handles single or comma-separated multi-select answers.
+     *
+     * <p>Rules:
+     * <ul>
+     *   <li>Comma-separated parts are each matched against option values.</li>
+     *   <li>If "none_of_the_above" appears alongside other selections, it is
+     *       ignored — the other selections take precedence.</li>
+     *   <li>A terminal option wins over non-terminal ones.</li>
+     *   <li>nextKey: first non-null key across all matched options (they should
+     *       all agree for well-formed multi_select questions).</li>
+     *   <li>flags: union of all matched option flags.</li>
+     * </ul>
+     */
+    private AnswerOptionRouting resolveAnswerRouting(InterviewQuestionDto question, String answerText) {
+        if (question.answersJson() == null || answerText == null) return null;
+        try {
+            var node = MAPPER.readTree(question.answersJson());
+            var options = node.get("options");
+            if (options == null || !options.isArray()) return null;
+
+            // Split for multi-select support
+            List<String> parts = Arrays.stream(answerText.split(","))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .toList();
+
+            // If multiple parts contain "none_of_the_above" alongside real answers, drop it
+            List<String> effectiveParts = parts.size() > 1
+                    ? parts.stream().filter(p -> !p.equalsIgnoreCase("none_of_the_above")).toList()
+                    : parts;
+            if (effectiveParts.isEmpty()) effectiveParts = parts;
+
+            List<AnswerOptionRouting> matched = new ArrayList<>();
+            for (String part : effectiveParts) {
+                AnswerOptionRouting r = matchSingleOption(options, part);
+                if (r != null) matched.add(r);
+            }
+
+            if (matched.isEmpty()) {
+                log.debug("No option match for answer '{}' on question {}", answerText, question.questionKey());
+                return null;
+            }
+
+            // Collect union of all flags
+            List<String> allFlags = matched.stream()
+                    .flatMap(r -> r.flags().stream())
+                    .distinct().toList();
+
+            // Terminal option wins
+            for (AnswerOptionRouting r : matched) {
+                if (r.isTerminal()) {
+                    log.debug("Multi-select {}: terminal option wins, flags={}", question.questionKey(), allFlags);
+                    return new AnswerOptionRouting(r.nextKey(), true, allFlags);
+                }
+            }
+
+            // All non-terminal — use first non-null nextKey
+            String nextKey = matched.stream()
+                    .map(AnswerOptionRouting::nextKey)
+                    .filter(Objects::nonNull)
+                    .findFirst().orElse(null);
+
+            if (matched.size() > 1) {
+                log.debug("Multi-select {}: {} options matched, nextKey={}, flags={}",
+                        question.questionKey(), matched.size(), nextKey, allFlags);
+            }
+            return new AnswerOptionRouting(nextKey, false, allFlags);
+
+        } catch (Exception e) {
+            log.warn("Failed to parse answers JSON for question {}: {}", question.questionKey(), e.getMessage());
+            return null;
+        }
+    }
+
+    /** Matches a single answer string against the options array of a question. */
+    private AnswerOptionRouting matchSingleOption(JsonNode options, String singleAnswer) {
+        String normalised = singleAnswer.trim().toLowerCase();
+        for (var option : options) {
+            String value = option.has("value") ? option.get("value").asText() : "";
+            String label = option.has("label") ? option.get("label").asText() : "";
+
+            if (normalised.equals(value.toLowerCase())
+                    || normalised.equals(label.toLowerCase())
+                    || label.toLowerCase().startsWith(normalised)
+                    || normalised.startsWith(value.toLowerCase())) {
+
+                String nextKey = option.has("next_key") && !option.get("next_key").isNull()
+                        ? option.get("next_key").asText() : null;
+                boolean terminal = option.has("is_terminal") && option.get("is_terminal").asBoolean();
+
+                List<String> flags = new ArrayList<>();
+                var flagsNode = option.get("flags");
+                if (flagsNode != null && flagsNode.isArray()) {
+                    for (var f : flagsNode) flags.add(f.asText());
+                }
+                return new AnswerOptionRouting(nextKey, terminal, flags);
+            }
+        }
+        return null;
     }
 
     /**

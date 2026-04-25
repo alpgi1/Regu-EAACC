@@ -126,12 +126,11 @@ public class ComplianceAnalysisService {
             );
         }
 
-        // Not high-risk — generate report immediately
-        log.info("Session {} classified as {} — generating report directly",
+        // Not high-risk — return classification only; report can be generated on demand via POST /report
+        log.info("Session {} classified as {} — returning classification, skipping inline report",
                 sessionId, classification.riskCategory());
-        ComplianceReport report = reportService.generateReport(sessionId);
         return new NextStepResponse("complete", null, null, null, null,
-                false, classification, report);
+                false, classification, null);
     }
 
     /**

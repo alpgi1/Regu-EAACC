@@ -11,13 +11,13 @@
       {
         "value": "yes_third_party_required",
         "label": "Yes — the product requires a third-party conformity assessment by a notified body under the applicable regulation",
-        "next_key": "S1",
-        "is_terminal": false,
+        "next_key": null,
+        "is_terminal": true,
         "obligations": [
-          "high_risk_provider_obligations"
+          "high_risk_exception"
         ],
         "flags": [
-          "high_risk"
+          "high_risk_exception"
         ],
         "keywords": [
           "notified body",

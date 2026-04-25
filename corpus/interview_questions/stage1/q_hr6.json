@@ -2,61 +2,128 @@
   "question_key": "HR6",
   "stage": 1,
   "section": "high_risk",
-  "display_text": "Does your integrated AI system function as a safety component of the product, AND does that product fall within one of the Annex I Section A regulated categories?",
-  "hint_text": "Article 25(3) and Article 6(1) together make a product manufacturer's embedded AI high-risk if it is a safety component of an Annex I Section A product (machinery, medical devices, toys, etc.). A 'safety component' is any part whose failure could endanger persons or property (Article 3(14)). No separate third-party assessment check is needed here — falling into Annex I Section A via this route directly triggers high-risk classification and full provider obligations (Article 16).",
+  "display_text": "Does your product include an AI system as a 'safety component' AND fall within any of the following categories? Select all that apply.",
+  "hint_text": "Safety component: a component of a product or of a system which fulfils a safety function for that product or system, or the failure or malfunctioning of which endangers the health and safety of persons or property (Article 3 point 14). If you select any category below, your AI system is high-risk under Article 6(1) and you will be treated as its Provider.",
   "answers": {
-    "type": "single_select",
-    "allow_free_text": true,
+    "type": "multi_select",
+    "allow_free_text": false,
     "options": [
       {
-        "value": "safety_component_annex1a",
-        "label": "Yes — the AI functions as a safety component of a product in an Annex I Section A category (e.g., machinery, medical device, toy)",
+        "value": "machinery",
+        "label": "Machinery",
         "next_key": "S1",
         "is_terminal": false,
-        "obligations": [
-          "high_risk_provider_obligations",
-          "become_provider"
-        ],
-        "flags": [
-          "high_risk",
-          "become_provider"
-        ],
-        "keywords": [
-          "safety component",
-          "Annex I Section A product AI",
-          "product AI safety critical",
-          "high-risk embedded AI",
-          "product manufacturer provider",
-          "AI in regulated product",
-          "Article 6(1) product",
-          "Article 25(3)",
-          "safety critical AI component",
-          "embedded AI product manufacturer high risk"
-        ]
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["machinery", "industrial machine", "manufacturing equipment"]
+      },
+      {
+        "value": "toys",
+        "label": "Toys",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["toys", "children products", "toy safety"]
+      },
+      {
+        "value": "recreational_craft_personal_watercraft",
+        "label": "Recreational craft and personal watercraft",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["recreational craft", "personal watercraft", "boat", "jet ski"]
+      },
+      {
+        "value": "lifts_safety_components",
+        "label": "Lifts and safety components of lifts",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["lifts", "elevators", "lift safety components"]
+      },
+      {
+        "value": "explosive_atmospheres_equipment",
+        "label": "Equipment and protective systems intended for use in potentially explosive atmospheres",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["explosive atmospheres", "ATEX", "hazardous areas equipment"]
+      },
+      {
+        "value": "radio_equipment",
+        "label": "Radio equipment",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["radio equipment", "wireless devices", "radio directive"]
+      },
+      {
+        "value": "pressure_equipment",
+        "label": "Pressure equipment",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["pressure equipment", "pressure vessels", "boilers"]
+      },
+      {
+        "value": "cableway_installations",
+        "label": "Cableway installations",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["cableway", "cable car", "ski lift", "ropeway"]
+      },
+      {
+        "value": "personal_protective_equipment",
+        "label": "Personal protective equipment",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["PPE", "personal protective equipment", "safety gear", "protective clothing"]
+      },
+      {
+        "value": "gas_appliances",
+        "label": "Appliances burning gaseous fuels",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["gas appliances", "gaseous fuels", "boiler", "gas heater"]
+      },
+      {
+        "value": "medical_devices",
+        "label": "Medical devices",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["medical devices", "MDR", "medical equipment", "healthcare device"]
+      },
+      {
+        "value": "in_vitro_diagnostic_medical_devices",
+        "label": "In vitro diagnostic medical devices",
+        "next_key": "S1",
+        "is_terminal": false,
+        "obligations": ["high_risk_provider_obligations", "become_provider"],
+        "flags": ["high_risk", "become_provider"],
+        "keywords": ["IVD", "in vitro diagnostic", "diagnostic test", "IVDR"]
       },
       {
         "value": "none_of_the_above",
-        "label": "No — the AI is not a safety component of any Annex I Section A product, or the product does not fall in any listed category",
+        "label": "None of the above",
         "next_key": null,
         "is_terminal": true,
-        "obligations": [
-          "product_manufacturer_obligations"
-        ],
-        "flags": [
-          "product_manufacturer_only"
-        ],
-        "keywords": [
-          "not a safety component",
-          "no notified body needed",
-          "self-declaration only",
-          "not covered by Annex I",
-          "out of scope product manufacturer",
-          "low-risk product",
-          "no third-party certification",
-          "product manufacturer only",
-          "not high risk product",
-          "manufacturer obligations only"
-        ]
+        "obligations": ["product_manufacturer_obligations"],
+        "flags": ["product_manufacturer_only"],
+        "keywords": ["none", "not a safety component", "not in any category", "none of these"]
       }
     ]
   },

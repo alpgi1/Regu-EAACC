@@ -5,7 +5,7 @@
   "display_text": "Is your AI system a general-purpose AI (GPAI) model that has been designated, or is likely to be designated, as posing systemic risk due to high training compute or a Commission decision?",
   "hint_text": "Article 51 defines systemic-risk GPAI models as those trained with more than 10^25 FLOPs, or models so designated by Commission decision due to their capabilities or reach. If your system is a GPAI model with systemic risk, additional obligations under Article 55 apply on top of the standard GPAI obligations under Article 53. If you are not a GPAI provider, select 'None of the above'.",
   "answers": {
-    "type": "single_select",
+    "type": "multi_select",
     "allow_free_text": true,
     "options": [
       {

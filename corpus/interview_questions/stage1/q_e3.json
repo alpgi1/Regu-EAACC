@@ -2,15 +2,15 @@
   "question_key": "E3",
   "stage": 1,
   "section": "entity",
-  "display_text": "As a product manufacturer, do you intend to place this AI system on the EU market or put it into service as part of your product, under your own name or trademark?",
-  "hint_text": "Under Article 25 and Recital 47, a product manufacturer who does this is treated as a provider of the embedded AI system. If your product is regulated under existing EU product safety law (Annex I Section A), the embedded AI may be a high-risk safety component. 'None of the above' means the AI is used only internally and not embedded in a product you release.",
+  "display_text": "Does your product integrate an AI system AND meet either of the following criteria? Select all that apply.",
+  "hint_text": "This applies ONLY if your product is placed on the market or put into service within the EU, regardless of whether or not you are established within the EU. Under Article 25 point 3 and Annex I, a product manufacturer who places or puts into service an AI system under their own name or trademark is treated as a provider of that AI system.",
   "answers": {
-    "type": "single_select",
+    "type": "multi_select",
     "allow_free_text": true,
     "options": [
       {
-        "value": "placed_on_market_under_trademark",
-        "label": "Yes — I place or intend to place this AI system on the market as part of my product under my own name or trademark",
+        "value": "placed_on_market_with_product",
+        "label": "The AI system was / will be placed on the market together with my product under my manufacturer name or trademark",
         "next_key": "HR6",
         "is_terminal": false,
         "obligations": [
@@ -21,21 +21,36 @@
           "product_manufacturer"
         ],
         "keywords": [
-          "embed AI in product",
-          "AI inside product",
-          "product with AI",
-          "release AI product",
-          "AI-enabled device",
-          "smart device",
-          "AI feature in product",
-          "market under brand",
-          "product manufacturer with AI",
-          "AI component in hardware"
+          "place on market with product",
+          "sell AI in product",
+          "AI inside product on market",
+          "product with AI bundled",
+          "AI feature in product released"
+        ]
+      },
+      {
+        "value": "put_into_service_under_trademark",
+        "label": "The AI system was / will be put into service under my manufacturer name or trademark after my product has been placed on the market",
+        "next_key": "HR6",
+        "is_terminal": false,
+        "obligations": [
+          "product_manufacturer_obligations"
+        ],
+        "flags": [
+          "potential_provider",
+          "product_manufacturer"
+        ],
+        "keywords": [
+          "put into service after market",
+          "deploy AI in product post-sale",
+          "AI update to existing product",
+          "firmware AI update",
+          "AI added to product after release"
         ]
       },
       {
         "value": "none_of_the_above",
-        "label": "No — the AI system is not being placed on the market or into service as part of a product under my name",
+        "label": "None of the above",
         "next_key": null,
         "is_terminal": true,
         "obligations": [],
@@ -47,12 +62,8 @@
           "not releasing product",
           "not on market",
           "no embedded AI",
-          "research only",
           "prototype only",
-          "no product launch",
-          "no trademark",
-          "internal tool",
-          "not sold"
+          "none of these"
         ]
       }
     ]
