@@ -10,7 +10,7 @@ import axios, { type AxiosError } from "axios";
 // ── Axios instance ──────────────────────────────────────────────────────────
 
 export const api = axios.create({
-  baseURL: "/api/v1",
+  baseURL: (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "/api/v1",
   timeout: 120_000, // 120s — report generation can take 30–60s
   headers: { "Content-Type": "application/json" },
 });

@@ -1,18 +1,16 @@
-/**
- * Stage2Page — document-driven analysis, chat-style layout.
- *
- * Viewport-filling surface with atmospheric background, sticky top bar,
- * chat message log, and a bottom input dock with three modes.
- * Sections 1–9 are driven by the URL param `:n` and the backend state.
- */
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ShieldCheck, FileText, ChevronDown, WifiOff } from "lucide-react";
+import {
+  ShieldCheck,
+  FileText,
+  CheckCircle2,
+  WifiOff,
+  X,
+  AlertCircle,
+  Loader2,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { FileDrop } from "@/components/ui/file-drop";
 import { StepIndicator } from "@/components/ui/step-indicator";
 import { StatusChip, severityToVariant } from "@/components/ui/status-chip";
 import { ElegantShape } from "@/components/ui/shape-landing-hero";
@@ -20,38 +18,73 @@ import { cn } from "@/lib/utils";
 import {
   useInterviewStatus,
   useStartStage2,
-  useStage2Status,
   useUploadDocument,
-  useSubmitDocument,
-  useSubmitQA,
   useGenerateReport,
 } from "@/lib/queries";
-import { SECTION_QUICK_ACTIONS } from "@/lib/constants";
-import type { SectionStatusDto, GapAnalysisResponse } from "@/lib/api";
+import type { GapAnalysisResponse } from "@/lib/api";
 import { getErrorMessage } from "@/lib/api";
 
-// ── Types ───────────────────────────────────────────────────────────────────
+// ── Constants ────────────────────────────────────────────────────────────────
 
-interface ChatMessage {
-  id: string;
-  role: "system" | "user";
-  timestamp: Date;
-  content: string;
-  /** Structured gap analysis attached to a system message */
-  gapAnalysis?: GapAnalysisResponse;
-  /** File reference for user upload messages */
-  file?: { name: string; size: number };
-  /** Is this an error message? */
-  isError?: boolean;
-  /** Retry callback for error messages */
-  onRetry?: () => void;
-  /** Show a "Continue" button */
-  showContinue?: boolean;
-}
+const REQUIRED_DOCUMENTS = [
+  {
+    number: 1,
+    title: "Technical Specification / System Architecture",
+    covers: "Intended purpose, architecture, development methods, training data (Annex IV §1–2)",
+  },
+  {
+    number: 2,
+    title: "Performance & Monitoring Documentation",
+    covers: "Accuracy metrics, capabilities, limitations, input specs (Annex IV §3–4)",
+  },
+  {
+    number: 3,
+    title: "Risk Management Plan",
+    covers: "Article 9 risk assessment and mitigation system (Annex IV §5)",
+  },
+  {
+    number: 4,
+    title: "Testing & Validation Records",
+    covers: "Test logs, validation results, signed test reports (Annex IV §2)",
+  },
+  {
+    number: 5,
+    title: "Standards Compliance Documentation",
+    covers: "Harmonised standards applied or alternative solutions (Annex IV §7)",
+  },
+  {
+    number: 6,
+    title: "EU Declaration of Conformity",
+    covers: "Article 47 signed conformity declaration (Annex IV §8)",
+  },
+  {
+    number: 7,
+    title: "Post-Market Monitoring Plan",
+    covers: "Article 72 monitoring obligations and procedures (Annex IV §9)",
+  },
+];
 
-type InputMode = "upload" | "paste" | "qa";
+const SECTION_TITLES: Record<number, string> = {
+  1: "General description of the AI system",
+  2: "Detailed description of elements and development process",
+  3: "Monitoring, functioning and control",
+  4: "Appropriateness of performance metrics",
+  5: "Risk management system",
+  6: "Relevant changes through lifecycle",
+  7: "Harmonised standards applied",
+  8: "EU declaration of conformity",
+  9: "Post-market monitoring",
+};
 
-// ── Helpers ─────────────────────────────────────────────────────────────────
+const ACCEPTED_TYPES = new Set([
+  "application/pdf",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "text/plain",
+]);
+
+const ACCEPTED_EXTENSIONS = new Set([".pdf", ".docx", ".txt"]);
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
 
 function formatSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
@@ -59,55 +92,45 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-function sectionStatusLabel(status: string): string {
-  switch (status) {
-    case "analyzed": return "Complete";
-    case "submitted": return "In progress";
-    default: return "Not started";
+function validateFile(file: File): string | null {
+  const ext = "." + file.name.split(".").pop()?.toLowerCase();
+  if (!ACCEPTED_TYPES.has(file.type) && !ACCEPTED_EXTENSIONS.has(ext)) {
+    return `"${file.name}" is not supported. Please upload PDF, DOCX, or TXT files.`;
   }
+  if (file.size > 10 * 1024 * 1024) {
+    return `"${file.name}" exceeds the 10 MB limit.`;
+  }
+  return null;
 }
 
-function sectionStatusVariant(status: string) {
-  switch (status) {
-    case "analyzed": return "resolved" as const;
-    case "submitted": return "minor" as const;
-    default: return "neutral" as const;
-  }
-}
+type Stage2Phase = "intro" | "reviewing" | "analyzing" | "done";
 
-let msgIdCounter = 0;
-function nextMsgId() { return `msg-${++msgIdCounter}-${Date.now()}`; }
-
-// ── Component ───────────────────────────────────────────────────────────────
+// ── Component ────────────────────────────────────────────────────────────────
 
 export default function Stage2Page() {
-  const { id: sessionId, n: sectionParam } = useParams<{ id: string; n?: string }>();
+  const { id: sessionId } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const [currentSection, setCurrentSection] = useState(parseInt(sectionParam || "1", 10));
-  const [sections, setSections] = useState<SectionStatusDto[]>([]);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [inputMode, setInputMode] = useState<InputMode>("upload");
-  const [pasteText, setPasteText] = useState("");
-  const [qaText, setQaText] = useState("");
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [isPending, setIsPending] = useState(false);
-  const [sectionDropdownOpen, setSectionDropdownOpen] = useState(false);
+  const [phase, setPhase] = useState<Stage2Phase>("intro");
+  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [sectionResults, setSectionResults] = useState<Record<number, GapAnalysisResponse>>({});
+  const [sectionErrors, setSectionErrors] = useState<Record<number, string>>({});
+  const [globalError, setGlobalError] = useState<string | null>(null);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [exitDialogOpen, setExitDialogOpen] = useState(false);
-  const [sectionComplete, setSectionComplete] = useState(false);
-
-  const chatEndRef = useRef<HTMLDivElement>(null);
-  const chatContainerRef = useRef<HTMLDivElement>(null);
+  const dragCounter = useRef(0);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const bottomRef = useRef<HTMLDivElement>(null);
 
   const startStage2 = useStartStage2(sessionId ?? "");
   const uploadDoc = useUploadDocument(sessionId ?? "");
-  const submitDoc = useSubmitDocument(sessionId ?? "");
-  const submitQA = useSubmitQA(sessionId ?? "");
   const generateReport = useGenerateReport(sessionId ?? "");
   const { data: interviewStatus } = useInterviewStatus(sessionId);
 
-  // ── Resumability ──────────────────────────────────────────────────────
+  // ── Guard: must be stage 2 ─────────────────────────────────────────────
   useEffect(() => {
     if (!interviewStatus || !sessionId) return;
     if (interviewStatus.stage < 2 && interviewStatus.riskClassification === "pending") {
@@ -115,7 +138,16 @@ export default function Stage2Page() {
     }
   }, [interviewStatus, sessionId, navigate]);
 
-  // ── Network status ────────────────────────────────────────────────────
+  // ── Initialise Stage 2 on backend ──────────────────────────────────────
+  useEffect(() => {
+    if (!sessionId) return;
+    startStage2.mutateAsync().catch(() => {
+      // Stage 2 may already be started — ignore the error
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sessionId]);
+
+  // ── Network status ─────────────────────────────────────────────────────
   useEffect(() => {
     const onOnline = () => setIsOnline(true);
     const onOffline = () => setIsOnline(false);
@@ -127,254 +159,143 @@ export default function Stage2Page() {
     };
   }, []);
 
-  // ── Initialize Stage 2 ───────────────────────────────────────────────
+  // ── Scroll to bottom when results arrive ───────────────────────────────
   useEffect(() => {
-    if (!sessionId || sections.length > 0) return;
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [sectionResults, phase]);
 
-    startStage2.mutateAsync().then((res) => {
-      setSections(res.sections);
-      // Generate intro message for first section
-      const sec = res.sections.find((s) => s.sectionNumber === currentSection);
-      if (sec) {
-        addIntroMessage(sec.sectionNumber, sec.sectionTitle);
+  // ── File handling ──────────────────────────────────────────────────────
+  const addFiles = useCallback((incoming: FileList | File[]) => {
+    setFileError(null);
+    const valid: File[] = [];
+    for (const file of Array.from(incoming)) {
+      const err = validateFile(file);
+      if (err) {
+        setFileError(err);
+        return;
       }
-    }).catch((err) => {
-      addMessage({
-        role: "system",
-        content: getErrorMessage(err, "Failed to initialize Stage 2."),
-        isError: true,
-        onRetry: () => window.location.reload(),
-      });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sessionId]);
-
-  // ── URL sync ──────────────────────────────────────────────────────────
-  useEffect(() => {
-    const n = parseInt(sectionParam || "1", 10);
-    if (n !== currentSection && n >= 1 && n <= 9) {
-      setCurrentSection(n);
-      setMessages([]);
-      setSectionComplete(false);
-      const sec = sections.find((s) => s.sectionNumber === n);
-      if (sec) addIntroMessage(sec.sectionNumber, sec.sectionTitle);
+      valid.push(file);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sectionParam]);
+    setUploadedFiles((prev) => {
+      const names = new Set(prev.map((f) => f.name));
+      const deduped = valid.filter((f) => !names.has(f.name));
+      return [...prev, ...deduped];
+    });
+    if (valid.length > 0) setPhase("reviewing");
+  }, []);
 
-  // ── Scroll to bottom on new message ───────────────────────────────────
-  useEffect(() => {
-    if (!chatContainerRef.current || !chatEndRef.current) return;
-    const container = chatContainerRef.current;
-    const bottomThreshold = 200;
-    const isNearBottom =
-      container.scrollHeight - container.scrollTop - container.clientHeight < bottomThreshold;
-    if (isNearBottom) {
-      chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+  const removeFile = useCallback((name: string) => {
+    setUploadedFiles((prev) => {
+      const next = prev.filter((f) => f.name !== name);
+      if (next.length === 0) setPhase("intro");
+      return next;
+    });
+  }, []);
+
+  const onDragEnter = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    dragCounter.current++;
+    setIsDragging(true);
+  }, []);
+
+  const onDragLeave = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+    dragCounter.current--;
+    if (dragCounter.current === 0) setIsDragging(false);
+  }, []);
+
+  const onDragOver = useCallback((e: React.DragEvent) => {
+    e.preventDefault();
+  }, []);
+
+  const onDrop = useCallback(
+    (e: React.DragEvent) => {
+      e.preventDefault();
+      setIsDragging(false);
+      dragCounter.current = 0;
+      if (e.dataTransfer.files.length > 0) addFiles(e.dataTransfer.files);
+    },
+    [addFiles],
+  );
+
+  const onInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files.length > 0) addFiles(e.target.files);
+      e.target.value = "";
+    },
+    [addFiles],
+  );
+
+  // ── Analysis ───────────────────────────────────────────────────────────
+  async function runAnalysis() {
+    if (uploadedFiles.length === 0 || !sessionId) return;
+    setPhase("analyzing");
+    setGlobalError(null);
+    setSectionResults({});
+    setSectionErrors({});
+
+    // Use the largest file as the primary document for all sections
+    const primaryFile = uploadedFiles.reduce((a, b) => (b.size > a.size ? b : a));
+
+    let failCount = 0;
+
+    for (let section = 1; section <= 9; section++) {
+      setCurrentSection(section);
+      try {
+        const result = await uploadDoc.mutateAsync({
+          sectionNumber: section,
+          file: primaryFile,
+        });
+        setSectionResults((prev) => ({ ...prev, [section]: result }));
+      } catch (err) {
+        failCount++;
+        setSectionErrors((prev) => ({
+          ...prev,
+          [section]: getErrorMessage(err, `Section ${section} analysis failed.`),
+        }));
+      }
     }
-  }, [messages]);
 
-  // ── Message helpers ───────────────────────────────────────────────────
-  function addMessage(base: Omit<ChatMessage, "id" | "timestamp">) {
-    setMessages((prev) => [...prev, { ...base, id: nextMsgId(), timestamp: new Date() }]);
-  }
+    setCurrentSection(0);
 
-  function addIntroMessage(sectionNumber: number, sectionTitle: string) {
-    addMessage({
-      role: "system",
-      content: `Section ${sectionNumber} of 9 \u2014 ${sectionTitle}\n\nAnnex IV of the EU AI Act requires providers of high-risk systems to document this area. You can proceed in one of three ways:\n\n1. Upload a document (PDF, DOCX, or TXT, up to 10 MB) that covers this area.\n2. Paste the relevant text directly.\n3. Answer a short set of structured questions if you do not have a document yet.\n\nWhichever you choose, we will analyze coverage against Annex IV requirements and identify gaps.`,
-    });
-  }
-
-  function addGapMessage(result: GapAnalysisResponse, sectionNum: number) {
-    const complete = result.compliancePercentage >= 0; // backend always returns a percentage
-    addMessage({
-      role: "system",
-      content: `Analyzed. ${result.metRequirements} of ${result.totalRequirements} requirements met; ${result.gapCount} gaps identified.`,
-      gapAnalysis: result,
-    });
-
-    // Mark section as complete: backend returns analyzed status
-    const sectionStatus = sections.find((s) => s.sectionNumber === sectionNum);
-    if (sectionStatus) {
-      setSections((prev) =>
-        prev.map((s) =>
-          s.sectionNumber === sectionNum
-            ? { ...s, status: "analyzed", compliancePercentage: result.compliancePercentage }
-            : s
-        )
+    if (failCount > 5) {
+      setGlobalError(
+        "More than 5 sections failed. Please check your connection and try again.",
       );
     }
 
-    // Check if all sections are now complete
-    const updatedSections = sections.map((s) =>
-      s.sectionNumber === sectionNum ? { ...s, status: "analyzed" } : s
-    );
-    const allComplete = updatedSections.every((s) => s.status === "analyzed");
-
-    if (allComplete) {
-      handleAllSectionsComplete();
-    } else {
-      setSectionComplete(true);
-      const nextSec = sectionNum < 9 ? sectionNum + 1 : null;
-      if (nextSec) {
-        addMessage({
-          role: "system",
-          content: `Section ${sectionNum} complete. Ready to continue to section ${nextSec}.`,
-          showContinue: true,
-        });
-      }
-    }
+    setPhase("done");
   }
 
-  async function handleAllSectionsComplete() {
-    addMessage({
-      role: "system",
-      content: "Documentation review complete. Generating your compliance report...",
-    });
+  async function handleGenerateReport() {
     try {
       await generateReport.mutateAsync();
       navigate(`/app/session/${sessionId}/report`);
     } catch (err) {
-      addMessage({
-        role: "system",
-        content: getErrorMessage(err, "Report generation failed."),
-        isError: true,
-        onRetry: () => handleAllSectionsComplete(),
-      });
+      setGlobalError(getErrorMessage(err, "Report generation failed. Please try again."));
     }
   }
 
-  // ── Submit handlers ───────────────────────────────────────────────────
-  async function handleUpload() {
-    if (!selectedFile || !sessionId) return;
-    setIsPending(true);
-
-    addMessage({
-      role: "user",
-      content: selectedFile.name,
-      file: { name: selectedFile.name, size: selectedFile.size },
-    });
-
-    try {
-      const result = await uploadDoc.mutateAsync({
-        sectionNumber: currentSection,
-        file: selectedFile,
-      });
-      setSelectedFile(null);
-      addGapMessage(result, currentSection);
-    } catch (err) {
-      const payload = selectedFile;
-      addMessage({
-        role: "system",
-        content: getErrorMessage(err, "Document analysis failed."),
-        isError: true,
-        onRetry: () => {
-          setSelectedFile(payload);
-          handleUpload();
-        },
-      });
-    } finally {
-      setIsPending(false);
-    }
-  }
-
-  async function handlePaste() {
-    if (pasteText.trim().length < 10 || !sessionId) return;
-    setIsPending(true);
-
-    const text = pasteText.trim();
-    addMessage({ role: "user", content: text.length > 300 ? text.slice(0, 300) + "..." : text });
-
-    try {
-      const result = await submitDoc.mutateAsync({
-        sectionNumber: currentSection,
-        documentText: text,
-      });
-      setPasteText("");
-      addGapMessage(result, currentSection);
-    } catch (err) {
-      addMessage({
-        role: "system",
-        content: getErrorMessage(err, "Document analysis failed."),
-        isError: true,
-        onRetry: () => handlePaste(),
-      });
-    } finally {
-      setIsPending(false);
-    }
-  }
-
-  async function handleQA() {
-    if (qaText.trim().length < 3 || !sessionId) return;
-    setIsPending(true);
-
-    const answer = qaText.trim();
-    addMessage({ role: "user", content: answer });
-
-    try {
-      // Judgement call: requirement tracking is server-side.
-      // For Q&A flow, we send a generic requirementId; the backend assigns.
-      const result = await submitQA.mutateAsync({
-        sectionNumber: currentSection,
-        requirementId: `S${currentSection}-QA`,
-        answer,
-      });
-      setQaText("");
-
-      if (result) {
-        // Got a GapAnalysisResponse — section is complete
-        addGapMessage(result, currentSection);
-      } else {
-        // 204 — more questions remain
-        addMessage({
-          role: "system",
-          content: "Noted. Please provide more detail or continue with the next question.",
-        });
-      }
-    } catch (err) {
-      addMessage({
-        role: "system",
-        content: getErrorMessage(err, "Failed to process answer."),
-        isError: true,
-        onRetry: () => handleQA(),
-      });
-    } finally {
-      setIsPending(false);
-    }
-  }
-
-  function handleContinueToNextSection() {
-    const next = currentSection + 1;
-    if (next > 9) return;
-    setSectionComplete(false);
-    navigate(`/app/session/${sessionId}/stage2/${next}`);
-  }
-
-  function handleQuickAction(text: string) {
-    if (inputMode === "paste") {
-      setPasteText(text);
-    } else {
-      setInputMode("qa");
-      setQaText(text);
-    }
-  }
-
-  // ── Guard ─────────────────────────────────────────────────────────────
+  // ── Guard ──────────────────────────────────────────────────────────────
   if (!sessionId) {
     navigate("/app", { replace: true });
     return null;
   }
 
-  const currentSectionData = sections.find((s) => s.sectionNumber === currentSection);
-  const quickActions = SECTION_QUICK_ACTIONS[currentSection] || [];
-  const formatTime = (d: Date) => d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  const doneCount = Object.keys(sectionResults).length;
+  const totalGaps = Object.values(sectionResults).reduce((sum, r) => sum + r.gapCount, 0);
+  const avgCompliance =
+    doneCount > 0
+      ? Math.round(
+          Object.values(sectionResults).reduce((sum, r) => sum + r.compliancePercentage, 0) /
+            doneCount,
+        )
+      : 0;
 
   return (
     <div className="flex flex-col h-screen bg-[var(--color-regu-bg)] overflow-hidden">
-      {/* ── Atmospheric background ────────────────────────────────────── */}
+      {/* ── Atmospheric background ──────────────────────────────────────── */}
       <div className="fixed inset-0 pointer-events-none" aria-hidden>
-        {/* Layer 1: radial gradient */}
         <div
           className="absolute inset-0"
           style={{
@@ -382,14 +303,12 @@ export default function Stage2Page() {
               "radial-gradient(40% 60% at 25% 15%, rgba(42,82,190,0.14), transparent 70%)",
           }}
         />
-        {/* Layer 2: noise texture */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.03]" aria-hidden>
           <filter id="noise">
             <feTurbulence baseFrequency="0.9" numOctaves={2} stitchTiles="stitch" />
           </filter>
           <rect width="100%" height="100%" filter="url(#noise)" />
         </svg>
-        {/* Layer 3: single slow-drifting shape */}
         <ElegantShape
           delay={0}
           width={400}
@@ -400,33 +319,22 @@ export default function Stage2Page() {
         />
       </div>
 
-      {/* ── Top bar ───────────────────────────────────────────────────── */}
+      {/* ── Top bar ─────────────────────────────────────────────────────── */}
       <header className="sticky top-0 z-30 border-b border-[var(--color-regu-border)] bg-[var(--color-regu-bg)]/90 backdrop-blur-xl">
-        {/* Network offline banner */}
         {!isOnline && (
           <div className="flex items-center justify-center gap-2 bg-[var(--color-regu-warn)]/10 px-4 py-1.5 text-xs text-[var(--color-regu-warn)]">
             <WifiOff size={12} aria-hidden />
             Connection lost. Reconnecting...
           </div>
         )}
-
         <div className="flex items-center justify-between px-6 py-3">
-          {/* Wordmark */}
-          <Link
-            to="/"
-            className="flex items-center gap-2"
-            aria-label="REGU home"
-          >
+          <Link to="/" className="flex items-center gap-2" aria-label="REGU home">
             <ShieldCheck size={18} className="text-[var(--color-regu-accent)]" aria-hidden />
             <span className="text-[var(--color-regu-fg)] font-semibold text-base font-[family-name:var(--font-heading)] tracking-tight">
               Regu
             </span>
           </Link>
-
-          {/* Step indicator */}
           <StepIndicator currentStep={2} />
-
-          {/* Exit */}
           <button
             onClick={() => setExitDialogOpen(true)}
             className="text-xs text-[var(--color-regu-fg-subtle)] hover:text-[var(--color-regu-fg-muted)] transition-colors"
@@ -435,194 +343,267 @@ export default function Stage2Page() {
             Exit analysis
           </button>
         </div>
-
-        {/* Section row */}
-        <div className="flex items-center justify-between px-6 py-2 border-t border-[var(--color-regu-border)]/50 text-sm">
-          <span className="text-[var(--color-regu-fg-muted)]">
-            Section {currentSection} of 9
-            {currentSectionData && ` \u2014 ${currentSectionData.sectionTitle}`}
-          </span>
-          <div className="relative">
-            <button
-              onClick={() => setSectionDropdownOpen(!sectionDropdownOpen)}
-              className="flex items-center gap-1 text-xs text-[var(--color-regu-fg-subtle)] hover:text-[var(--color-regu-fg-muted)] transition-colors"
-              type="button"
-            >
-              Jump to section
-              <ChevronDown size={12} className={cn("transition-transform", sectionDropdownOpen && "rotate-180")} aria-hidden />
-            </button>
-            {sectionDropdownOpen && (
-              <div className="absolute right-0 top-full mt-2 w-72 rounded-xl border border-[var(--color-regu-border-hi)] bg-[var(--color-regu-surface)] shadow-2xl z-40 py-1">
-                {sections.map((s) => (
-                  <button
-                    key={s.sectionNumber}
-                    onClick={() => {
-                      setSectionDropdownOpen(false);
-                      navigate(`/app/session/${sessionId}/stage2/${s.sectionNumber}`);
-                    }}
-                    className={cn(
-                      "w-full text-left px-4 py-2.5 text-sm flex items-center justify-between",
-                      "hover:bg-[var(--color-regu-surface-2)] transition-colors",
-                      s.sectionNumber === currentSection && "bg-[var(--color-regu-surface-2)]",
-                    )}
-                  >
-                    <span className="text-[var(--color-regu-fg)]">
-                      {s.sectionNumber}. {s.sectionTitle}
-                    </span>
-                    <StatusChip variant={sectionStatusVariant(s.status)}>
-                      {sectionStatusLabel(s.status)}
-                    </StatusChip>
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
       </header>
 
-      {/* ── Report generation progress bar ────────────────────────────── */}
+      {/* ── Report generation progress bar ──────────────────────────────── */}
       {generateReport.isPending && (
         <div className="fixed top-0 left-0 right-0 z-50 h-0.5 bg-[var(--color-regu-accent)]/20">
           <div className="h-full bg-[var(--color-regu-accent)] animate-[indeterminate_1.5s_ease-in-out_infinite]" />
         </div>
       )}
 
-      {/* ── Chat area ─────────────────────────────────────────────────── */}
-      <div
-        ref={chatContainerRef}
-        className="flex-1 overflow-y-auto relative z-10"
-        role="log"
-        aria-live="polite"
-        aria-relevant="additions"
-      >
-        <div className="mx-auto max-w-[860px] px-6 py-8 space-y-6">
-          {messages.map((msg) => (
-            <MessageRow key={msg.id} message={msg} formatTime={formatTime} onContinue={handleContinueToNextSection} />
-          ))}
-          {isPending && (
-            <div className="flex items-center gap-3 text-sm text-[var(--color-regu-fg-muted)]">
-              <span>Analyzing document...</span>
-              <div className="h-0.5 w-32 rounded-full bg-[var(--color-regu-border)] overflow-hidden">
-                <div className="h-full w-1/2 bg-[var(--color-regu-accent)] animate-[indeterminate_1.5s_ease-in-out_infinite] rounded-full" />
-              </div>
+      {/* ── Main scroll area ─────────────────────────────────────────────── */}
+      <div className="flex-1 overflow-y-auto relative z-10">
+        <div className="mx-auto max-w-[720px] px-6 py-10 space-y-8">
+
+          {/* ── AI intro bubble ─────────────────────────────────────────── */}
+          <AiBubble>
+            <p className="text-sm text-[var(--color-regu-fg)] mb-4">
+              Your system has been classified as{" "}
+              <span className="font-semibold text-[var(--color-regu-accent)]">high-risk</span>{" "}
+              under the EU AI Act. To proceed, you need to provide technical documentation
+              covering the areas below. Upload your documents and I'll analyze coverage
+              against all 9 Annex IV requirements.
+            </p>
+            <ul className="space-y-2">
+              {REQUIRED_DOCUMENTS.map((doc) => (
+                <li key={doc.number} className="flex gap-3 text-sm">
+                  <span className="shrink-0 w-5 h-5 rounded-full bg-[var(--color-regu-accent)]/15 text-[var(--color-regu-accent)] text-[10px] font-semibold flex items-center justify-center mt-0.5">
+                    {doc.number}
+                  </span>
+                  <span>
+                    <span className="text-[var(--color-regu-fg)] font-medium">{doc.title}</span>
+                    <span className="text-[var(--color-regu-fg-subtle)] ml-1 text-xs">
+                      — {doc.covers}
+                    </span>
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-xs text-[var(--color-regu-fg-subtle)] mt-4">
+              You can combine everything into a single comprehensive file or upload
+              separate documents. PDF, DOCX, or TXT — up to 10 MB each.
+            </p>
+          </AiBubble>
+
+          {/* ── Drop zone (visible in intro and reviewing phases) ─────────── */}
+          {(phase === "intro" || phase === "reviewing") && (
+            <div
+              onDragEnter={onDragEnter}
+              onDragLeave={onDragLeave}
+              onDragOver={onDragOver}
+              onDrop={onDrop}
+              className={cn(
+                "rounded-2xl border-2 border-dashed p-6 transition-colors duration-150",
+                isDragging
+                  ? "border-[var(--color-regu-accent)] bg-[var(--color-regu-surface-2)]"
+                  : "border-[var(--color-regu-border)] bg-[var(--color-regu-surface)]",
+              )}
+            >
+              {/* File list */}
+              {uploadedFiles.length > 0 && (
+                <ul className="space-y-2 mb-4">
+                  {uploadedFiles.map((f) => (
+                    <li
+                      key={f.name}
+                      className="flex items-center gap-3 rounded-xl border border-[var(--color-regu-border)] bg-[var(--color-regu-surface-2)] px-3 py-2.5 text-sm"
+                    >
+                      <FileText size={16} className="shrink-0 text-[var(--color-regu-fg-subtle)]" aria-hidden />
+                      <span className="flex-1 truncate text-[var(--color-regu-fg)]">{f.name}</span>
+                      <span className="shrink-0 text-xs text-[var(--color-regu-fg-subtle)]">{formatSize(f.size)}</span>
+                      <button
+                        onClick={() => removeFile(f.name)}
+                        className="shrink-0 rounded p-1 text-[var(--color-regu-fg-subtle)] hover:text-[var(--color-regu-fg)] hover:bg-[var(--color-regu-surface)] transition-colors"
+                        aria-label={`Remove ${f.name}`}
+                        type="button"
+                      >
+                        <X size={13} aria-hidden />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {/* Drop prompt */}
+              <button
+                onClick={() => inputRef.current?.click()}
+                className="w-full flex flex-col items-center gap-2 py-4 text-sm text-[var(--color-regu-fg-muted)] cursor-pointer"
+                type="button"
+              >
+                <FileText size={22} className="text-[var(--color-regu-fg-subtle)]" aria-hidden />
+                <span>
+                  {uploadedFiles.length > 0 ? "Add more documents or " : "Drag and drop here, or "}
+                  <span className="text-[var(--color-regu-accent)] underline underline-offset-2">
+                    browse
+                  </span>
+                </span>
+                <span className="text-xs text-[var(--color-regu-fg-subtle)]">PDF, DOCX, or TXT up to 10 MB</span>
+              </button>
+
+              {fileError && (
+                <p className="mt-2 text-xs text-[var(--color-regu-danger)] text-center" role="alert">
+                  {fileError}
+                </p>
+              )}
+
+              <input
+                ref={inputRef}
+                type="file"
+                multiple
+                accept="application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain"
+                onChange={onInputChange}
+                className="sr-only"
+                tabIndex={-1}
+                aria-hidden
+              />
             </div>
           )}
-          <div ref={chatEndRef} />
+
+          {/* ── AI reviewing bubble ──────────────────────────────────────── */}
+          {phase === "reviewing" && uploadedFiles.length > 0 && (
+            <AiBubble>
+              <p className="text-sm text-[var(--color-regu-fg)] mb-4">
+                I've received{" "}
+                <span className="font-semibold">{uploadedFiles.length}</span>{" "}
+                {uploadedFiles.length === 1 ? "document" : "documents"}. I'll analyze{" "}
+                {uploadedFiles.length > 1 ? "the most comprehensive file " : "it "}
+                against all 9 Annex IV requirements and identify any compliance gaps.
+                Ready to start?
+              </p>
+              <div className="flex gap-3">
+                <Button variant="primary" size="md" onClick={runAnalysis}>
+                  Start Analysis
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="md"
+                  onClick={() => {
+                    setUploadedFiles([]);
+                    setPhase("intro");
+                  }}
+                >
+                  Change Files
+                </Button>
+              </div>
+            </AiBubble>
+          )}
+
+          {/* ── Analyzing phase ──────────────────────────────────────────── */}
+          {(phase === "analyzing" || phase === "done") && (
+            <>
+              <AiBubble>
+                <p className="text-sm text-[var(--color-regu-fg)]">
+                  {phase === "analyzing"
+                    ? "Analyzing your documentation against Annex IV..."
+                    : `Analysis complete. ${doneCount} of 9 sections analyzed${
+                        totalGaps > 0 ? `, ${totalGaps} gaps found` : ", no gaps found"
+                      }.`}
+                </p>
+                {phase === "analyzing" && currentSection > 0 && (
+                  <div className="flex items-center gap-3 mt-3">
+                    <Loader2 size={14} className="text-[var(--color-regu-accent)] animate-spin" aria-hidden />
+                    <span className="text-xs text-[var(--color-regu-fg-muted)]">
+                      Section {currentSection} of 9 — {SECTION_TITLES[currentSection]}
+                    </span>
+                  </div>
+                )}
+              </AiBubble>
+
+              {/* Section result cards */}
+              <div className="space-y-3">
+                {Array.from({ length: 9 }, (_, i) => i + 1).map((section) => {
+                  const result = sectionResults[section];
+                  const error = sectionErrors[section];
+                  const isActive = phase === "analyzing" && currentSection === section;
+                  const isPast = result || error;
+
+                  if (!isPast && !isActive) return null;
+
+                  return (
+                    <SectionCard
+                      key={section}
+                      section={section}
+                      title={SECTION_TITLES[section]}
+                      result={result}
+                      error={error}
+                      isActive={isActive}
+                    />
+                  );
+                })}
+              </div>
+
+              {/* Global error */}
+              {globalError && (
+                <div className="flex items-start gap-3 rounded-xl border border-[var(--color-regu-danger)]/30 bg-[var(--color-regu-danger)]/5 px-4 py-3">
+                  <AlertCircle size={16} className="shrink-0 text-[var(--color-regu-danger)] mt-0.5" aria-hidden />
+                  <p className="text-sm text-[var(--color-regu-danger)]">{globalError}</p>
+                </div>
+              )}
+
+              {/* Done CTA */}
+              {phase === "done" && (
+                <AiBubble>
+                  <p className="text-sm text-[var(--color-regu-fg)] mb-4">
+                    {doneCount > 0
+                      ? `Documentation review complete. Average compliance: ${avgCompliance}%. Ready to generate your full compliance report?`
+                      : "The analysis encountered errors. Please try again or contact support."}
+                  </p>
+                  {doneCount > 0 && (
+                    <div className="flex gap-3">
+                      <Button
+                        variant="primary"
+                        size="md"
+                        onClick={handleGenerateReport}
+                        disabled={generateReport.isPending}
+                      >
+                        {generateReport.isPending ? (
+                          <span className="flex items-center gap-2">
+                            <Loader2 size={14} className="animate-spin" aria-hidden />
+                            Generating...
+                          </span>
+                        ) : (
+                          "Generate Report"
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="md"
+                        onClick={() => {
+                          setUploadedFiles([]);
+                          setSectionResults({});
+                          setSectionErrors({});
+                          setGlobalError(null);
+                          setPhase("intro");
+                        }}
+                      >
+                        Upload New Documents
+                      </Button>
+                    </div>
+                  )}
+                  {doneCount === 0 && (
+                    <Button
+                      variant="primary"
+                      size="md"
+                      onClick={() => {
+                        setSectionResults({});
+                        setSectionErrors({});
+                        setGlobalError(null);
+                        setPhase("reviewing");
+                      }}
+                    >
+                      Try Again
+                    </Button>
+                  )}
+                </AiBubble>
+              )}
+            </>
+          )}
+
+          <div ref={bottomRef} />
         </div>
       </div>
 
-      {/* ── Bottom input dock ─────────────────────────────────────────── */}
-      {!sectionComplete && (
-        <div className="sticky bottom-0 z-20 border-t border-[var(--color-regu-border)] bg-[var(--color-regu-surface)]/80 backdrop-blur-md">
-          <div className="mx-auto max-w-[860px] px-6 py-4">
-            {/* Quick action chips */}
-            {quickActions.length > 0 && (
-              <div className="flex flex-wrap gap-2 mb-3">
-                {quickActions.map((action) => (
-                  <button
-                    key={action}
-                    onClick={() => handleQuickAction(action)}
-                    className="rounded-full border border-[var(--color-regu-border)] bg-[var(--color-regu-surface-2)] px-3 py-1.5 text-xs text-[var(--color-regu-fg-muted)] hover:border-[var(--color-regu-accent)]/40 hover:text-[var(--color-regu-fg)] transition-colors"
-                    type="button"
-                  >
-                    {action}
-                  </button>
-                ))}
-              </div>
-            )}
-
-            {/* Mode tabs */}
-            <div className="flex gap-1 mb-3">
-              {(["upload", "paste", "qa"] as InputMode[]).map((mode) => (
-                <button
-                  key={mode}
-                  onClick={() => setInputMode(mode)}
-                  className={cn(
-                    "px-3 py-1.5 rounded-lg text-xs font-medium transition-colors",
-                    inputMode === mode
-                      ? "bg-[var(--color-regu-surface-2)] text-[var(--color-regu-fg)]"
-                      : "text-[var(--color-regu-fg-subtle)] hover:text-[var(--color-regu-fg-muted)]",
-                  )}
-                  type="button"
-                >
-                  {mode === "upload" ? "Upload file" : mode === "paste" ? "Paste text" : "Answer questions"}
-                </button>
-              ))}
-            </div>
-
-            {/* Input area per mode */}
-            {inputMode === "upload" && (
-              <div className="flex flex-col gap-3">
-                <FileDrop
-                  onFile={(f) => setSelectedFile(f)}
-                  disabled={isPending}
-                />
-                {selectedFile && (
-                  <Button
-                    variant="primary"
-                    size="md"
-                    onClick={handleUpload}
-                    disabled={isPending}
-                    className="self-end"
-                  >
-                    {isPending ? "Analyzing..." : "Analyze"}
-                  </Button>
-                )}
-              </div>
-            )}
-
-            {inputMode === "paste" && (
-              <div className="flex flex-col gap-3">
-                <Textarea
-                  value={pasteText}
-                  onChange={(e) => setPasteText(e.target.value)}
-                  placeholder="Paste your documentation text here..."
-                  className="min-h-[140px] max-h-[40vh]"
-                  disabled={isPending}
-                />
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={handlePaste}
-                  disabled={isPending || pasteText.trim().length < 10}
-                  className="self-end"
-                >
-                  {isPending ? "Analyzing..." : "Analyze"}
-                </Button>
-              </div>
-            )}
-
-            {inputMode === "qa" && (
-              <div className="flex gap-3">
-                <Textarea
-                  value={qaText}
-                  onChange={(e) => setQaText(e.target.value)}
-                  placeholder="Type your answer..."
-                  className="min-h-[60px] flex-1"
-                  disabled={isPending}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" && !e.shiftKey) {
-                      e.preventDefault();
-                      handleQA();
-                    }
-                  }}
-                />
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={handleQA}
-                  disabled={isPending || qaText.trim().length < 3}
-                  className="self-end"
-                >
-                  {isPending ? "Sending..." : "Send"}
-                </Button>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      {/* ── Exit confirmation dialog ──────────────────────────────────── */}
+      {/* ── Exit dialog ──────────────────────────────────────────────────── */}
       {exitDialogOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-[var(--color-regu-bg)]/80 backdrop-blur-sm">
           <div className="w-full max-w-sm rounded-2xl border border-[var(--color-regu-border-hi)] bg-[var(--color-regu-surface)] p-6 shadow-2xl">
@@ -647,120 +628,143 @@ export default function Stage2Page() {
   );
 }
 
-// ── MessageRow ──────────────────────────────────────────────────────────────
+// ── AiBubble ────────────────────────────────────────────────────────────────
 
-function MessageRow({
-  message,
-  formatTime,
-  onContinue,
-}: {
-  message: ChatMessage;
-  formatTime: (d: Date) => string;
-  onContinue: () => void;
-}) {
-  const isSystem = message.role === "system";
-
+function AiBubble({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      className={cn(
-        "flex flex-col gap-1.5 max-w-[85%]",
-        isSystem ? "self-start items-start" : "self-end items-end ml-auto",
-        message.isError && "border-l-2 border-[var(--color-regu-danger)] pl-4",
-      )}
-    >
-      {/* Label row */}
+    <div className="flex flex-col gap-1.5">
       <span className="text-[10px] uppercase tracking-[0.1em] text-[var(--color-regu-fg-subtle)]">
-        {isSystem ? "REGU" : "You"} · {formatTime(message.timestamp)}
+        REGU
       </span>
-
-      {/* File reference */}
-      {message.file && (
-        <div className="flex items-center gap-2 rounded-lg border border-[var(--color-regu-border)] bg-[var(--color-regu-surface)] px-3 py-2 text-sm">
-          <FileText size={14} className="text-[var(--color-regu-fg-subtle)]" aria-hidden />
-          <span className="text-[var(--color-regu-fg)]">{message.file.name}</span>
-          <span className="text-[var(--color-regu-fg-subtle)]">{formatSize(message.file.size)}</span>
-        </div>
-      )}
-
-      {/* Body */}
-      <div
-        className={cn(
-          "text-sm leading-relaxed whitespace-pre-line",
-          isSystem ? "text-[var(--color-regu-fg)]" : "text-[var(--color-regu-fg)]",
-          message.isError && "text-[var(--color-regu-danger)]",
-        )}
-      >
-        {message.content}
+      <div className="rounded-2xl rounded-tl-sm border border-[var(--color-regu-border)] bg-[var(--color-regu-surface)] px-5 py-4">
+        {children}
       </div>
-
-      {/* Gap analysis table */}
-      {message.gapAnalysis && (
-        <GapTable analysis={message.gapAnalysis} />
-      )}
-
-      {/* Retry button */}
-      {message.isError && message.onRetry && (
-        <button
-          onClick={message.onRetry}
-          className="text-xs font-medium text-[var(--color-regu-danger)] underline underline-offset-2 hover:no-underline mt-1"
-          type="button"
-        >
-          Retry
-        </button>
-      )}
-
-      {/* Continue button */}
-      {message.showContinue && (
-        <Button
-          variant="primary"
-          size="sm"
-          onClick={onContinue}
-          className="mt-2"
-        >
-          Continue
-        </Button>
-      )}
     </div>
   );
 }
 
-// ── GapTable ────────────────────────────────────────────────────────────────
+// ── SectionCard ─────────────────────────────────────────────────────────────
 
-function GapTable({ analysis }: { analysis: GapAnalysisResponse }) {
+function SectionCard({
+  section,
+  title,
+  result,
+  error,
+  isActive,
+}: {
+  section: number;
+  title: string;
+  result: GapAnalysisResponse | undefined;
+  error: string | undefined;
+  isActive: boolean;
+}) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
-    <div className="w-full rounded-xl border border-[var(--color-regu-border)] bg-[var(--color-regu-surface-2)] overflow-hidden mt-2">
-      <table className="w-full text-xs">
-        <thead>
-          <tr className="border-b border-[var(--color-regu-border)]/50">
-            <th className="text-left px-3 py-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider">
-              Requirement
-            </th>
-            <th className="text-left px-3 py-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider">
-              Status
-            </th>
-            <th className="text-left px-3 py-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider hidden sm:table-cell">
-              Description
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {analysis.items.map((item) => (
-            <tr key={item.requirementId} className="border-b border-[var(--color-regu-border)]/30 last:border-0">
-              <td className="px-3 py-2 text-[var(--color-regu-fg)] font-mono text-[11px] whitespace-nowrap">
-                {item.requirementId}
-              </td>
-              <td className="px-3 py-2">
-                <StatusChip variant={item.found ? "resolved" : severityToVariant(item.severity)}>
-                  {item.found ? "Met" : item.severity || "Gap"}
-                </StatusChip>
-              </td>
-              <td className="px-3 py-2 text-[var(--color-regu-fg-muted)] hidden sm:table-cell">
-                {item.found ? item.extractedValue : item.gapDescription}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div
+      className={cn(
+        "rounded-xl border bg-[var(--color-regu-surface)] transition-colors duration-200",
+        isActive
+          ? "border-[var(--color-regu-accent)]/40"
+          : result
+            ? "border-[var(--color-regu-border)]"
+            : "border-[var(--color-regu-danger)]/30",
+      )}
+    >
+      <button
+        onClick={() => result && setExpanded((v) => !v)}
+        className={cn(
+          "w-full flex items-center gap-3 px-4 py-3 text-left",
+          result ? "cursor-pointer" : "cursor-default",
+        )}
+        type="button"
+        disabled={!result}
+      >
+        {/* Status icon */}
+        <div className="shrink-0">
+          {isActive ? (
+            <Loader2 size={16} className="text-[var(--color-regu-accent)] animate-spin" aria-hidden />
+          ) : result ? (
+            <CheckCircle2 size={16} className="text-[var(--color-regu-success,#22c55e)]" aria-hidden />
+          ) : (
+            <AlertCircle size={16} className="text-[var(--color-regu-danger)]" aria-hidden />
+          )}
+        </div>
+
+        {/* Title */}
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium text-[var(--color-regu-fg)] truncate">
+            {section}. {title}
+          </p>
+          {isActive && (
+            <p className="text-xs text-[var(--color-regu-fg-muted)]">Analyzing...</p>
+          )}
+          {error && (
+            <p className="text-xs text-[var(--color-regu-danger)]">{error}</p>
+          )}
+        </div>
+
+        {/* Compliance badge */}
+        {result && (
+          <div className="shrink-0 flex items-center gap-3">
+            <span className="text-xs text-[var(--color-regu-fg-muted)]">
+              {result.metRequirements}/{result.totalRequirements} met
+            </span>
+            <StatusChip
+              variant={
+                result.compliancePercentage >= 75
+                  ? "resolved"
+                  : result.compliancePercentage >= 40
+                    ? "minor"
+                    : "critical"
+              }
+            >
+              {result.compliancePercentage}%
+            </StatusChip>
+          </div>
+        )}
+      </button>
+
+      {/* Expanded gap table */}
+      {expanded && result && (
+        <div className="border-t border-[var(--color-regu-border)]/50 px-4 pb-4 pt-3">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="border-b border-[var(--color-regu-border)]/50">
+                <th className="text-left pb-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider">
+                  Requirement
+                </th>
+                <th className="text-left pb-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="text-left pb-2 text-[var(--color-regu-fg-subtle)] font-medium uppercase tracking-wider hidden sm:table-cell">
+                  Detail
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {result.items.map((item) => (
+                <tr
+                  key={item.requirementId}
+                  className="border-b border-[var(--color-regu-border)]/30 last:border-0"
+                >
+                  <td className="py-2 pr-3 text-[var(--color-regu-fg)] font-mono text-[11px] whitespace-nowrap">
+                    {item.requirementId}
+                  </td>
+                  <td className="py-2 pr-3">
+                    <StatusChip variant={item.found ? "resolved" : severityToVariant(item.severity)}>
+                      {item.found ? "Met" : item.severity || "Gap"}
+                    </StatusChip>
+                  </td>
+                  <td className="py-2 text-[var(--color-regu-fg-muted)] hidden sm:table-cell">
+                    {item.found ? item.extractedValue : item.gapDescription}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 }

@@ -414,7 +414,7 @@ export default function Stage1Page() {
                       value={freeText}
                       onChange={(e) => {
                         setFreeText(e.target.value);
-                        if (e.target.value.trim().length > 0) setSelectedOption(null);
+                        if (e.target.value.trim().length > 0) setSelectedOptions([]);
                       }}
                       placeholder="Describe your AI system's use case and context..."
                       className="min-h-[100px]"
