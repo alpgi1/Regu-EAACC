@@ -51,8 +51,9 @@ public class GuideChunkRetriever implements ChunkRetriever {
         Map<String, Object> filters = query.filters();
 
         StringBuilder sql = new StringBuilder("""
-                SELECT id, content, content_with_context,
-                       source, title, section_path, related_articles,
+                SELECT id, content,
+                       source_document AS source, section_title AS title,
+                       section_path, related_articles,
                        1 - (embedding <=> :queryVector::vector) AS score
                 FROM guide_chunks
                 WHERE 1=1
@@ -116,7 +117,7 @@ public class GuideChunkRetriever implements ChunkRetriever {
                 ((Number) row.get("id")).longValue(),
                 TABLE,
                 (String) row.get("content"),
-                (String) row.get("content_with_context"),
+                null, // guide_chunks has no content_with_context column
                 score,
                 metadata
         );

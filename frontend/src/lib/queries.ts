@@ -19,6 +19,8 @@ import {
   type GapAnalysisResponse,
   type SubmitDocumentRequest,
   type SubmitQAAnswerRequest,
+  type Stage2ChatRequest,
+  type Stage2ChatResponse,
   type ReportResponse,
   type CitationDto,
 } from "./api";
@@ -168,6 +170,19 @@ export function useSubmitQA(sessionId: string) {
       // Backend returns 204 if more requirements remain (no body)
       if (res.status === 204) return null;
       return res.data as GapAnalysisResponse;
+    },
+  });
+}
+
+/** POST /interviews/:id/stage2/chat — free-form Annex IV question */
+export function useStage2Chat(sessionId: string) {
+  return useMutation<Stage2ChatResponse, Error, Stage2ChatRequest>({
+    mutationFn: async (body) => {
+      const { data } = await api.post<Stage2ChatResponse>(
+        `/interviews/${sessionId}/stage2/chat`,
+        body,
+      );
+      return data;
     },
   });
 }

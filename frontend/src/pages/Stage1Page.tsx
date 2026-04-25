@@ -22,6 +22,7 @@ import {
   useInterviewStatus,
   useSubmitAnswer,
   useGenerateReport,
+  useSkipToStage2,
 } from "@/lib/queries";
 import { TIER_SUMMARIES } from "@/lib/constants";
 import type { QuestionDto, ApiNextStepResponse, ClassificationSummaryDto } from "@/lib/api";
@@ -84,6 +85,7 @@ export default function Stage1Page() {
 
   const submitAnswer = useSubmitAnswer(sessionId ?? "");
   const generateReport = useGenerateReport(sessionId ?? "");
+  const skipToStage2 = useSkipToStage2();
 
   // Load first question from sessionStorage (set by EntryModal before navigation)
   useEffect(() => {
@@ -238,24 +240,36 @@ export default function Stage1Page() {
               className="rounded-2xl border border-[var(--color-regu-border)] bg-[var(--color-regu-surface)] p-10"
             >
               <h2 className="text-[clamp(1.5rem,3vw,2.25rem)] font-semibold text-[var(--color-regu-fg)] font-[family-name:var(--font-heading)] tracking-tight mb-4">
-                Your system appears to be high-risk.
+                Classification complete.
               </h2>
-              <p className="text-sm text-[var(--color-regu-fg-muted)] leading-relaxed mb-3">
-                High-risk AI systems under the EU AI Act are subject to
-                extensive requirements, including technical documentation
-                mandated by Annex IV.
-              </p>
+              {terminalState.classification && (
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="text-lg font-semibold text-[var(--color-regu-fg)] capitalize tabular-nums">
+                    {terminalState.classification.riskCategory.replace("_", " ")}
+                  </span>
+                  <StatusChip variant={riskBadgeVariant(terminalState.classification.riskCategory)}>
+                    {terminalState.classification.riskCategory.replace("_", " ")}
+                  </StatusChip>
+                </div>
+              )}
               <p className="text-sm text-[var(--color-regu-fg-muted)] leading-relaxed mb-8">
-                The next stage will walk through your documentation
-                section by section, analyzing coverage against Annex IV
-                requirements and identifying gaps.
+                Your system appears to be high-risk. High-risk AI systems under the EU AI Act are subject to extensive requirements, including technical documentation mandated by Annex IV. The next stage will walk through your documentation section by section, analyzing coverage against Annex IV requirements and identifying gaps.
               </p>
               <Button
                 variant="primary"
                 size="lg"
-                onClick={() => navigate(`/app/session/${sessionId}/stage2`)}
+                onClick={async () => {
+                  if (!sessionId) return;
+                  try {
+                    await skipToStage2.mutateAsync({ sessionId });
+                    navigate(`/app/session/${sessionId}/stage2`);
+                  } catch (err) {
+                    setError(getErrorMessage(err, "Failed to start Stage 2."));
+                  }
+                }}
+                disabled={skipToStage2.isPending}
               >
-                Continue to documentation
+                {skipToStage2.isPending ? "Starting..." : "Continue to documentation"}
               </Button>
             </motion.div>
           )}
@@ -300,6 +314,7 @@ export default function Stage1Page() {
               </Button>
             </motion.div>
           )}
+
 
           {/* ── Active question ───────────────────────────────────────── */}
           {!terminalState && question && (

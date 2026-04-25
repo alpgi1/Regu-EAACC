@@ -24,7 +24,7 @@ import java.util.List;
  * (defaults to empty string). Calls fail at runtime when the key is missing —
  * startup is always safe.
  */
-@Service
+// @Service (Replaced by GeminiFlashClient)
 public class ClaudeSonnetClient implements LlmClient {
 
     private static final Logger log = LoggerFactory.getLogger(ClaudeSonnetClient.class);

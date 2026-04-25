@@ -6,6 +6,8 @@ import com.regu.domain.repository.AnalysisRepository;
 import com.regu.domain.repository.InterviewSessionRepository;
 import com.regu.orchestration.dto.*;
 import com.regu.orchestration.exception.InterviewStateException;
+import com.regu.orchestration.llm.LlmClient;
+import com.regu.orchestration.llm.LlmResponse;
 import com.regu.orchestration.report.ReportGenerationService;
 import com.regu.orchestration.stage1.NextQuestionResponse;
 import com.regu.orchestration.stage1.SkipToStage2Service;
@@ -40,12 +42,39 @@ public class ComplianceAnalysisService {
     /** In-memory accumulator: (sessionId:sectionNumber) → (requirementId → answerText). */
     private final Map<String, Map<String, String>> pendingQaAnswers = new ConcurrentHashMap<>();
 
+    private static final String CHAT_SYSTEM_PROMPT = """
+            You are REGU, an EU AI Act compliance assistant specialised in Annex IV technical \
+            documentation requirements.
+
+            The user is an EU startup founder whose AI system has been classified HIGH-RISK. \
+            They are in Stage 2: assembling their Annex IV technical documentation file.
+
+            Annex IV requires nine documentation areas:
+            1. General description (purpose, provider, version history)
+            2. Detailed elements and development process (architecture, data, AI methods)
+            3. Monitoring, functioning and control (performance metrics, limitations)
+            4. Appropriateness of performance metrics
+            5. Risk management system (Article 9)
+            6. Lifecycle changes log
+            7. Harmonised standards applied (or alternative solutions)
+            8. EU Declaration of Conformity (Article 47)
+            9. Post-market monitoring plan (Article 72)
+
+            RULES:
+            - Reply in 2-4 sentences unless the question genuinely needs more.
+            - Be practical and founder-friendly; reference EU AI Act articles when useful.
+            - If they say they lack a document, explain what the minimum acceptable form is.
+            - Never reveal you are an AI or that responses are generated.
+            - Do NOT produce gap analyses or legal opinions — only explain documentation needs.
+            """;
+
     private final AnalysisRepository         analysisRepo;
     private final InterviewSessionRepository sessionRepo;
     private final Stage1InterviewService     stage1;
     private final SkipToStage2Service        skipService;
     private final Stage2OrchestratorService  stage2;
     private final ReportGenerationService    reportService;
+    private final LlmClient                  llmClient;
 
     public ComplianceAnalysisService(
             AnalysisRepository analysisRepo,
@@ -53,13 +82,15 @@ public class ComplianceAnalysisService {
             Stage1InterviewService stage1,
             SkipToStage2Service skipService,
             Stage2OrchestratorService stage2,
-            ReportGenerationService reportService) {
+            ReportGenerationService reportService,
+            LlmClient llmClient) {
         this.analysisRepo  = analysisRepo;
         this.sessionRepo   = sessionRepo;
         this.stage1        = stage1;
         this.skipService   = skipService;
         this.stage2        = stage2;
         this.reportService = reportService;
+        this.llmClient     = llmClient;
     }
 
     // ── Stage 1: start and drive the interview ─────────────────────────────
@@ -210,5 +241,18 @@ public class ComplianceAnalysisService {
     @Transactional
     public ComplianceReport finalizeAndGenerateReport(UUID sessionId) {
         return reportService.generateReport(sessionId);
+    }
+
+    // ── Stage 2 chat ──────────────────────────────────────────────────────────
+
+    /**
+     * Answers a free-form question about Annex IV documentation requirements
+     * using the LLM, scoped to the user's session context.
+     */
+    public String chat(UUID sessionId, String question) {
+        sessionRepo.findById(sessionId)
+                .orElseThrow(() -> new InterviewStateException("Session not found: " + sessionId));
+        LlmResponse response = llmClient.call(CHAT_SYSTEM_PROMPT, question, 1024);
+        return response.content();
     }
 }

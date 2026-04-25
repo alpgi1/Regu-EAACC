@@ -272,7 +272,7 @@ public class ReportGenerationService {
     private boolean validateCitation(CitationEntry entry) {
         if (entry == null || entry.sourceTable() == null) return false;
         // Only validate known tables to avoid SQL injection
-        Set<String> allowed = Set.of("legal_chunks", "use_case_chunks", "guide_chunks");
+        Set<String> allowed = Set.of("legal_chunks", "use_case_chunks", "guide_chunks", "decision_rule_chunks");
         if (!allowed.contains(entry.sourceTable())) {
             log.warn("Unrecognised citation source table: {}", entry.sourceTable());
             return false;

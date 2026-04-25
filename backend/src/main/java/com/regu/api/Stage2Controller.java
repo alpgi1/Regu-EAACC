@@ -1,6 +1,8 @@
 package com.regu.api;
 
 import com.regu.api.dto.*;
+import com.regu.api.dto.ChatRequest;
+import com.regu.api.dto.ChatResponse;
 import com.regu.api.mapper.Stage2Mapper;
 import com.regu.domain.Stage2Submission;
 import com.regu.domain.repository.AnnexIvSectionRepository;
@@ -237,6 +239,28 @@ public class Stage2Controller {
             throw new InterviewStateException(
                     "Could not parse gap data for section " + sectionNumber);
         }
+    }
+
+    // ── POST /stage2/chat ──────────────────────────────────────────────────
+
+    @Operation(summary = "Ask a free-form question about Annex IV documentation",
+               description = "Routes the question to the LLM with EU AI Act context. " +
+                             "Useful for founders asking what documents they need.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Answer returned"),
+            @ApiResponse(responseCode = "400", description = "Invalid request"),
+            @ApiResponse(responseCode = "404", description = "Session not found"),
+            @ApiResponse(responseCode = "502", description = "LLM service unavailable")
+    })
+    @PostMapping("/chat")
+    public ResponseEntity<ChatResponse> chat(
+            @PathVariable UUID sessionId,
+            @Valid @RequestBody ChatRequest request) {
+        long t0 = System.currentTimeMillis();
+        String answer = analysisService.chat(sessionId, request.question());
+        log.info("POST /interviews/{}/stage2/chat → {}chars in {}ms",
+                sessionId, answer.length(), System.currentTimeMillis() - t0);
+        return ResponseEntity.ok(new ChatResponse(answer));
     }
 
     // ── Helper ────────────────────────────────────────────────────────────

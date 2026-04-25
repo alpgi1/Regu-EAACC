@@ -53,7 +53,7 @@ public class Citation {
     private Instant createdAt;
 
     public enum ClaimSection { risk_rationale, obligations, gaps, recommendations, summary }
-    public enum SourceTable { legal_chunks, use_case_chunks, guide_chunks }
+    public enum SourceTable { legal_chunks, use_case_chunks, guide_chunks, decision_rule_chunks }
 
     @PrePersist
     protected void onCreate() {

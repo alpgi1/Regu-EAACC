@@ -176,6 +176,14 @@ export interface SubmitQAAnswerRequest {
   answer: string;
 }
 
+export interface Stage2ChatRequest {
+  question: string;
+}
+
+export interface Stage2ChatResponse {
+  answer: string;
+}
+
 export interface NextRequirementDto {
   requirementId: string;
   entityName: string;
