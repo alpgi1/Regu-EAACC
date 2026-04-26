@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,17 @@ interface Props {
 export function StartAnalysisButton({ className, children }: Props) {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
       <button type="button" className={className} onClick={() => setOpen(true)}>
@@ -18,11 +29,12 @@ export function StartAnalysisButton({ className, children }: Props) {
 
       {open && (
         <div
-          className="fixed inset-0 z-[200] flex items-center justify-center p-6"
+          className="fixed inset-0 z-[500] flex items-center justify-center p-6"
           style={{
-            background: "rgba(0,0,0,0.65)",
-            backdropFilter: "blur(6px)",
-            WebkitBackdropFilter: "blur(6px)",
+            background: "rgba(0,0,0,0.75)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            height: "100dvh",
           }}
           onClick={() => setOpen(false)}
           role="dialog"
@@ -39,7 +51,7 @@ export function StartAnalysisButton({ className, children }: Props) {
             <button
               type="button"
               onClick={() => setOpen(false)}
-              className="absolute top-4 right-4 text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] transition-colors"
+              className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full text-[rgba(235,235,235,0.38)] hover:text-[#EBEBEB] hover:bg-[rgba(255,255,255,0.06)] transition-colors"
               aria-label="Close"
             >
               <X size={18} />
@@ -49,7 +61,7 @@ export function StartAnalysisButton({ className, children }: Props) {
               <span className="text-xs font-medium uppercase tracking-[0.1em] text-[rgba(235,235,235,0.38)]">
                 Early Access
               </span>
-              <h2 className="font-semibold text-[#EBEBEB] text-xl leading-snug">
+              <h2 className="font-semibold text-[#EBEBEB] text-xl leading-snug pr-8">
                 Not open for public testing yet.
               </h2>
             </div>
@@ -73,6 +85,14 @@ export function StartAnalysisButton({ className, children }: Props) {
                 cnumanberk@gmail.com
               </a>
             </div>
+
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              className="mt-2 text-xs text-[rgba(235,235,235,0.38)] hover:text-[rgba(235,235,235,0.62)] transition-colors self-center"
+            >
+              Close
+            </button>
           </div>
         </div>
       )}
