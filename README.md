@@ -1,127 +1,185 @@
-# REGU — EU AI Act Compliance Engine
+# REGU - EU AI Act Compliance Engine
 
-An autonomous risk and compliance engine for the EU AI Act (effective 2 August 2026). REGU analyzes AI system documentation and produces structured legal compliance reports with citations to the official legal text.
+> Structured first-pass risk classification for your AI system, grounded in the EU AI Act. Every claim cited to a specific paragraph. Delivered in under five minutes.
 
-**Current Status:** Phase 3.2 — EU AI Act legal chunk ingestion pipeline complete.
+![Status](https://img.shields.io/badge/status-MVP-orange)
+![Java](https://img.shields.io/badge/Java-21-blue)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-4.0-green)
+![React](https://img.shields.io/badge/React-19-61dafb)
+![License](https://img.shields.io/badge/license-MIT-lightgrey)
 
-## 🚀 Project Overview
+---
 
-Target user: EU startup founder asking *"am I in trouble, and what do I need to do?"*
+## What is REGU?
 
-REGU accepts a natural-language description or uploaded document (PDF/DOCX) describing an AI system and produces a structured legal compliance report under the EU AI Act.
+REGU is a compliance analysis engine for the EU AI Act (enforcement begins **2 August 2026**). It takes a natural-language description or uploaded document about an AI system and produces a structured legal report: risk tier classification, applicable articles, Annex IV documentation gaps - all cited to the exact paragraph in the regulation.
 
-### Key Principles
-1. **Citation mandatory** — every claim in the report traces to a chunk ID; no uncited sentences.
-2. **Law-primary** — legal text is authoritative; use cases and guides serve it, never override it.
-3. **Fail-safe not fail-silent** — low confidence results are flagged for manual review.
-4. **Versioned corpus** — every chunk carries source, date, version, and status metadata.
+**Target user:** An EU startup founder who needs to know if they're affected by the Act, and what they need to do about it - without hiring a compliance team.
 
-## 🛠 Tech Stack
+> REGU is currently in MVP stage and not open for public testing.
+> Contact us at [alpgiray.dev@gmail.com](mailto:alpgiray.dev@gmail.com) or [cnumanberk@gmail.com](mailto:cnumanberk@gmail.com) for early access.
+
+---
+
+## Core Principles
+
+| Principle | Description |
+|---|---|
+| **Citation mandatory** | Every claim traces to a chunk ID. No uncited sentences. |
+| **Law-primary** | Legal text is authoritative. Use cases and guides serve it, never override it. |
+| **Fail-safe** | Low-confidence results are flagged for manual review, never passed silently. |
+| **Versioned corpus** | Every chunk carries source, date, version, and status metadata. |
+
+---
+
+## Tech Stack
+
+### Backend
 
 | Concern | Choice |
 |---|---|
-| **Language** | Java 21 |
-| **Framework** | Spring Boot 4.0.5 |
-| **Build** | Maven Wrapper (`./mvnw`) |
-| **Database** | PostgreSQL 17 + pgvector 0.8.2 |
-| **Migrations** | Flyway 11.14.1 (manually configured) |
-| **ORM** | Spring Data JPA (for domain tables) |
-| **Embeddings** | Voyage `voyage-3-large` (1024 dims) |
-| **Classification LLM** | Gemini 2.5 Flash |
-| **Reasoning LLM** | Claude Sonnet 4.6 |
-| **LLM Framework** | Spring AI 2.0 |
-| **Frontend** | React 19 + TypeScript + Vite (Phase 7) |
-| **Dev Infra** | Docker Compose |
+| Language | Java 21 |
+| Framework | Spring Boot 4.0.5 |
+| Build | Maven Wrapper (`./mvnw`) |
+| Database | PostgreSQL 17 + pgvector 0.8.2 |
+| Migrations | Flyway 11.14.1 |
+| ORM | Spring Data JPA |
+| Embeddings | Voyage `voyage-3-large` (1024 dims) |
+| LLM | Claude Sonnet |
+| LLM Framework | Spring AI 2.0 |
+| Dev Infra | Docker Compose |
 
-## 📐 RAG Architecture
+### Frontend
 
-Four distinct vector tables for precise retrieval:
+| Concern | Choice |
+|---|---|
+| Framework | React 19 + TypeScript |
+| Build | Vite |
+| Styling | Tailwind CSS v4 |
+| Animation | Framer Motion |
+| Routing | React Router v7 |
+
+---
+
+## RAG Architecture
+
+Four distinct vector tables for precise, scoped retrieval:
 
 | Table | Content | Search Method |
 |---|---|---|
-| `legal_chunks` | EU AI Act full text | Hybrid (Vector + Keyword) |
-| `use_case_chunks` | Curated scenarios | Pure Vector |
-| `guide_chunks` | Commission guidance | Vector + Metadata Filter |
-| `decision_rule_chunks` | FLI Compliance logic | Vector + Metadata Filter |
+| `legal_chunks` | EU AI Act full text (885 chunks) | Hybrid (Vector + Keyword) |
+| `use_case_chunks` | Curated real-world scenarios | Pure Vector |
+| `guide_chunks` | Commission guidance documents | Vector + Metadata Filter |
+| `decision_rule_chunks` | FLI Compliance Checker logic | Vector + Metadata Filter |
 
-## 📁 Repository Structure
+The pipeline: user input -> embedding (Voyage) -> retrieval across all four tables -> LLM generation (Claude Sonnet) -> citation validator -> structured JSON report.
+
+---
+
+## Repository Structure
 
 ```
 regu/
-├── backend/          Spring Boot 4 application
-│   ├── src/main/java/com/regu/   Java source code
-│   ├── src/main/resources/        Config & Flyway migrations (V1-V9)
-│   └── compose.yaml               Docker Compose for local DB
-├── corpus/           Ingestion source files (JSON)
-│   ├── legal/raw_extraction/      EU AI Act batches
-│   ├── decision_rules/            FLI flowchart logic
-│   └── interview_questions/       Stage 1 question bank
-├── frontend/         Placeholder (Phase 7)
-└── docs/             Verification records
+├── backend/
+│   ├── src/main/java/com/regu/     Java source
+│   ├── src/main/resources/          Config & Flyway migrations (V1-V9)
+│   └── compose.yaml                 Docker Compose for local DB
+├── corpus/
+│   ├── legal/raw_extraction/        EU AI Act batches
+│   ├── decision_rules/              FLI flowchart logic
+│   └── interview_questions/         Stage 1 question bank
+├── frontend/
+│   ├── src/components/              React components
+│   ├── src/pages/                   Route-level pages
+│   └── src/lib/                     API client & utilities
+└── docs/                            Verification records
 ```
 
-## 🚀 Getting Started
+---
+
+## Getting Started
 
 ### Prerequisites
 
-- **Java 21+** (e.g., OpenJDK 25.0.2)
-- **Docker Desktop**
-- **Voyage AI API Key** (for ingestion)
+- Java 21+
+- Docker Desktop
+- Voyage AI API key (for ingestion)
+- Anthropic API key (for LLM calls)
 
-### 1. Start the Environment
+### 1. Start the database
 
 ```bash
-cd regu/backend
+cd backend
 docker compose up -d
 ```
 
-### 2. Run Ingestion Pipeline
+### 2. Run ingestion (one-time)
 
-To populate the vector database with the EU AI Act text, decision rules, and interview questions:
+Populates the vector database with the EU AI Act text, decision rules, and interview questions:
 
 ```bash
 export VOYAGE_API_KEY=your_key_here
 ./mvnw spring-boot:run -Dspring-boot.run.profiles=dev,ingest
 ```
 
-**Ingestion Steps:**
-1. Legal chunks (885 chunks)
-2. Decision rule chunks (40 rules)
-3. Interview questions (15 questions)
+Ingestion steps:
+1. Legal chunks (885 chunks, EU AI Act full text)
+2. Decision rule chunks (40 rules from FLI Compliance Checker)
+3. Interview questions (15 Stage 1 questions)
 4. Foreign key back-fills
 
-### 3. Start the Backend
+Ingestion is idempotent - safe to re-run. Existing chunks are skipped by `source_chunk_id` / `rule_id`.
 
-For normal development (without ingestion):
+### 3. Start the backend
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
-Check health: `curl http://localhost:8080/api/v1/health`
+Health check: `curl http://localhost:8080/api/v1/health`
 
-## 🧠 Development Gotchas
+### 4. Start the frontend
 
-- **Spring Boot 4 / Flyway:** Autoconfiguration was removed; we use a manual `FlywayConfig` and `JpaOrderingConfig` to ensure Migrations run before Hibernate validation.
-- **Strict Typing:** PostgreSQL `SMALLINT` must map to Java `Short` (Hibernate 7 requirement).
-- **JSONB Mapping:** JPA entities use `@JdbcTypeCode(SqlTypes.JSON)` for String-to-JSONB mapping.
-- **Idempotency:** Ingestion is safe to re-run. Existing chunks are skipped based on `source_chunk_id` or `rule_id`.
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## 🗺 Roadmap
-
-- [x] **Phase 1** — Foundation & Skeleton
-- [x] **Phase 2** — Data Model & Vector Tables (V1-V7)
-- [x] **Phase 3.1** — Stage 1 Interview & FLI Ingestion
-- [x] **Phase 3.2** — EU AI Act Legal Text Ingestion (V9)
-- [ ] **Phase 4** — Retrieval Layer (Hybrid Search)
-- [ ] **Phase 5** — LLM Orchestration
-- [ ] **Phase 6** — Report Generation
-- [ ] **Phase 7** — React Frontend
-
-## 📄 License
-
-MIT — see [LICENSE](LICENSE).
+Opens at `http://localhost:5173`.
 
 ---
 
-**Disclaimer:** REGU is a decision-support tool. It is not a substitute for qualified legal advice. The EU AI Act is a complex regulation; always consult a legal professional.
+## Known Gotchas
+
+- **Spring Boot 4 / Flyway:** Autoconfiguration was removed in Boot 4. We use a manual `FlywayConfig` and `JpaOrderingConfig` to ensure migrations run before Hibernate schema validation.
+- **Strict typing:** PostgreSQL `SMALLINT` must map to Java `Short` (Hibernate 7 requirement).
+- **JSONB mapping:** JPA entities use `@JdbcTypeCode(SqlTypes.JSON)` for `String`-to-JSONB mapping.
+
+---
+
+## Roadmap
+
+- [x] Phase 1 - Foundation & skeleton
+- [x] Phase 2 - Data model & vector tables (V1-V7)
+- [x] Phase 3.1 - Stage 1 interview & FLI ingestion
+- [x] Phase 3.2 - EU AI Act legal text ingestion (V9)
+- [x] Phase 4 - Retrieval layer (hybrid search)
+- [x] Phase 5 - LLM orchestration
+- [x] Phase 6 - Report generation
+- [x] Phase 7 - React frontend
+- [ ] Phase 8 - Open beta
+
+---
+
+## Contact
+
+Built in the EU by [Alpgiray Celik](mailto:alpgiray.dev@gmail.com) and [Caner Uman Berk](mailto:cnumanberk@gmail.com).
+
+---
+
+## License
+
+MIT - see [LICENSE](LICENSE).
+
+**Disclaimer:** REGU is a decision-support tool, not a substitute for qualified legal advice. Always consult a legal professional for compliance decisions.
