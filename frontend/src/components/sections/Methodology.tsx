@@ -1,5 +1,5 @@
 /**
- * Methodology — "Grounded in the Act. Not in guesswork."
+ * Methodology - "Grounded in the Act. Not in guesswork."
  * Four-pillar RAG architecture + three promises + GlowingCard visual anchor.
  */
 
@@ -124,7 +124,7 @@ export default function Methodology() {
           ))}
         </div>
 
-        {/* GlowingCard visual anchor — one piece of "look at our tech" flair */}
+        {/* GlowingCard visual anchor - one piece of "look at our tech" flair */}
         <motion.div
           variants={prefersReduced ? {} : reveal}
           custom={4}

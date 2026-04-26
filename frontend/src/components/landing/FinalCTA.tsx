@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { ChevronRight, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 
 export default function FinalCTA() {
   return (
@@ -37,8 +38,7 @@ export default function FinalCTA() {
           give us an email.
         </p>
         <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          <Link
-            to="/app"
+          <StartAnalysisButton
             className={cn(
               "h-12 px-6 inline-flex items-center gap-2 rounded-full font-medium text-[15px]",
               "bg-[var(--brand-500)] text-white",
@@ -47,7 +47,7 @@ export default function FinalCTA() {
           >
             Start Analysis
             <ChevronRight size={16} aria-hidden />
-          </Link>
+          </StartAnalysisButton>
           <Link
             to="/coming-soon"
             className={cn(

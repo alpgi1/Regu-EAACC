@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { X } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 
 const TARGET = new Date("2026-08-02T00:00:00Z").getTime();
 
@@ -77,12 +77,11 @@ export default function UrgencyBar() {
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <Link
-            to="/app"
+          <StartAnalysisButton
             className="hidden sm:inline-flex items-center text-[13px] text-[var(--ink-primary)] hover:text-[var(--brand-400)] transition-colors duration-[var(--dur-fast)]"
           >
             Start Analysis →
-          </Link>
+          </StartAnalysisButton>
           <button
             type="button"
             aria-label="Dismiss"

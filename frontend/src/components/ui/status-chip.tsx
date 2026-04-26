@@ -1,8 +1,8 @@
 /**
- * StatusChip — small pill for gap severity or section status.
+ * StatusChip - small pill for gap severity or section status.
  *
  * Variants: critical (red), major (warn), minor (accent), resolved (ok).
- * Each includes a text label — never icon-only.
+ * Each includes a text label - never icon-only.
  */
 
 import { cva, type VariantProps } from "class-variance-authority";

@@ -3,6 +3,8 @@ import { useReducedMotion } from "framer-motion";
 import { ChevronRight, Play } from "lucide-react";
 import { MeshGradient } from "@paper-design/shaders-react";
 import { cn } from "@/lib/utils";
+import Logo from "./Logo";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 
 const STATIC_FALLBACK_BG =
   "radial-gradient(120% 80% at 30% 30%, #1A2452 0%, #0A1535 35%, #050814 75%)," +
@@ -19,7 +21,7 @@ export default function Hero() {
       style={{ minHeight: "min(100vh, 900px)" }}
       aria-labelledby="hero-heading"
     >
-      {/* Background — shader or static fallback */}
+      {/* Background - shader or static fallback */}
       <div className="absolute inset-0" aria-hidden>
         {reduce ? (
           <div
@@ -67,26 +69,12 @@ export default function Hero() {
 
       {/* Foreground */}
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 pt-32 md:pt-40 pb-24 md:pb-32 flex flex-col">
-        {/* Eyebrow chip */}
-        <div className="self-center mb-12">
-          <span
-            className={cn(
-              "inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full",
-              "border border-[var(--hairline)]",
-              "bg-[rgba(255,255,255,0.04)] backdrop-blur-md",
-              "text-[12.5px] text-[var(--ink-secondary)] font-normal"
-            )}
-          >
-            <span
-              className="w-1.5 h-1.5 rounded-full"
-              style={{ background: "var(--warn)" }}
-              aria-hidden
-            />
-            EU AI Act · Effective 2 August 2026
-          </span>
+        {/* Logo mark */}
+        <div className="self-start mb-12">
+          <Logo size={64} />
         </div>
 
-        {/* Headline — left-aligned */}
+        {/* Headline - left-aligned */}
         <h1
           id="hero-heading"
           className="font-semibold tracking-[-0.03em] text-[var(--ink-primary)]"
@@ -114,15 +102,14 @@ export default function Hero() {
             maxWidth: "52ch",
           }}
         >
-          Structured first-pass risk classification against the EU AI Act —
+          Structured first-pass risk classification against the EU AI Act -
           every claim cited to a specific paragraph, delivered in under five
           minutes.
         </p>
 
         {/* CTAs */}
         <div className="mt-10 flex flex-wrap gap-4">
-          <Link
-            to="/app"
+          <StartAnalysisButton
             className={cn(
               "h-12 px-6 inline-flex items-center gap-2 rounded-full font-medium text-[15px]",
               "bg-[var(--brand-500)] text-white",
@@ -131,7 +118,7 @@ export default function Hero() {
           >
             Start Analysis
             <ChevronRight size={16} aria-hidden />
-          </Link>
+          </StartAnalysisButton>
           <Link
             to="/coming-soon"
             className={cn(

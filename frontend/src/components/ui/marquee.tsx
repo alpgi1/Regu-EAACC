@@ -11,7 +11,7 @@ interface MarqueeProps {
  * Pure-CSS infinite marquee. Duplicates children twice so the loop is
  * seamless. Pauses on hover. Respects prefers-reduced-motion via CSS.
  *
- * No JS — no IntersectionObserver, no requestAnimationFrame.
+ * No JS - no IntersectionObserver, no requestAnimationFrame.
  */
 export function Marquee({ children, duration = 40, className }: MarqueeProps) {
   return (
@@ -22,7 +22,7 @@ export function Marquee({ children, duration = 40, className }: MarqueeProps) {
         "[&:hover_.marquee-track]:animation-play-state-paused",
         className
       )}
-      aria-hidden // decorative — screen readers don't need the ticker
+      aria-hidden // decorative - screen readers don't need the ticker
     >
       <style>{`
         @keyframes marquee-scroll {

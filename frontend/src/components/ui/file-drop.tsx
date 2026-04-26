@@ -1,11 +1,11 @@
 /**
- * FileDrop — drag-and-drop + click-to-browse file zone.
+ * FileDrop - drag-and-drop + click-to-browse file zone.
  *
  * Accepts PDF, DOCX, TXT. Validates MIME on the client side.
  * States: empty, dragging-over, file-selected, rejecting.
- * Calls onFile(file) — does NOT upload by itself.
+ * Calls onFile(file) - does NOT upload by itself.
  * Keyboard: Enter opens file picker.
- * No third-party drag-drop lib — native HTML5 events.
+ * No third-party drag-drop lib - native HTML5 events.
  */
 
 import { useState, useRef, useCallback, type KeyboardEvent } from "react";

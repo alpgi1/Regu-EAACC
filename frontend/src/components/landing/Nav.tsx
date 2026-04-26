@@ -3,31 +3,14 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { scrollToSection } from "@/lib/lenis";
+import Logo from "./Logo";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 
 const NAV_LINKS = [
   { id: "methodology", label: "Methodology" },
   { id: "platform", label: "Platform" },
   { id: "contact", label: "Contact" },
 ];
-
-function ShieldMark({ size = 18 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z" />
-      <path d="m9 12 2 2 4-4" />
-    </svg>
-  );
-}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -72,13 +55,11 @@ export default function Nav() {
             to="/"
             className="flex items-center gap-2 text-[var(--ink-primary)] hover:text-[var(--ink-primary)]"
           >
-            <span className="text-[var(--brand-500)]">
-              <ShieldMark />
-            </span>
+            <Logo size={24} />
             <span className="font-semibold tracking-tight text-[15px]">REGU</span>
           </Link>
 
-          {/* Center links — desktop */}
+          {/* Center links - desktop */}
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map((l) => (
               <a
@@ -100,7 +81,7 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* Right CTAs — desktop */}
+          {/* Right CTAs - desktop */}
           <div className="hidden md:flex items-center gap-3">
             <Link
               to="/coming-soon"
@@ -113,8 +94,7 @@ export default function Nav() {
             >
               Sign in
             </Link>
-            <Link
-              to="/app"
+            <StartAnalysisButton
               className={cn(
                 "h-9 px-4 inline-flex items-center rounded-full text-[14px] font-medium",
                 "bg-[var(--brand-500)] text-white",
@@ -122,7 +102,7 @@ export default function Nav() {
               )}
             >
               Start Analysis
-            </Link>
+            </StartAnalysisButton>
           </div>
 
           {/* Mobile hamburger */}
@@ -152,9 +132,7 @@ export default function Nav() {
               onClick={() => setMobileOpen(false)}
               className="flex items-center gap-2 text-[var(--ink-primary)]"
             >
-              <span className="text-[var(--brand-500)]">
-                <ShieldMark />
-              </span>
+              <Logo size={24} />
               <span className="font-semibold tracking-tight text-[15px]">REGU</span>
             </Link>
             <button
@@ -185,13 +163,11 @@ export default function Nav() {
               >
                 Sign in
               </Link>
-              <Link
-                to="/app"
-                onClick={() => setMobileOpen(false)}
+              <StartAnalysisButton
                 className="h-12 inline-flex items-center justify-center rounded-full text-[15px] font-medium bg-[var(--brand-500)] text-white"
               >
                 Start Analysis
-              </Link>
+              </StartAnalysisButton>
             </div>
           </div>
         </div>

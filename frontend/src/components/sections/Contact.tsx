@@ -1,5 +1,5 @@
 /**
- * Contact — two-column: left column (contact info) + right column (form).
+ * Contact - two-column: left column (contact info) + right column (form).
  * Form submission is a no-op; shows inline success state on click.
  * TODO: POST /api/v1/contact (not yet implemented)
  */
@@ -126,18 +126,26 @@ export default function Contact() {
           <p className="text-[rgba(235,235,235,0.62)] leading-relaxed max-w-md">
             If you're navigating the EU AI Act for the first time, a 20-minute
             conversation is worth more than an hour of reading. Book a call or
-            drop us a line — no sales pitch, just answers.
+            drop us a line - no sales pitch, just answers.
           </p>
 
           <ul className="flex flex-col gap-4 mt-2 list-none" role="list">
-            <li className="flex items-center gap-3">
-              <Mail size={16} className="text-[#2A52BE] flex-shrink-0" aria-hidden />
-              <a
-                href="mailto:founders@regu.eu" // TODO: replace with real address
-                className="text-sm text-[rgba(235,235,235,0.62)] hover:text-[#EBEBEB] transition-colors"
-              >
-                founders@regu.eu
-              </a>
+            <li className="flex items-start gap-3">
+              <Mail size={16} className="text-[#2A52BE] flex-shrink-0 mt-0.5" aria-hidden />
+              <div className="flex flex-col gap-1">
+                <a
+                  href="mailto:alpgiray.dev@gmail.com"
+                  className="text-sm text-[rgba(235,235,235,0.62)] hover:text-[#EBEBEB] transition-colors"
+                >
+                  alpgiray.dev@gmail.com
+                </a>
+                <a
+                  href="mailto:cnumanberk@gmail.com"
+                  className="text-sm text-[rgba(235,235,235,0.62)] hover:text-[#EBEBEB] transition-colors"
+                >
+                  cnumanberk@gmail.com
+                </a>
+              </div>
             </li>
             <li className="flex items-center gap-3">
               <MapPin size={16} className="text-[#2A52BE] flex-shrink-0" aria-hidden />
@@ -183,7 +191,7 @@ export default function Contact() {
                   <span className="text-[#30A46C] text-lg" aria-hidden>✓</span>
                 </div>
                 <p className="text-[#EBEBEB] font-medium">
-                  Thanks — we'll reply within one business day.
+                  Thanks - we'll reply within one business day.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}

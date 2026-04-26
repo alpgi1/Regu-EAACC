@@ -1,14 +1,14 @@
 /**
- * Hero — full-viewport, deep-navy canvas with ambient floating shapes,
+ * Hero - full-viewport, deep-navy canvas with ambient floating shapes,
  * staggered fade-up entrance, countdown, and CTAs.
  */
 
 import { useState, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { m as motion, useReducedMotion } from "framer-motion";
 import { ChevronRight, Play } from "lucide-react";
 import { Drawer } from "vaul";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 import { Countdown } from "@/components/ui/countdown";
 import { HeroGeometric } from "@/components/ui/shape-landing-hero";
 import { cn, EASE_SMOOTH } from "@/lib/utils";
@@ -75,10 +75,10 @@ function DemoDrawer() {
           aria-label="Demo video"
         >
           <Drawer.Title className="text-base font-semibold text-[#EBEBEB]">
-            REGU — 90-second product demo
+            REGU - 90-second product demo
           </Drawer.Title>
 
-          {/* 16:9 video placeholder — TODO: embed demo */}
+          {/* 16:9 video placeholder - TODO: embed demo */}
           <div
             className={cn(
               "relative w-full rounded-xl overflow-hidden",
@@ -170,9 +170,9 @@ export default function Hero() {
             "text-[clamp(2.75rem,6vw,6.5rem)]"
           )}
         >
-          {/* Line 1 — plain off-white */}
+          {/* Line 1 - plain off-white */}
           <span className="block text-[#EBEBEB]">AI Act Compliance Checker</span>
-          {/* Line 2 — gradient */}
+          {/* Line 2 - gradient */}
           <span
             className="block"
             style={{
@@ -192,7 +192,7 @@ export default function Hero() {
           variants={item}
           className="max-w-[620px] text-lg text-[rgba(235,235,235,0.62)] leading-relaxed"
         >
-          Structured first-pass analysis of your AI system against the EU AI Act —
+          Structured first-pass analysis of your AI system against the EU AI Act -
           grounded in the regulation's own text, delivered in under five minutes.
         </motion.p>
 
@@ -201,12 +201,10 @@ export default function Hero() {
           variants={item}
           className="flex flex-wrap gap-4 justify-center"
         >
-          <Button variant="primary" size="lg" asChild>
-            <Link to="/app">
-              Start Analysis
-              <ChevronRight size={16} aria-hidden />
-            </Link>
-          </Button>
+          <StartAnalysisButton className={buttonVariants({ variant: "primary", size: "lg" })}>
+            Start Analysis
+            <ChevronRight size={16} aria-hidden />
+          </StartAnalysisButton>
           <DemoDrawer />
         </motion.div>
 

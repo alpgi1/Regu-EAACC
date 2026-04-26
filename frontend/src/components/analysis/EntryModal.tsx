@@ -1,5 +1,5 @@
 /**
- * EntryModal — the risk-level gate shown on /app.
+ * EntryModal - the risk-level gate shown on /app.
  *
  * Cannot be dismissed: no X button, no Esc, no click-outside.
  * Two paths:

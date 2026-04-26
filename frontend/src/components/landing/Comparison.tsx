@@ -5,7 +5,7 @@ const ROWS: { label: string; regu: Cell; lawyer: Cell; ignore: Cell }[] = [
     label: "First-pass timeline",
     regu: { value: "~5 min", tone: "primary" },
     lawyer: { value: "1–3 weeks" },
-    ignore: { value: "0 — until enforcement" },
+    ignore: { value: "0 - until enforcement" },
   },
   {
     label: "Cost",
@@ -17,13 +17,13 @@ const ROWS: { label: string; regu: Cell; lawyer: Cell; ignore: Cell }[] = [
     label: "Citation depth",
     regu: { value: "Paragraph-level", tone: "primary" },
     lawyer: { value: "Paragraph-level" },
-    ignore: { value: "—" },
+    ignore: { value: "-" },
   },
   {
     label: "Replaces a lawyer?",
-    regu: { value: "No — first pass only", tone: "primary" },
+    regu: { value: "No - first pass only", tone: "primary" },
     lawyer: { value: "Yes" },
-    ignore: { value: "No — and the regulator notices" },
+    ignore: { value: "No - and the regulator notices" },
   },
   {
     label: "Best for",
@@ -141,7 +141,7 @@ export default function Comparison() {
           </div>
         </div>
 
-        {/* Mobile — three stacked cards */}
+        {/* Mobile - three stacked cards */}
         <div className="mt-12 md:hidden flex flex-col gap-5">
           {[
             {

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * RagDiagram — inline SVG of REGU's retrieval-augmented architecture.
+ * RagDiagram - inline SVG of REGU's retrieval-augmented architecture.
  * 720 × 480 viewBox.
  *
  * Layout:
@@ -11,7 +11,7 @@ import { motion, useReducedMotion } from "framer-motion";
  *        ↓
  *   [4 chunk tables in a row]
  *        ↓
- *   [Gemini 2.5 Flash]
+ *   [Claude Sonnet]
  *        ↓
  *   [Citation validator]
  *        ↓
@@ -296,7 +296,7 @@ export default function RagDiagram() {
           fontWeight={500}
           fill={INK_PRIMARY}
         >
-          Gemini 2.5 Flash
+          Claude Sonnet
         </text>
         <text
           x={CX}
@@ -354,7 +354,7 @@ export default function RagDiagram() {
           fontWeight={500}
           fill={INK_PRIMARY}
         >
-          Structured report — paragraph-level citations
+          Structured report - paragraph-level citations
         </text>
       </Box>
     </svg>

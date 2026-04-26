@@ -117,7 +117,7 @@ function formatSize(bytes: number): string {
 function validateFile(file: File): string | null {
   const ext = "." + file.name.split(".").pop()?.toLowerCase();
   if (!ACCEPTED_TYPES.has(file.type) && !ACCEPTED_EXTENSIONS.has(ext)) {
-    return `"${file.name}" — PDF, DOCX veya TXT yükleyebilirsin.`;
+    return `"${file.name}" - PDF, DOCX veya TXT yükleyebilirsin.`;
   }
   if (file.size > 10 * 1024 * 1024) {
     return `"${file.name}" 10 MB sınırını aşıyor.`;
@@ -372,7 +372,7 @@ export default function Stage2Page() {
             <div className="flex items-center gap-3 px-1">
               <Loader2 size={14} className="text-[var(--color-regu-accent)] animate-spin shrink-0" aria-hidden />
               <span className="text-sm text-[var(--color-regu-fg-muted)]">
-                Analyzing section {analyzingSection} of 9 — {SECTION_TITLES[analyzingSection] ?? "..."}
+                Analyzing section {analyzingSection} of 9 - {SECTION_TITLES[analyzingSection] ?? "..."}
               </span>
             </div>
           )}
@@ -622,7 +622,7 @@ function IntroContent() {
             </span>
             <span>
               <span className="text-[var(--color-regu-fg)] font-medium">{doc.title}</span>
-              <span className="text-[var(--color-regu-fg-subtle)] ml-1 text-xs">— {doc.covers}</span>
+              <span className="text-[var(--color-regu-fg-subtle)] ml-1 text-xs">- {doc.covers}</span>
             </span>
           </li>
         ))}

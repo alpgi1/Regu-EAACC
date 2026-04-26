@@ -1,12 +1,12 @@
 /**
- * Stage1Page — form-style interview, one question at a time.
+ * Stage1Page - form-style interview, one question at a time.
  *
  * Visual register: professional questionnaire, not chatbot.
  * Centered column, option cards (not radios), keyboard navigable,
  * collapsible free-text area, AnimatePresence transitions.
  *
  * Resumability: on mount, calls GET /interviews/:id/status and
- * reconciles — if the server is further along, redirect forward.
+ * reconciles - if the server is further along, redirect forward.
  */
 
 import { useState, useEffect, useCallback, useRef } from "react";
@@ -58,7 +58,7 @@ export default function Stage1Page() {
       return;
     }
     if (status.riskClassification && status.riskClassification !== "pending") {
-      // Classification is done — go to report
+      // Classification is done - go to report
       navigate(`/app/session/${sessionId}/report`, { replace: true });
     }
   }, [status, sessionId, navigate]);
@@ -461,7 +461,7 @@ export default function Stage1Page() {
           )}
         </AnimatePresence>
 
-        {/* Footer row — outside AnimatePresence so it doesn't animate */}
+        {/* Footer row - outside AnimatePresence so it doesn't animate */}
         {!terminalState && question && (
           <div className="mt-6 flex items-center justify-between">
             <button

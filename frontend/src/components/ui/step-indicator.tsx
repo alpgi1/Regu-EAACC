@@ -1,5 +1,5 @@
 /**
- * StepIndicator — thin horizontal strip showing analysis progress.
+ * StepIndicator - thin horizontal strip showing analysis progress.
  *
  * Three steps: 1 Classification, 2 Documentation, 3 Report.
  * Current step is accent-colored; completed steps are muted; upcoming are subtle.

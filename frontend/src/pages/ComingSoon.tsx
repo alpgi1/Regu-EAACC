@@ -21,14 +21,21 @@ export default function ComingSoon() {
           className="text-[var(--ink-secondary)]"
           style={{ fontSize: "var(--text-body-lg)", lineHeight: "1.55" }}
         >
-          We're building it. For now, email{" "}
+          We're building it. For now, email us at{" "}
           <a
-            href="mailto:founders@regu.eu"
+            href="mailto:alpgiray.dev@gmail.com"
             className="text-[var(--brand-400)] hover:underline"
           >
-            founders@regu.eu
-          </a>{" "}
-          and we'll get back to you.
+            alpgiray.dev@gmail.com
+          </a>
+          {" "}or{" "}
+          <a
+            href="mailto:cnumanberk@gmail.com"
+            className="text-[var(--brand-400)] hover:underline"
+          >
+            cnumanberk@gmail.com
+          </a>
+          {" "}and we'll get back to you.
         </p>
         <Link
           to="/"

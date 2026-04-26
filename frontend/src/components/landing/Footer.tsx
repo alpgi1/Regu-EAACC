@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { scrollToSection } from "@/lib/lenis";
+import Logo from "./Logo";
 
 type FooterLink =
   | { label: string; type: "anchor"; id: string }
@@ -102,22 +103,7 @@ export default function Footer() {
               to="/"
               className="inline-flex items-center gap-2 text-[var(--ink-primary)]"
             >
-              <span style={{ color: "var(--brand-500)" }}>
-                <svg
-                  width={18}
-                  height={18}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden
-                >
-                  <path d="M12 2 4 5v6c0 5 3.5 9.5 8 11 4.5-1.5 8-6 8-11V5l-8-3Z" />
-                  <path d="m9 12 2 2 4-4" />
-                </svg>
-              </span>
+              <Logo size={22} />
               <span className="font-semibold tracking-tight text-[15px]">
                 REGU
               </span>

@@ -9,7 +9,7 @@ const FEATURES = [
   {
     title: "Curated use cases",
     detail: "15+ scenarios",
-    body: "Real-world AI system descriptions mapped to Annex III risk categories. Each scenario stays atomic — never split.",
+    body: "Real-world AI system descriptions mapped to Annex III risk categories. Each scenario stays atomic - never split.",
   },
   {
     title: "Commission guidance",
@@ -19,7 +19,7 @@ const FEATURES = [
   {
     title: "Decision rules",
     detail: "40 procedural checks",
-    body: "Procedural compliance logic adapted from the FLI Compliance Checker — one decision node per chunk.",
+    body: "Procedural compliance logic adapted from the FLI Compliance Checker - one decision node per chunk.",
   },
 ];
 
@@ -108,7 +108,7 @@ export default function HowItWorks() {
             ))}
           </div>
 
-          {/* Accent card — desktop only */}
+          {/* Accent card - desktop only */}
           <div className="hidden lg:block lg:col-span-3">
             <div
               className="h-full rounded-2xl flex items-center justify-center p-8 text-center"

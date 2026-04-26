@@ -24,7 +24,7 @@ function getTimeLeft(target: Date): TimeLeft {
   };
 }
 
-/** Headless hook — returns live countdown to targetDate, updated every second. */
+/** Headless hook - returns live countdown to targetDate, updated every second. */
 export function useCountdown(targetDate: Date): TimeLeft {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>(() => getTimeLeft(targetDate));
 

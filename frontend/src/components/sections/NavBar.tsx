@@ -1,5 +1,5 @@
 /**
- * NavBar — sticky, translucent, shrinks on scroll.
+ * NavBar - sticky, translucent, shrinks on scroll.
  * Mobile: hamburger opens a Vaul drawer from the top.
  */
 
@@ -7,7 +7,8 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { ShieldCheck, Menu, X, ChevronRight } from "lucide-react";
 import { Drawer } from "vaul";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -86,12 +87,10 @@ export default function NavBar() {
           <Button variant="ghost" size="sm" asChild>
             <Link to="/app">Sign in</Link>
           </Button>
-          <Button variant="primary" size="sm" asChild>
-            <Link to="/app">
-              Start Analysis
-              <ChevronRight size={14} aria-hidden />
-            </Link>
-          </Button>
+          <StartAnalysisButton className={buttonVariants({ variant: "primary", size: "sm" })}>
+            Start Analysis
+            <ChevronRight size={14} aria-hidden />
+          </StartAnalysisButton>
         </div>
 
         {/* Mobile hamburger */}
@@ -144,12 +143,10 @@ export default function NavBar() {
                     Sign in
                   </Link>
                 </Button>
-                <Button variant="primary" size="md" asChild className="w-full justify-center">
-                  <Link to="/app" onClick={() => setDrawerOpen(false)}>
-                    Start Analysis
-                    <ChevronRight size={14} aria-hidden />
-                  </Link>
-                </Button>
+                <StartAnalysisButton className={cn(buttonVariants({ variant: "primary", size: "md" }), "w-full justify-center")}>
+                  Start Analysis
+                  <ChevronRight size={14} aria-hidden />
+                </StartAnalysisButton>
               </div>
             </Drawer.Content>
           </Drawer.Portal>

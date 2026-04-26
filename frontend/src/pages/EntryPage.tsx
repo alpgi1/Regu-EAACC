@@ -1,5 +1,5 @@
 /**
- * EntryPage — renders at /app.
+ * EntryPage - renders at /app.
  *
  * Shows a dimmed background with a single short paragraph,
  * and the EntryModal on top. The modal cannot be dismissed.

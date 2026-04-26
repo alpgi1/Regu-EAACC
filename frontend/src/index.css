@@ -7,17 +7,17 @@
   --font-serif:   "Instrument Serif", "Iowan Old Style", "Apple Garamond", "Palatino", serif;
   --font-mono:    ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* ── Canvas — deep navy (legacy/app routes) ─────────────────────── */
+  /* ── Canvas - deep navy (legacy/app routes) ─────────────────────── */
   --color-regu-bg:        #060814;
   --color-regu-surface:   #0A0F1F;
   --color-regu-surface-2: #111733;
 
-  /* ── Primary text — crisp off-white ─────────────────────────────── */
+  /* ── Primary text - crisp off-white ─────────────────────────────── */
   --color-regu-fg:        #EBEBEB;
   --color-regu-fg-muted:  rgba(235, 235, 235, 0.62);
   --color-regu-fg-subtle: rgba(235, 235, 235, 0.38);
 
-  /* ── Brand accent — serious blue for dark-mode contrast ─────────── */
+  /* ── Brand accent - serious blue for dark-mode contrast ─────────── */
   --color-regu-accent:    #2A52BE;
   --color-regu-accent-hi: #4A6FE5;
   --color-regu-accent-lo: #10367D;
@@ -48,7 +48,7 @@
     --ink-tertiary: #6B7388;
     --ink-quaternary: #444B5E;
 
-    /* Brand — legal navy */
+    /* Brand - legal navy */
     --brand-500: #3D5AFE;
     --brand-400: #6B82FF;
     --brand-600: #2740E0;
@@ -113,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
   font-feature-settings: "ss01", "cv11", "tnum";
 }
 
-/* Italic serif accent — applied via `.font-serif` utility class */
+/* Italic serif accent - applied via `.font-serif` utility class */
 .font-serif {
   font-family: var(--font-serif);
   font-feature-settings: "liga";
@@ -134,7 +134,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
 }
 
-/* ── Focus ring — brand blue, 2px, 2px offset ───────────────────── */
+/* ── Focus ring - brand blue, 2px, 2px offset ───────────────────── */
 :focus-visible {
   outline: 2px solid var(--brand-500);
   outline-offset: 2px;

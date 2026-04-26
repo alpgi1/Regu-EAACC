@@ -1,5 +1,5 @@
 /**
- * Stakes — fear/urgency section.
+ * Stakes - fear/urgency section.
  * Three stat cards + pure-CSS ticker marquee of article references.
  */
 
@@ -36,18 +36,18 @@ const STAT_CARDS = [
 ] as const;
 
 const TICKER_ITEMS = [
-  "Art. 5 — Prohibited practices",
-  "Art. 6 — High-risk classification",
-  "Annex III — High-risk categories",
-  "Art. 9 — Risk management system",
-  "Art. 10 — Data governance",
-  "Annex IV — Technical documentation",
-  "Art. 13 — Transparency obligations",
-  "Art. 14 — Human oversight",
-  "Art. 15 — Accuracy & robustness",
+  "Art. 5 - Prohibited practices",
+  "Art. 6 - High-risk classification",
+  "Annex III - High-risk categories",
+  "Art. 9 - Risk management system",
+  "Art. 10 - Data governance",
+  "Annex IV - Technical documentation",
+  "Art. 13 - Transparency obligations",
+  "Art. 14 - Human oversight",
+  "Art. 15 - Accuracy & robustness",
   "GPAI obligations",
-  "Art. 50 — Transparency for users",
-  "2 Aug 2026 — Enforcement begins",
+  "Art. 50 - Transparency for users",
+  "2 Aug 2026 - Enforcement begins",
 ];
 
 // Framer Motion reveal variant
@@ -129,7 +129,7 @@ function StatCard({ value, valueSub, label, context, valueColor, index }: StatCa
 export default function Stakes() {
   return (
     <Section id="stakes" className="bg-[#060814]">
-      {/* Heading — left-aligned */}
+      {/* Heading - left-aligned */}
       <div className="max-w-5xl mb-12">
         <h2
           className={cn(

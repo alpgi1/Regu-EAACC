@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  // Base — shared across all variants
+  // Base - shared across all variants
   [
     "inline-flex items-center justify-center gap-2",
     "font-medium rounded-lg",

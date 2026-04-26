@@ -1,5 +1,5 @@
 /**
- * Landing page — composes all sections in order.
+ * Landing page - composes all sections in order.
  * The analysis app lives at /app; this page lives at /.
  */
 

@@ -11,7 +11,7 @@ import axios, { type AxiosError } from "axios";
 
 export const api = axios.create({
   baseURL: (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "/api/v1",
-  timeout: 120_000, // 120s — report generation can take 30–60s
+  timeout: 120_000, // 120s - report generation can take 30–60s
   headers: { "Content-Type": "application/json" },
 });
 
@@ -81,7 +81,7 @@ export interface QuestionDto {
   questionType: string;
   category: string;
   options: AnswerOptionDto[] | null;
-  /** Why this question matters — rendered as clarification text */
+  /** Why this question matters - rendered as clarification text */
   explanation: string | null;
 }
 
@@ -100,7 +100,7 @@ export interface StartInterviewResponse {
  * POST /interviews/:id/answer → 200
  *
  * status: "next_question" | "classified" | "stage2_required" | "report_ready"
- * Backend has a 4th status "classified" not in the prompt spec — we treat it
+ * Backend has a 4th status "classified" not in the prompt spec - we treat it
  * like "report_ready" (triggers report generation if reportId absent).
  */
 export interface ApiNextStepResponse {

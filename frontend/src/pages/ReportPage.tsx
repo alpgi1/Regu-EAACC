@@ -1,5 +1,5 @@
 /**
- * ReportPage — the deliverable. Looks like a document you would attach
+ * ReportPage - the deliverable. Looks like a document you would attach
  * to an email to your legal counsel.
  *
  * Seven blocks: header, executive summary, classification rationale,

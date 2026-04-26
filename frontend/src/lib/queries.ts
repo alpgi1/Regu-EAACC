@@ -42,7 +42,7 @@ export const queryClient = new QueryClient({
 
 // ── Interview mutations ─────────────────────────────────────────────────────
 
-/** POST /interviews — start a new session */
+/** POST /interviews - start a new session */
 export function useStartInterview() {
   return useMutation<StartInterviewResponse, Error>({
     mutationFn: async () => {
@@ -174,7 +174,7 @@ export function useSubmitQA(sessionId: string) {
   });
 }
 
-/** POST /interviews/:id/stage2/chat — free-form Annex IV question */
+/** POST /interviews/:id/stage2/chat - free-form Annex IV question */
 export function useStage2Chat(sessionId: string) {
   return useMutation<Stage2ChatResponse, Error, Stage2ChatRequest>({
     mutationFn: async (body) => {
@@ -222,7 +222,7 @@ export function useSectionGaps(
 
 // ── Report mutations & queries ──────────────────────────────────────────────
 
-/** POST /interviews/:id/report — may take 30-60s */
+/** POST /interviews/:id/report - may take 30-60s */
 export function useGenerateReport(sessionId: string) {
   return useMutation<ReportResponse, Error>({
     mutationFn: async () => {

@@ -44,7 +44,7 @@ export default function App() {
           {/* Placeholder route for footer/CTA links not yet built */}
           <Route path="/coming-soon" element={<ComingSoon />} />
 
-          {/* Legal pages — not yet built */}
+          {/* Legal pages - not yet built */}
           {["/privacy", "/terms", "/cookies", "/dpa"].map((path) => (
             <Route
               key={path}

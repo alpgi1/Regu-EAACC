@@ -8,7 +8,7 @@ const ITEMS = [
   },
   {
     q: "What does \"first-pass\" actually mean?",
-    a: "REGU classifies your AI system into one of the Act's risk tiers — prohibited, high-risk, limited, or minimal — and identifies which articles, annexes, and obligations apply. For high-risk systems it walks you through Annex IV documentation gaps. It does not produce a conformity assessment or the technical file itself.",
+    a: "REGU classifies your AI system into one of the Act's risk tiers - prohibited, high-risk, limited, or minimal - and identifies which articles, annexes, and obligations apply. For high-risk systems it walks you through Annex IV documentation gaps. It does not produce a conformity assessment or the technical file itself.",
   },
   {
     q: "What if I'm not based in the EU?",
@@ -20,11 +20,11 @@ const ITEMS = [
   },
   {
     q: "How does REGU handle ambiguity in the regulation?",
-    a: "When retrieved evidence is thin, contradictory, or the engine's internal confidence is low, REGU surfaces a `review_recommended` flag on the affected claim instead of producing a confident-sounding answer. This is the fail-safe principle — better to tell you something deserves a second look than to invent certainty.",
+    a: "When retrieved evidence is thin, contradictory, or the engine's internal confidence is low, REGU surfaces a `review_recommended` flag on the affected claim instead of producing a confident-sounding answer. This is the fail-safe principle - better to tell you something deserves a second look than to invent certainty.",
   },
   {
-    q: "Why Gemini 2.5 Flash and not GPT-4 or Claude?",
-    a: "Two reasons. First, latency: under-five-minute analysis requires a model with low time-to-first-token at long contexts. Second, structured output reliability: Gemini 2.5 Flash with a citation schema returns valid, parseable JSON consistently enough for our citation validator. We can swap models per-region if compliance or latency requirements change.",
+    q: "Why Claude Sonnet and not GPT-4 or Gemini?",
+    a: "Two reasons. First, latency: under-five-minute analysis requires a model with low time-to-first-token at long contexts. Second, structured output reliability: Claude Sonnet with a citation schema returns valid, parseable JSON consistently enough for our citation validator. We can swap models per-region if compliance or latency requirements change.",
   },
 ];
 

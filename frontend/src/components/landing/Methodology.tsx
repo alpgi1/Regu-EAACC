@@ -7,7 +7,7 @@ const PRINCIPLES = [
   },
   {
     title: "Law-primary",
-    body: "The legal text is authoritative. Commission guidance and curated use cases inform retrieval, but the regulation itself is the ground truth — never the engine's prior.",
+    body: "The legal text is authoritative. Commission guidance and curated use cases inform retrieval, but the regulation itself is the ground truth - never the engine's prior.",
   },
   {
     title: "Fail-safe, not fail-silent",
@@ -50,8 +50,8 @@ export default function Methodology() {
             >
               <p>
                 The EU AI Act is 458 pages of densely cross-referenced legal
-                text. The startups it most affects — small teams shipping
-                AI features into the EU market — are the ones least equipped
+                text. The startups it most affects - small teams shipping
+                AI features into the EU market - are the ones least equipped
                 to read it. They have no compliance officer, no general
                 counsel on retainer, and no time to learn what an Annex IV
                 technical file is supposed to contain.

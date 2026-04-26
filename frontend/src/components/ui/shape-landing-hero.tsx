@@ -1,7 +1,7 @@
 /**
  * Geometric ambient shapes for the hero background.
  *
- * Adapted from the ElegantShape pattern — re-themed to REGU's
+ * Adapted from the ElegantShape pattern - re-themed to REGU's
  * navy/indigo palette. Rose and amber removed; violet and deep-blue only.
  *
  * Usage:
@@ -54,7 +54,7 @@ export function ElegantShape({
         style={{ width, height }}
         className="relative"
       >
-        {/* Outer shell — very faint border */}
+        {/* Outer shell - very faint border */}
         <div
           className={cn(
             "absolute inset-0 rounded-full",
@@ -84,7 +84,7 @@ export function HeroGeometric() {
       className="absolute inset-0 overflow-hidden pointer-events-none"
       aria-hidden
     >
-      {/* Large slow shape — upper-left, deep indigo */}
+      {/* Large slow shape - upper-left, deep indigo */}
       <ElegantShape
         delay={0.3}
         width={640}
@@ -94,7 +94,7 @@ export function HeroGeometric() {
         className="-top-20 -left-48"
       />
 
-      {/* Mid-size shape — upper-right, violet */}
+      {/* Mid-size shape - upper-right, violet */}
       <ElegantShape
         delay={0.5}
         width={480}
@@ -104,7 +104,7 @@ export function HeroGeometric() {
         className="top-12 -right-36"
       />
 
-      {/* Accent shape — centre-left, accent-hi blue */}
+      {/* Accent shape - centre-left, accent-hi blue */}
       <ElegantShape
         delay={0.7}
         width={320}
@@ -114,7 +114,7 @@ export function HeroGeometric() {
         className="top-1/3 left-16"
       />
 
-      {/* Small shape — lower-right, indigo */}
+      {/* Small shape - lower-right, indigo */}
       <ElegantShape
         delay={1.0}
         width={280}
@@ -124,7 +124,7 @@ export function HeroGeometric() {
         className="bottom-1/4 right-20"
       />
 
-      {/* Tiny accent — bottom-left, violet */}
+      {/* Tiny accent - bottom-left, violet */}
       <ElegantShape
         delay={1.2}
         width={200}
@@ -134,7 +134,7 @@ export function HeroGeometric() {
         className="bottom-16 left-1/4"
       />
 
-      {/* Radial glow at centre-top — very faint */}
+      {/* Radial glow at centre-top - very faint */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse_at_top,rgba(42,82,190,0.08)_0%,transparent_70%)]" />
     </div>
   );

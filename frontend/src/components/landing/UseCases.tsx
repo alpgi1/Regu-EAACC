@@ -43,7 +43,7 @@ const CASES: { title: string; tier: Tier; body: string; cite: string }[] = [
   {
     title: "Spam filter using ML",
     tier: "MINIMAL",
-    body: "Email or message filtering trained on labelled spam — no profiling beyond the filter.",
+    body: "Email or message filtering trained on labelled spam - no profiling beyond the filter.",
     cite: "Out of scope",
   },
   {
@@ -61,7 +61,7 @@ const CASES: { title: string; tier: Tier; body: string; cite: string }[] = [
   {
     title: "AI-generated marketing copy tool",
     tier: "MINIMAL",
-    body: "Generates ad and landing-page copy on request — output is reviewed by humans before use.",
+    body: "Generates ad and landing-page copy on request - output is reviewed by humans before use.",
     cite: "Out of scope · disclosure",
   },
   {

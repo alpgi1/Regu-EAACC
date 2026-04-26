@@ -37,16 +37,23 @@ export default function Contact() {
             style={{ fontSize: "var(--text-body-lg)" }}
           >
             Whether you're scoping your AI Act risk for the first time or
-            stuck on a specific Annex IV section — we read every message.
+            stuck on a specific Annex IV section - we read every message.
           </p>
 
           <div className="mt-10 flex flex-col gap-4">
             <a
-              href="mailto:founders@regu.eu"
+              href="mailto:alpgiray.dev@gmail.com"
               className="flex items-center gap-3 text-[15px] text-[var(--ink-secondary)] hover:text-[var(--ink-primary)] transition-colors duration-[var(--dur-fast)]"
             >
               <Mail size={16} className="text-[var(--ink-tertiary)]" aria-hidden />
-              founders@regu.eu
+              alpgiray.dev@gmail.com
+            </a>
+            <a
+              href="mailto:cnumanberk@gmail.com"
+              className="flex items-center gap-3 text-[15px] text-[var(--ink-secondary)] hover:text-[var(--ink-primary)] transition-colors duration-[var(--dur-fast)]"
+            >
+              <Mail size={16} className="text-[var(--ink-tertiary)]" aria-hidden />
+              cnumanberk@gmail.com
             </a>
             <div className="flex items-center gap-3 text-[15px] text-[var(--ink-secondary)]">
               <MapPin size={16} className="text-[var(--ink-tertiary)]" aria-hidden />
@@ -83,11 +90,14 @@ export default function Contact() {
                 className="font-semibold text-[var(--ink-primary)]"
                 style={{ fontSize: "1.25rem", letterSpacing: "-0.01em" }}
               >
-                Thanks — message received.
+                Thanks - message received.
               </h3>
               <p className="text-[var(--ink-secondary)] text-[15px] leading-relaxed">
-                We'll reply within one business day. If it's urgent, email
-                founders@regu.eu directly.
+                We'll reply within one business day. If it's urgent, email{" "}
+                <a href="mailto:alpgiray.dev@gmail.com" className="text-[var(--brand-400)] hover:underline">alpgiray.dev@gmail.com</a>
+                {" "}or{" "}
+                <a href="mailto:cnumanberk@gmail.com" className="text-[var(--brand-400)] hover:underline">cnumanberk@gmail.com</a>
+                {" "}directly.
               </p>
             </div>
           ) : (

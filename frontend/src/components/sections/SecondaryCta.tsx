@@ -1,5 +1,5 @@
 /**
- * SecondaryCta — mid-page conversion band.
+ * SecondaryCta - mid-page conversion band.
  * Thin, centered, full-bleed with a faint radial glow.
  */
 
@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import { m as motion, useReducedMotion } from "framer-motion";
 import { EASE_SMOOTH } from "@/lib/utils";
 import { ChevronRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
+import { StartAnalysisButton } from "@/components/ui/start-analysis-button";
 
 export default function SecondaryCta() {
   const prefersReduced = useReducedMotion();
@@ -17,7 +18,7 @@ export default function SecondaryCta() {
       className="relative py-20 bg-[#0A0F1F] border-y border-[rgba(235,235,235,0.08)] overflow-hidden"
       aria-labelledby="scta-heading"
     >
-      {/* Faint radial glow — accent at 6% alpha, 1200px radius */}
+      {/* Faint radial glow - accent at 6% alpha, 1200px radius */}
       <div
         className="absolute inset-0 pointer-events-none"
         aria-hidden
@@ -46,12 +47,10 @@ export default function SecondaryCta() {
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
-          <Button variant="primary" size="lg" asChild>
-            <Link to="/app">
-              Start Analysis
-              <ChevronRight size={16} aria-hidden />
-            </Link>
-          </Button>
+          <StartAnalysisButton className={buttonVariants({ variant: "primary", size: "lg" })}>
+            Start Analysis
+            <ChevronRight size={16} aria-hidden />
+          </StartAnalysisButton>
           <Button variant="outline" size="lg" asChild>
             <Link to="#demo">
               <Play size={15} aria-hidden />

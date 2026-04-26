@@ -1,5 +1,5 @@
 /**
- * FooterSection — adapted from the AnimatedContainer footer pattern.
+ * FooterSection - adapted from the AnimatedContainer footer pattern.
  *
  * Changes from the original:
  * - `from 'motion/react'` → `from 'framer-motion'` (consistent project-wide)
@@ -66,7 +66,7 @@ export function FooterSection() {
 
   return (
     <footer className="relative border-t border-[rgba(235,235,235,0.08)] bg-[#060814]">
-      {/* Radial glow — regu-accent at very low alpha */}
+      {/* Radial glow - regu-accent at very low alpha */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[1200px] h-[300px] pointer-events-none"
         aria-hidden
@@ -95,7 +95,7 @@ export function FooterSection() {
               <p className="text-sm text-[rgba(235,235,235,0.38)] leading-relaxed max-w-[200px]">
                 EU AI Act compliance analysis grounded in the regulation's own text.
               </p>
-              {/* Social — LinkedIn + GitHub only */}
+              {/* Social - LinkedIn + GitHub only */}
               <div className="flex gap-3 mt-1">
                 <a
                   href="https://linkedin.com"

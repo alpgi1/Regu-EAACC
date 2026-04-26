@@ -1,5 +1,5 @@
 /**
- * GlowingCard — a single card with an animated rotating-gradient border
+ * GlowingCard - a single card with an animated rotating-gradient border
  * and a pointer-reactive radial glow behind it.
  *
  * Converted from a Next.js `<style jsx>` snippet to a co-located CSS file
@@ -8,7 +8,7 @@
  * @property declarations in the CSS are standard CSS (Chromium + Safari).
  * Firefox degrades gracefully: static border, no animated gradient.
  *
- * Mounted only in the Methodology section — scoped, not global.
+ * Mounted only in the Methodology section - scoped, not global.
  */
 
 import { useRef } from "react";
