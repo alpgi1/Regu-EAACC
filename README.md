@@ -174,7 +174,7 @@ Opens at `http://localhost:5173`.
 
 ## Contact
 
-Built in the EU by [Alpgiray Celik](mailto:alpgiray.dev@gmail.com) and [Caner Uman Berk](mailto:cnumanberk@gmail.com).
+Built in the EU by [Alpgiray Celik](mailto:alpgiray.dev@gmail.com) and [Numan Berk Cetinkaya](mailto:cnumanberk@gmail.com).
 
 ---
 
